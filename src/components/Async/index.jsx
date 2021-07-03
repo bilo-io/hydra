@@ -1,13 +1,8 @@
 // #region Modules
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 // #endregion Modules
 
 // #region Components
-import {
-    Loader,
-    LoaderType,
-} from 'components'
 import ErrorBoundary from '../ErrorBoundary'
 // #endregion
 

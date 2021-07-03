@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { TabsComponent } from './TabsComponent'
-import PropTypes from 'prop-types'
 
 export class Tabs extends Component {
     static defaultProps = {
@@ -15,13 +14,12 @@ export class Tabs extends Component {
         this.setState({
             activeTab: this.props.defaultTab,
             activeTabIndex: 0
-            // activeTabIndex: this.props.defaultTab.findIndex(),
         })
     }
 
     render () {
         const { activeTab, activeTabIndex } = this.state
-        const { json, ui, code, keys, className } = this.props
+        const { keys, className } = this.props
         return <div>
             <TabsComponent
                 items={keys}
