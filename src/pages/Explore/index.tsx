@@ -1,4 +1,5 @@
 import { AxiosError, AxiosResponse } from 'axios';
+import Async from 'components/Async';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router';
@@ -8,17 +9,52 @@ import { currency } from 'utils/locale'
 function Explore() {
   const history = useHistory();
   const [coins, setCoins] = useState<any[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
+  const [error, setError] = useState<any>(null)
+  const [filter, setFilter] = useState<string>('')
+  const [filteredCoins, setFilteredCoins] = useState<any[]>([])
+
+  //#region FUNCTIONS
+  const filterCoins = (event: any) => {
+    const { value } = event.target;
+    console.log(value)
+    setFilter(value)
+    setFilteredCoins(value.length === 0 ? coins : coins.filter((coin) => coin.name.toLowerCase().includes(value.toLowerCase()) || coin.id.includes(value.toLowerCase())))
+  }
+  //#endregion
+
+  //#region LIFECYCLE
   useEffect(() => {
+    setLoading(true)
     fetchCoins().then((response:any) => {
       setCoins(response?.data)
+      setFilteredCoins(response?.data)
       console.log(response)
     })
+      .catch(error => {
+      setError(error)
+      })
+      .finally(() => {
+      setLoading(false)
+    })
   }, [])
+  //#endregion
 
   return (
     <div>
+      <Async isLoading={loading}>
+      <input
+      type={'text'}
+      value={filter}
+      onChange={filterCoins}
+      style={{
+        width: 'calc(100% - 2rem)',
+        margin: '0.5rem',
+        padding: '0.5rem'
+      }}
+      />
       {
-        coins.map((coin) => (
+        filteredCoins.map((coin) => (
           <div className="coin-card" onClick={() => history.push(`/explore/${coin?.id}`)}>
             <div className="flex-row space-between">
               <div className="flex-row">
@@ -32,6 +68,7 @@ function Explore() {
             </div>
         ))
       }
+      </Async>
     </div>
   )
 }

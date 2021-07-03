@@ -3,12 +3,6 @@ export const MS_TO_DAYS = MS_TO_HOURS * 24
 
 export const periods: { label: string, days: number, date?: any }[] = [
     {
-        label: 'H',
-        days: 0,
-        // @ts-ignore
-        // date: new Date() - MS_TO_HOURS)
-    },
-    {
         label: 'D',
         days: 1,
         // @ts-ignore

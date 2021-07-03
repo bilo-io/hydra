@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { LineChart } from 'components/Charts/LineChart'
 import { fetchChartData } from 'services/coingecko'
+import Async from 'components/Async';
 
 function Stats() {
   // #region STATE
@@ -102,19 +103,21 @@ function Stats() {
             name: key
         }))
 
+    console.log({ series })
   return (
-    <div>
-      <LineChart
-        isLoading={false}
-        data={[]}
-            series={ series || [] }
-            title={`Coins: ${chartKeys.toString()}`}
-            period={state?.period}
-            onChangeRange={ (period: any) =>
-                fetchChartDataRoutine(state?.currency, state?.period)
-            }
-        />
-
+      <div>
+          <Async loading={true}>
+            <LineChart
+                isLoading={false}
+                data={[]}
+                series={ [{ data: state?.chart?.prices }] }
+                title={`Coins: ${chartKeys.toString()}`}
+                period={state?.period}
+                onChangeRange={ (period: any) =>
+                    fetchChartDataRoutine(state?.currency, state?.period)
+                }
+            />
+        </Async>
     </div>
   );
 }

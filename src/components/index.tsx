@@ -2,7 +2,7 @@
 import Accordion from './Accordion'
 import Async from './Async';
 import { Loader, LoaderType } from './Loader';
-import ErrorBoundary from './ErrorBoundary';
+import { ErrorBoundary } from './ErrorBoundary';
 import { Tabs } from './Tabs';
 
 export default {

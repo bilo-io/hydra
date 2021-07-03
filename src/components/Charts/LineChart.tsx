@@ -18,12 +18,30 @@ const staticOptions = {
     title: {
         text: 'LineChart'
     },
-    // chart: {
-    //     type: 'spline'
-    // },
+    chart: {
+        renderTo : 'container',
+        type : 'spline',
+        // backgroundColor : {
+        //     linearGradient : [0, 0, 0, 400],
+        //     stops : [
+        //         [0, 'rgb(96, 96, 96)'],
+        //         [1, 'rgb(16, 16, 16)']
+        //     ]
+        // }
+    },
     // 1 year
     tickInterval: 1000 * 60 * 60 * getTickInterval(1),
-    series: ['1', '2', '3'],
+    series: [{
+        type : "area",
+            fillColor : {
+              linearGradient : [0, 0, 0, 300],
+                stops: [
+                // @ts-ignore
+                [0, Highcharts.getOptions().colors[0]],
+                [1, 'rgba(0,0,0,0)']
+              ]
+            },
+    }],
     xAxis: [{
         type: 'datetime',
         crosshair: true,
@@ -53,10 +71,20 @@ export const LineChart = ({
         ...staticOptions
     })
 
+    // const series = [{
+    //     type: 'line',
+    //     data
+    // }]
+
     useEffect(() => {
         setOptions({
             ...staticOptions,
+            // @ts-ignore
             series,
+            // series: [{
+            //     ...staticOptions.series,
+            //     ...series,
+            // }],
             title: {
                 text: title
             }
@@ -87,7 +115,8 @@ export const LineChart = ({
                     (periods || []).map((item, i) => (
                         <button key={i}
                             className={`hollow ${period.label === item.label ? 'primary' : ''}`}
-                            onClick={ () => loadTimerange(item)}>
+                            onClick={() => loadTimerange(item)}
+                            style={{ width: '5rem', borderRadius: '1rem'}}>
                             { item?.label || 'X'}
                         </button>
                     ))

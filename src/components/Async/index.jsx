@@ -7,8 +7,8 @@ import PropTypes from 'prop-types'
 import {
     Loader,
     LoaderType,
-    ErrorBoundary
 } from 'components'
+import ErrorBoundary from '../ErrorBoundary'
 // #endregion
 
 // #region Assets & Data

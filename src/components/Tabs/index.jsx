@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { TabsComponent } from 'components'
+import { TabsComponent } from './TabsComponent'
 import PropTypes from 'prop-types'
 
 export class Tabs extends Component {

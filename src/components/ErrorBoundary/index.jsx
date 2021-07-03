@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import FAIcon from 'react-fontawesome'
-import { toPng } from 'dom-to-image'
+// import { toPng } from 'dom-to-image'
 // import { Accordion } from '../'
 
 export class ErrorBoundary extends Component {
@@ -27,17 +27,17 @@ export class ErrorBoundary extends Component {
         const node = document.getElementById('vision-studio-app-root')
         console.log('exportTo.png', node)
 
-        toPng(node)
-            .then((dataUrl) => {
-                this.setState({
-                    screenShot: dataUrl
-                })
+        // toPng(node)
+            // .then((dataUrl) => {
+            //     this.setState({
+            //         screenShot: dataUrl
+            //     })
 
-                console.log('screenshot', dataUrl)
-            })
-            .catch(error => {
-                console.log('error', error)
-            })
+            //     console.log('screenshot', dataUrl)
+            // })
+            // .catch(error => {
+            //     console.log('error', error)
+            // })
     }
 
     render () {
