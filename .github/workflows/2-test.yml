@@ -11,11 +11,3 @@ jobs:
       run: yarn test
     - name: cypress
       uses: cypress-io/github-action@v2.9.7
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Install modules
-      run: yarn
-    - name: Run build
-      run: yarn build
