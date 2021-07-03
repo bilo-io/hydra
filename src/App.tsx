@@ -17,16 +17,23 @@ function App() {
   return (
     <Router>
       <Navbar />
+      <div className="page">
       <Switch>
-        {/* <Redirect from="/" to="/portfolio" /> */}
+        <Route
+            exact
+            path={'/'}
+            render={() => <Redirect to={'/portfolio'} />}
+        />
+
 
         <Route path="/login" component={Login} />
         <Route path="/portfolio" component={Portfolio} />
-        <Route path="/explore" component={Explore} />
+        <Route exact path="/explore" component={Explore} />
         <Route path="/explore/:id" component={ExploreDetails} />
         <Route path="/stats" component={Stats} />
         <Route path="*" component={Error} />
-      </Switch>
+        </Switch>
+        </div>
     </Router>
   );
 }

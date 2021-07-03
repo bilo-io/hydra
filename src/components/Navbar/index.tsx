@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import FAIcon from 'react-fontawesome'
+import appLogo from 'assets/img/hydra-icon.png'
 
 function Navbar() {
   const history = useHistory()
   const goTo = (path: string) => history.push(path)
+  const [activePath, setActivePath] = useState<any>(null)
+
+  useEffect(() => {
+    history.listen(() => setActivePath(history.location.pathname))
+  })
 
   const items = [
+    {
+      name: 'Profile',
+      path: '/profile',
+      icon: 'user'
+    },
     {
       name: 'Explore',
       path: '/explore',
@@ -15,32 +26,38 @@ function Navbar() {
     {
       name: 'Portfolio',
       path: '/portfolio',
-      icon: 'user',
+      icon: '',
       main: true
     },
     {
       name: 'Stats',
       path: '/stats',
       icon: 'chart-pie'
-    }
+    },
+    {
+      name: 'News',
+      path: '/news',
+      icon: 'globe'
+    },
   ]
 
     return (
         <div className="mobile-navbar flex-row space-between">
             {
                 (items || []).map((item, i) => {
-                    const isActive = window.location.pathname.includes(item.path)
+                    // const isActive = window.location.pathname.includes(item.path)
+                  const isActive = activePath?.includes(item.path)
                     return (
                         <div
                             onClick={() => goTo(item.path)}
                             className={ item.main ? 'main-tab' : 'normal-tab'}
                         >
                             {
-                                // item.main ? (
-                                    // <img src={ appLogo } style={{ width: '3rem', height: 'auto' }} alt="logo/>
-                                // ) : (
-                                    <FAIcon name={item.icon} style={{ color: isActive ? '#FF4165' : '#AAA' }}/>
-                                // )
+                                item.main ? (
+                                    <img src={ appLogo } style={{ width: '3.2rem', height: 'auto', margin: 'auto', marginTop: '-0.15rem' }} alt="logo" />
+                                ) : (
+                                    <FAIcon name={item.icon} style={{ color: isActive ? '#3AC9E6' : '#AAA' }}/>
+                                )
                             }
                         </div>
                     )

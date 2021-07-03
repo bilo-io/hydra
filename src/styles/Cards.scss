@@ -1,203 +1,22 @@
-.vision-app-menu {
-    $top-height: 4rem;
-    $bottom-height: 6rem;
-    $content-height: calc(100vh - #{$top-height} - #{$bottom-height});
+.coin-card {
+    $padding: 0.5rem;
+    width: calc(100% - 4 * #{$padding});
+    padding: $padding;
+    margin: $padding;
+    border-radius: 8px;
+    background-color: $col-hydra-dark;
 
-    position: fixed;
-    z-index: 1000;
-    margin: 0;
-    padding: 0;
-    top: 0;
-    // left: calc(4rem - 4px);
-    // width: calc(100vw - 4rem + 4px);
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    overflow-y: auto;
-    border-radius: none;
-    transition: all .3s ease-in-out;
-    opacity: 1;
-
-    &.dark {
-        color: rgba(white, 0.5);
-        background: #111;
+    img {
+        height: 3rem;
     }
 
-    &.light {
-        color: rgba(black, 0.2);
-        background: #fefefe;
+    .name {
+        line-height: 3rem;
+        margin-left: 0.5rem;
     }
 
-    &.hidden {
-        position: fixed;
-        // border-radius: 50%;
-        width: 0;
-        // height: 100vh;
-        // top: 0;
-        left: calc(-4rem - 4px);
-        // margin-left: -50px;
-        // margin-top: -50px;
-        transition: all .3s ease-in-out;
-        opacity: 0.3;
-        overflow: hidden;
-    }
-
-    .top {
-        @extend .flex-row;
-        @extend .space-between;
-        background-color: inherit;
-        // border-bottom: 1px solid lightgrey;
-        height: $top-height;
-
-        .icon {
-            flex-shrink: 1;
-            width: 1rem;
-            height: 1rem;
-            padding: 1.5rem;
-            line-height: 1rem;
-            font-size: 1rem;
-            cursor: pointer;
-            &:hover {
-                color: $col-active;
-            }
-        }
-
-        .logo {
-            // flex-shrink: 1;
-            position: absolute;
-            width: 100%;
-            left: calc(50% - 1rem);
-            img {
-                width: 3rem;
-                height: 3rem;
-                margin: auto;
-                margin-top: 0.5rem;
-            }
-        }
-
-        .user {
-            @extend .flex-row;
-            flex-shrink: 1;
-            height: 4rem;
-            line-height: 4rem;
-
-            .avatar {
-                margin-left: 1rem;
-                margin-right: 1rem;
-                font-size: 2rem;
-
-                // img {
-                // NOTE: style for user profile pic, when logged in
-                // }
-            }
-        }
-
-    }
-
-    .content {
-        @extend .flex-col;
-        flex-grow: 6;
-        background-color: inherit;
-        height: $content-height;
-        // align-content: center;
-        // max-width: 30rem;
-        // margin: auto;
-        text-align: center;
-
-        .logo {
-            width: 3rem;
-            height: auto;
-            margin: auto;
-            margin-top: 2rem;
-        }
-
-        .title {
-            font-size: 1.4rem;
-            margin: auto;
-            margin-top: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .version {
-            font-size: 0.8rem;
-            margin: auto;
-            // margin-top: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        div>.link {
-            font-size: 1rem;
-            line-height: 3rem;
-            height: 3rem;
-            cursor: pointer;
-            // margin-top: 0.5rem;
-            // margin-bottom: 0.75rem;
-            &:hover {
-                color: $col-active;
-                background-color: rgba($col-active, 0.25);
-            }
-        }
-    }
-
-    .bottom {
-        display: none;
-        @extend .flex-row;
-        @extend .space-evenly;
-        background-color: inherit;
-        height: $bottom-height;
-        position: relative;
-
-        .links {
-            @extend .flex-row;
-            align-content: flex-start;
-            flex-wrap: wrap;
-            flex-grow: 1;
-            width: calc(30vw - 2.5rem);
-            overflow-x: hidden;
-            padding: {
-                left: 2.5rem;
-                top: calc((#{$bottom-height} - 1rem) / 2);
-            }
-            font-size: 1rem;
-            line-height: 1rem;
-            height: $bottom-height;
-
-            a {
-                margin-right: 1rem;
-                font-size: 0.8rem;
-            }
-        }
-
-        .platforms {
-            @extend .flex-row;
-            width: 40vw;
-            flex-shrink: 1;
-            padding-top: calc((#{$bottom-height}/2) - 2.5rem);
-            font-size: 1.5em;
-            line-height: 1.5em;
-            align-items: center;
-            flex-wrap: wrap;
-            overflow-x: hidden;
-
-            .icon {
-                cursor: pointer;
-                width: 1.5rem;
-                height: 1.5rem;
-                margin: {
-                    left: 0.25rem;
-                    right: 0.25rem;
-                }
-            }
-        }
-
-        .languages {
-            @extend .flex-row;
-            width: 30vw;
-            flex-grow: 1;
-            align-content: flex-end;
-            height: $bottom-height;
-            line-height: $bottom-height;
-        }
+    .price {
+        line-height: 3rem;
+        font-weight: bold;
     }
 }

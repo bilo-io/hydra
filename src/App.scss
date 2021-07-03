@@ -10,28 +10,13 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
-}
-
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-}
-
-.App-link {
-  color: rgb(112, 76, 182);
+.page {
+  width: 100vw;
+  height: calc(100vh - 4rem);
+  overflow-y: auto;
+  background-color: $col-hydra-black;
+  color: #eee;
+  padding-bottom: 4rem;
 }
 
 @keyframes App-logo-float {
