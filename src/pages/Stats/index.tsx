@@ -6,7 +6,7 @@ import Accordion from 'components/Accordion';
 
 function Stats() {
   // #region STATE
-  const [charts, setCharts] = useState<any>({})
+  const [charts,] = useState<any>({})
   const [state, setState] = useState<any>({
     currency: 'usd',
     viewType: 'tile',
@@ -57,6 +57,7 @@ function Stats() {
                 })
         })
     }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const addCoinToChart = (coin: any) => {
         setState({
             isLoading: {
@@ -84,6 +85,7 @@ function Stats() {
             })
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const removeCoinFromChart = (coin: any) => {
         const id = coin.id
         const newCharts = state.charts
@@ -107,9 +109,11 @@ function Stats() {
     console.log({ series })
   return (
       <div>
-          <Accordion title="Selection">
+        <Accordion title="Selection">
+            <div>
 
-          </Accordion>
+            </div>
+        </Accordion>
         <Accordion title={'Chart'} isOpenDefault>
             <Async loading={true}>
                 <LineChart

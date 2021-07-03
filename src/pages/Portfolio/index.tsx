@@ -8,12 +8,12 @@ const adverts = [
       color: 'linear-gradient(to left, #09485f, #333)',
     },
     {
-      name: 'Bulktrade',
+      name: 'BulkTrade',
       text: 'Trade multiple crypto currencies at once',
       color: 'linear-gradient(to left, #8844FF, #333)',
     },
     {
-      name: 'Cryptonews',
+      name: 'Crypto news',
       text: 'Hear the latest news on cryptocurrencies',
       color: 'linear-gradient(to left, #FF3388, #333)',
     },
@@ -26,7 +26,6 @@ const adverts = [
   ]
 function Portfolio() {
   const [advert, setAdvert] = useState<any>(adverts[Math.floor(Math.random() * adverts.length)])
-  const [markets, setMarkets] = useState<any | any[]>(null)
 
   useEffect(() => {
     const interval = setInterval(() => {

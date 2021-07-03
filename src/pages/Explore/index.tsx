@@ -1,4 +1,3 @@
-import { AxiosError, AxiosResponse } from 'axios';
 import Async from 'components/Async';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
@@ -10,7 +9,7 @@ function Explore() {
   const history = useHistory();
   const [coins, setCoins] = useState<any[]>([])
   const [loading, setLoading] = useState<boolean>(true)
-  const [error, setError] = useState<any>(null)
+  const [, setError] = useState<any>(null)
   const [filter, setFilter] = useState<string>('')
   const [filteredCoins, setFilteredCoins] = useState<any[]>([])
 

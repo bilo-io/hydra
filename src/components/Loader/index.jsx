@@ -11,7 +11,7 @@ export class Loader extends Component {
     }
 
     render () {
-        const { loading, type, color, style } = this.props
+        const { type, color, style } = this.props
         const loaderType = type || LoaderType.SPINNER
 
         switch (loaderType) {

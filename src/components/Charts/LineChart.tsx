@@ -89,10 +89,11 @@ export const LineChart = ({
                 text: title
             }
         })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data, series])
 
 
-    const loadTimerange = (period: any) => {
+    const loadTimeRange = (period: any) => {
         onChangeRange?.(period)
         setOptions({
             ...options,
@@ -115,7 +116,7 @@ export const LineChart = ({
                     (periods || []).map((item, i) => (
                         <button key={i}
                             className={`hollow ${period.label === item.label ? 'primary' : ''}`}
-                            onClick={() => loadTimerange(item)}
+                            onClick={() => loadTimeRange(item)}
                             style={{ width: '5rem', borderRadius: '1rem'}}>
                             { item?.label || 'X'}
                         </button>

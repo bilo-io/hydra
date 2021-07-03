@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import { LineChart } from 'components/Charts/LineChart'
 import { fetchCoins, fetchChartData } from 'services/coingecko';
 import { currency, language } from 'utils/locale';
@@ -9,11 +9,11 @@ import Async from 'components/Async';
 import Accordion from 'components/Accordion';
 
 function ExploreDetails() {
-  const history = useHistory();
+  // const history = useHistory();
   //@ts-ignore
   const { id } = useParams();
   const [loading, setLoading] = useState<boolean>(true)
-  const [error, setError] = useState<any>()
+  const [, setError] = useState<any>()
   const [coinData, setCoinData] = useState<any>(null)
   const [state, setState] = useState<any>({
     currency: 'usd',
