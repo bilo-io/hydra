@@ -1,0 +1,93 @@
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-wrap-reverse {
+    flex-wrap: wrap-reverse;
+}
+
+.auto-scroll-x {
+    overflow: hidden;
+
+    &:hover {
+        overflow-x: auto;
+    }
+}
+
+.auto-scroll-y {
+    overflow: hidden;
+
+    &:hover {
+        overflow-y: auto;
+    }
+
+    height: 100%;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.space-evenly {
+    justify-content: space-evenly;
+}
+
+.space-around {
+    justify-content: space-around;
+}
+
+.full-screen {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.full-width {
+    position: relative;
+    width: 100%;
+
+    &-padded {
+        width: calc(100% - 2rem);
+    }
+
+    &.padded {
+        width: calc(100% - 2rem);
+    }
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.centered {
+    // width: fit-content;
+    margin: auto;
+}
+
+.padded {
+    padding: 0.5rem;
+    width: calc(100% - 1rem);
+}
+
+.margined {
+    margin: auto;
+    max-width: 50rem;
+}

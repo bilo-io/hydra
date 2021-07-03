@@ -1,0 +1,17 @@
+$col-angelic-pink: #FF4165;
+$col-angelic-purple: #8E0EA4;
+
+$col-active: $col-angelic-pink;
+$col-primary: $col-active;
+$col-secondary: #aaa;
+$col-success: #3adb76;
+$col-warning: #ffae00;
+$col-error: #E94B35;
+
+$col-lightgrey: #eeeef3;
+$col-text: #888;
+$col-white: #fff;
+
+.gradient-background {
+    background: linear-gradient(to bottom, $col-angelic-pink, $col-angelic-purple);
+}
