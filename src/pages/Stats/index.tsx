@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { LineChart } from 'components/Charts/LineChart'
 import { fetchChartData } from 'services/coingecko'
 import Async from 'components/Async';
+import Accordion from 'components/Accordion';
 
 function Stats() {
   // #region STATE
@@ -106,18 +107,23 @@ function Stats() {
     console.log({ series })
   return (
       <div>
-          <Async loading={true}>
-            <LineChart
-                isLoading={false}
-                data={[]}
-                series={ [{ data: state?.chart?.prices }] }
-                title={`Coins: ${chartKeys.toString()}`}
-                period={state?.period}
-                onChangeRange={ (period: any) =>
-                    fetchChartDataRoutine(state?.currency, state?.period)
-                }
-            />
-        </Async>
+          <Accordion title="Selection">
+
+          </Accordion>
+        <Accordion title={'Chart'} isOpenDefault>
+            <Async loading={true}>
+                <LineChart
+                    isLoading={false}
+                    data={[]}
+                    series={ [{ data: state?.chart?.prices }] }
+                    title={`Coins: ${chartKeys.toString()}`}
+                    period={state?.period}
+                    onChangeRange={ (period: any) =>
+                        fetchChartDataRoutine(state?.currency, state?.period)
+                    }
+                />
+            </Async>
+        </Accordion>
     </div>
   );
 }

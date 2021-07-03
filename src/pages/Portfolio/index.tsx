@@ -90,8 +90,8 @@ const BulTradeUI = () => {
   return (
   <div>
     {
-      products.map((product: any) => (
-        <div className="product-card">
+      products.map((product: any, i: number) => (
+        <div key={i} className="product-card">
         {/* </div> style={{ background: `linear-gradient(to left, ${product?.color} 10%, #202020 100%)`}}> */}
           <div className="flex-row">
             <img src={product.icon} alt={product.code} />

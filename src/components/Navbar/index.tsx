@@ -3,7 +3,7 @@ import { useHistory } from 'react-router'
 import FAIcon from 'react-fontawesome'
 import appLogo from 'assets/img/hydra-icon.png'
 
-function Navbar() {
+function Navbar({ onToggle }: { onToggle: Function; }) {
   const history = useHistory()
   const goTo = (path: string) => history.push(path)
   const [activePath, setActivePath] = useState<any>(null)
@@ -16,28 +16,33 @@ function Navbar() {
     {
       name: 'Profile',
       path: '/profile',
-      icon: 'user'
+      icon: 'user',
+      onClick: () => onToggle()
     },
     {
       name: 'Explore',
       path: '/explore',
-      icon: 'search'
+      icon: 'search',
+      onClick: () => goTo('/explore')
     },
     {
+      main: true,
       name: 'Portfolio',
       path: '/portfolio',
       icon: '',
-      main: true
+      onClick: () => goTo('/portfolio'),
     },
     {
       name: 'Stats',
       path: '/stats',
-      icon: 'chart-pie'
+      icon: 'chart-pie',
+      onClick: () => goTo('/stats')
     },
     {
       name: 'News',
       path: '/news',
-      icon: 'globe'
+      icon: 'globe',
+      onClick: () => goTo('/news')
     },
   ]
 
@@ -48,9 +53,10 @@ function Navbar() {
                     // const isActive = window.location.pathname.includes(item.path)
                   const isActive = activePath?.includes(item.path)
                     return (
-                        <div
-                            onClick={() => goTo(item.path)}
-                            className={ item.main ? 'main-tab' : 'normal-tab'}
+                      <div
+                        key={i}
+                        onClick={() => item.onClick()}
+                          className={ item.main ? 'main-tab' : 'normal-tab'}
                         >
                             {
                                 item.main ? (
