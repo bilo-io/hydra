@@ -1,11 +1,11 @@
-name: Build
+name: Code Analysis
 on: [push]
 jobs:
-  build:
+  eslint:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Install modules
       run: yarn
-    - name: Run build
-      run: yarn build
+    - name: ESLint Annotate from Report JSON
+      uses: ataylorme/eslint-annotate-action@1.2.0

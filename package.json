@@ -30,7 +30,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint"
+    "lint": "eslint",
+    "cypress": "$(npm bin)/cypress open"
   },
   "eslintConfig": {
     "extends": "react-app"

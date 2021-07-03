@@ -9,6 +9,8 @@ jobs:
       run: yarn
     - name: Run tests
       run: yarn test
+    - name: cypress
+      uses: cypress-io/github-action@v2.9.7
   build:
     runs-on: ubuntu-latest
     steps:
