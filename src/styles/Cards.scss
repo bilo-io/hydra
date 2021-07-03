@@ -4,7 +4,7 @@
     padding: $padding;
     margin: $padding;
     border-radius: 8px;
-    background-color: $col-hydra-dark;
+    background: linear-gradient(to left, $col-hydra-dark, $col-hydra-black);
 
     img {
         height: 3rem;
@@ -19,4 +19,34 @@
         line-height: 3rem;
         font-weight: bold;
     }
+}
+
+// to promote in-app features
+.advert-card {
+    $padding: 0.5rem;
+    width: calc(100% - 4 * #{$padding});
+    padding: $padding;
+    margin: $padding;
+    border-radius: 8px;
+    min-height: 6rem;
+}
+
+.asset-card {
+    $padding: 0.5rem;
+    width: calc(100% - 4 * #{$padding});
+    padding: $padding;
+    margin: $padding;
+    border-radius: 8px;
+    min-height: 6rem;
+}
+
+.product-card {
+    $padding: 0.5rem;
+    width: calc(100% - 4 * #{$padding});
+    padding: $padding;
+    margin: $padding;
+    border-radius: 8px;
+    min-height: 6rem;
+
+    background-color: #333;
 }

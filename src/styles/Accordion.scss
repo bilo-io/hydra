@@ -1,0 +1,63 @@
+$transition-duration: 2s;
+
+.accordion {
+    @extend .card;
+    position: relative;
+    height: auto;
+    max-height: 3rem;
+
+    -webkit-transition: all $transition-duration ease-out;
+    -moz-transition: all $transition-duration ease-out;
+    -o-transition: all $transition-duration ease-out;
+    transition: all $transition-duration ease-out;
+
+    .title {
+        opacity: 1;
+        font-weight: bold;
+        cursor: pointer;
+
+        &:hover {
+            color: $col-active;
+            // background-color: rgba($col-active, 0.1);
+        }
+    }
+
+    .content {
+        opacity: 0;
+    }
+}
+
+.accordion-open {
+    height: auto;
+    max-height: 100vh;
+    opacity: 1;
+
+    .title {
+        opacity: 1;
+        cursor: pointer;
+        // border-bottom: 1px solid #ddd;
+
+        &:hover {
+            color: $col-active;
+            // background-color: rgba($col-active, 0.1);
+        }
+    }
+
+    .content {
+        opacity: 1;
+        padding-top: 0.5rem;
+        padding-bottom: 1rem;
+        height: auto;
+        max-height: calc(100% - 3rem);
+        overflow: hidden;
+        overflow-y: auto;
+        margin: auto;
+        // border-top: 1px solid #ddd;
+        // border-bottom: 1px solid #ddd;
+    }
+
+    -webkit-transition: all $transition-duration ease-out;
+    -moz-transition: all $transition-duration ease-out;
+    -o-transition: all $transition-duration ease-out;
+    transition: all $transition-duration ease-out;
+}

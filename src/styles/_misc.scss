@@ -1,0 +1,353 @@
+.layout {
+    @extend .flex-row;
+    position: relative;
+    height: 100%;
+}
+
+$fade-duration: .3s;
+
+.layout-panel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #eeeeee;
+    transition: all $fade-duration ease-in-out;
+
+    &.padded {
+        padding: 1rem;
+        width: calc(100% - 2rem);
+        height: calc(100% - 2rem);
+    }
+
+    &.light {
+        background-color: #eeeeee;
+    }
+
+    &.dark {
+        background-color: #1D1D1D;
+        color: #eee;
+        border-left: 1px solid rgba(grey, 0.4);
+        transition: all $fade-duration ease-in-out;
+    }
+}
+
+.padded {
+    padding: 1rem;
+    width: calc(100% - 2rem);
+    margin: 0;
+
+    h4 {
+        margin-bottom: 0;
+    }
+}
+
+.page {
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    background-color: #efefef;
+    transition: all $fade-duration ease-in-out;
+
+    &.dark {
+        background-color: #1D1D1D;
+        color: #eee;
+        border-left: 1px solid rgba(grey, 0.4);
+        transition: all $fade-duration ease-in-out;
+    }
+}
+
+.fade-default {
+    opacity: 1;
+}
+
+.fade-in {
+    opacity: 1;
+    transition: all 0.2s ease;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+.page-header {
+    display: flex;
+    flex-direction: row;
+    color: #888;
+    height: 3rem;
+    line-height: 3rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: calc(100% - 1.25rem);
+
+    .icon {
+        font-size: 1rem;
+        margin-right: 1rem;
+        line-height: 3rem;
+    }
+
+    .title {
+        font-size: 1rem;
+        line-height: 3rem;
+    }
+
+    button,
+    img {
+        margin-top: 0.5rem;
+    }
+
+    &.padded {
+        width: calc(100% - 3rem);
+        padding: 1rem;
+    }
+}
+
+@mixin setColors($color) {
+    background: $color;
+    color: $color;
+    border-color: $color;
+
+    &:hover {
+        background: $color;
+        color: white;
+        border-color: $color;
+    }
+
+    &:focus {
+        box-shadow: 0px 3px 10px rgba($color, 0.5);
+    }
+}
+
+.colors {
+    &.primary {
+        @include setColors($col-active);
+    }
+
+    &.secondary {
+        color: #666;
+        background-color: #ddd;
+
+        &:hover {
+            color: white;
+            background-color: rgba($col-active, 0.8);
+        }
+
+        &:focus {
+            box-shadow: 0px 3px 10px rgba($col-active, 0.5);
+        }
+    }
+
+    &.success {
+        @include setColors($col-success);
+    }
+
+    &.warning {
+        @include setColors($col-warning);
+    }
+
+    &.error {
+        @include setColors($col-error);
+    }
+
+    &.white {
+        @include setColors($col-white);
+    }
+}
+
+.button {
+    height: 2rem;
+    line-height: calc(2rem - 2px);
+    border-radius: 5px;
+    outline: none;
+    color: #333;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid transparent;
+    font-weight: bold;
+    margin: 0.1rem;
+    color: $col-active;
+    background-color: white;
+
+    &:hover {
+        color: white;
+        background-color: rgba($col-active, 0.3);
+    }
+
+    @extend .colors;
+
+    &.round {
+        border-radius: 1rem;
+        border-color: initial;
+    }
+
+    &.solid {
+        color: white;
+        background-color: initial;
+    }
+
+    &.hollow {
+        background-color: transparent;
+        border: 1px solid initial;
+    }
+
+    &.big-round {
+        background-color: $col-active !important;
+        color: white !important;
+        height: 3rem;
+        width: 3rem;
+        padding: 0.5rem;
+        border-radius: 50%;
+    }
+}
+
+span {
+    @extend .colors;
+}
+
+button {
+    @extend .button;
+}
+
+a {
+    color: $col-active;
+    border-color: $col-active;
+}
+
+input {
+
+    @extend .colors;
+
+    border: 1px solid #ddd;
+    background-color: transparent !important;
+    padding: 0.5rem;
+    border-radius: 6px;
+    color: #666 !important;
+    outline: none;
+    border-color: rgba(#999, 0.5);
+    text-indent: 0.5rem;
+
+    &:focus {
+        border: 2px solid $col-active;
+    }
+
+    &.full-width {
+        width: calc(100% - 1rem);
+    }
+}
+
+p {
+    font-size: 0.9rem;
+}
+
+.version-banner {
+    position: relative;
+    margin: 0.3rem;
+    margin-top: 1rem;
+    top: 0.5rem;
+    border-radius: 0.8rem;
+    color: white;
+
+    padding: {
+        left: 0.3rem;
+        right: 0.3rem;
+    }
+
+    &.pre-alpha {
+        background-color: red;
+    }
+
+    &.alpha {
+        background-color: darkorange;
+    }
+
+    &.beta {
+        background-color: darkcyan;
+    }
+
+    &.discovery {
+        background-color: black;
+    }
+}
+
+.divider {
+    position: relative;
+    background: rgba(grey, 0.3);
+
+    &.vertical {
+        width: 1px;
+        height: 100%;
+    }
+
+    &.horizontal {
+        width: 100%;
+        height: 1px;
+    }
+}
+
+.help-gif {
+    @extend .card-1;
+    // width: 80%;
+    max-width: 40rem;
+    margin-top: 2rem;
+    height: auto;
+    margin: auto;
+}
+
+.edit-inline {
+    @extend .flex-row;
+
+    .title {
+        outline: none;
+        margin-right: 1em;
+
+        &:focus {
+            color: $col-active;
+            border-bottom: 1px solid $col-active;
+        }
+    }
+
+    .icon {
+        opacity: 0;
+        font-size: 0.75rem;
+        line-height: 3rem;
+        margin-right: 0.5px;
+    }
+
+    &:hover {
+        border-bottom: 1px solid $col-active;
+
+        .icon {
+            transition: all 0.5s ease-in-out;
+            opacity: 1;
+        }
+    }
+}
+
+.action-button {
+    margin-right: 0.25em;
+    width: 2.2em !important;
+    height: 2.2em !important;
+    font-size: 0.9em !important;
+    border-radius: 1.1em !important;
+    border-color: transparent !important;
+
+    .icon {
+        margin: auto;
+        font-size: 0.9em;
+        line-height: 2.2em;
+    }
+}
+
+#guide {
+    @extend .flex-col;
+    @extend .auto-scroll-y;
+    flex-grow: 3;
+    max-width: 40.5rem;
+    padding: 1rem;
+    margin: auto;
+
+    img {
+        margin-bottom: 2rem;
+    }
+}

@@ -1,10 +1,17 @@
+@import './styles/_card.scss';
 @import './styles/_layout.scss';
 @import './styles/_colors.scss';
+@import './styles/_misc.scss';
 
+@import './styles/Accordion.scss';
 @import './styles/AppMenu.scss';
+@import './styles/Async.scss';
 @import './styles/Cards.scss';
+@import './styles/Loader.scss';
 @import './styles/Navbar.scss';
 @import './styles/Page.scss';
+// @import './styles/Spinner.scss';
+@import './styles/Tabs.scss';
 
 .App {
   text-align: center;

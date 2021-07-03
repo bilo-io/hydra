@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
-import { getCoins } from 'services/coingecko';
+import { LineChart } from 'components/Charts/LineChart'
+import { fetchCoins, fetchChartData } from 'services/coingecko';
 import { language } from 'utils/locale';
 
 function ExploreDetails() {
@@ -8,14 +9,26 @@ function ExploreDetails() {
   //@ts-ignore
   const { id } = useParams();
   const [coinData, setCoinData] = useState<any>(null)
-  const [chartData, setChartData] = useState<any[]>([])
+  const [state, setState] = useState<any>({
+    currency: 'usd',
+    period: {
+        days: 7,
+        label: 'W'
+    },
+    chart: []
+  })
 
   useEffect(() => {
-    getCoins(id).then((response:any) => {
-      console.log(`CoinData ${id}`, response?.data)
-      setCoinData(response?.data)
-    })
+    fetchChartData({ id, currency: state?.currency, days: state?.period?.days })
+      .then((response) => {
+        setState((prevState: any) => ({
+          ...prevState,
+          chart: response.data?.prices
+        }))
+      })
   }, [])
+
+  const series: any[] = [] // state?.chart
 
   return (
     <div>
@@ -24,7 +37,16 @@ function ExploreDetails() {
       <div>{coinData?.genesisDate}</div>
       {/* <div dangerouslySetInnerHTML={{ __html: coinData?.description[language?.code] }} /> */}
       <div>{coinData?.hashAlgorithm}</div>
-      {/* <div>{coinData?.}</div> */}
+      <LineChart
+        isLoading={false}
+        title=""
+            data={state?.chart}
+            series={series }
+            period={state?.period}
+            onChangeRange={ (period: any) =>
+              fetchChartData({ id, currency: state?.currency, days: state?.period?.days })
+            }
+      />
     </div>
   );
 }
