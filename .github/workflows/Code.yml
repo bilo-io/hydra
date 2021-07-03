@@ -7,5 +7,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install modules
       run: yarn
+    - name: ESLint Plus
+      uses: bradennapier/eslint-plus-action@v3
     - name: ESLint Annotate from Report JSON
       uses: ataylorme/eslint-annotate-action@1.2.0
