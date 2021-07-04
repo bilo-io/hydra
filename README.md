@@ -1,5 +1,6 @@
 # Crypton
 
+[![DepShield Badge](https://depshield.sonatype.org/badges/bilo-io/hydra/depshield.svg)](https://depshield.github.io)
 ## APIs
 
 - [Top 5 CryptoCurrency APIs (LunarCrush)](https://towardsdatascience.com/top-5-best-cryptocurrency-apis-for-developers-32475d2eb749)

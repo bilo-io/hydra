@@ -1,0 +1,14 @@
+- label: "Setup"
+  message: "Completed"
+  color: "green"
+
+
+- label: "PR Size"
+  message: "Large"
+  color: "red"
+  when: "$additions > 2000"
+
+- label: "Preview"
+  message: "PR $prNumber"
+  color: "blue"
+  url: "https://hydra-$prNumber-vis-ion.vercel.app"
