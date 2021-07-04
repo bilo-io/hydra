@@ -24,7 +24,7 @@ const staticOptions = {
     },
     plotOptions: {
         pie: {
-            size:'30%',
+            size:'20%',
             innerSize: '90%',
             borderColor: 'transparent'
         }

@@ -90,7 +90,7 @@ function Portfolio() {
       }}>
         {currency?.symbol}{withCommas(data?.totalAmount)}
       </div>
-      <div style={{ position: 'relative', overflow: 'hidden', width: '100%', margin: 'auto', marginTop: '-2rem' }}>
+      <div style={{ position: 'relative', overflow: 'hidden', width: '100%', margin: 'auto', marginTop: '-6rem' }}>
         <PieChart selector={'amount'} data={portfolio.breakdown} isLoading={false} title=""/>
       </div>
     </div>
