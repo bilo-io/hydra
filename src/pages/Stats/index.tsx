@@ -36,10 +36,19 @@ function Stats() {
         if (!activeKeys.includes(key)) {
             // add
             setActiveKeys([...activeKeys, key])
-            // @ts-ignore
-            const currentCoin = coins[key];
+            addCoinToChart(key)
+        } else {
+            // remove
+            removeCoinFromChart(key)
+        }
+    }
+  //#endregion
 
-            fetchChartData({ id: currentCoin?.id, currency: state?.currency, days: state?.period?.days })
+  //#region FUNCTIONS
+    const addCoinToChart = (key: string) => {
+        // @ts-ignore
+        const currentCoin = coins[key];
+        fetchChartData({ id: currentCoin?.id, currency: state?.currency, days: state?.period?.days })
                 .then((response) => {
                     const apiData = response.data?.prices
                     console.log('API response:', apiData)
@@ -54,26 +63,24 @@ function Stats() {
                 .catch(error => {
                     console.log(error)
                 })
-        } else {
-            // remove
-            setActiveKeys(activeKeys.filter(current => current !== key))
+    }
+
+    const removeCoinFromChart = (key: string) => {
+        setActiveKeys(activeKeys.filter(current => current !== key))
             const charts = state?.charts
             delete charts[key]
             setState((prevState: any) => ({
                 ...prevState,
                 charts
             }))
-        }
     }
-  //#endregion
-
-  //#region FUNCTIONS
-  const fetchChartDataRoutine = (currency = 'usd', period = { label: 'W', days: 7 }) => {
+    const fetchChartDataRoutine = (currency = 'usd', period = { label: 'W', days: 7 }) => {
         console.log('fetching chart data')
         const { charts } = state
-        setState({
+        setState((prevState: any) => ({
+            ...prevState,
             period
-        })
+        }))
 
         Object.keys(charts).forEach(coin => {
             fetchChartData({ id: coin, currency: 'usd', days: period.days })
