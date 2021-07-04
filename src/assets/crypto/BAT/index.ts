@@ -2,6 +2,7 @@
 import icon from './BAT-icon.svg'
 
 export default {
+  id: 'basic-attention-token',
   name: "Basic Attention Token",
   code: "BAT",
   symbol: "₮",

@@ -2,6 +2,7 @@
 import icon from './NEO-icon.svg'
 
 export default {
+  id: 'neo',
   name: "NEO",
   code: "NEO",
   symbol: "NEO",

@@ -2,6 +2,7 @@
 import icon from './BNB-icon.svg'
 
 export default {
+  id: "binancecoin",
   name: "Binance Coin",
   code: "BNB",
   symbol: "₮",

@@ -2,6 +2,7 @@
 import icon from './ETH-icon.svg'
 
 export default {
+  id: 'ethereum',
   name: "Ethereum",
   code: "ETH",
   symbol: "ETH",

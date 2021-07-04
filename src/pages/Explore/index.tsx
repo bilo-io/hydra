@@ -42,16 +42,22 @@ function Explore() {
   return (
     <div>
       <Async isLoading={loading}>
-      <input
-      type={'text'}
-      value={filter}
-      onChange={filterCoins}
-      style={{
-        width: 'calc(100% - 2rem)',
-        margin: '0.5rem',
-        padding: '0.5rem'
-      }}
-      />
+        <div className="bg-blurr floating-top padded card">
+          <input
+            type={'text'}
+            value={filter}
+            onChange={filterCoins}
+            style={{
+              width: 'calc(100% - 2rem)',
+              margin: '0.5rem',
+              padding: '0.5rem',
+              borderRadius: '1rem',
+              backgroundColor: '#FFFFFF33!important'
+            }}
+          />
+        </div>
+
+      <div style={{ marginTop: '6rem'}} />
       {
         filteredCoins.map((coin) => (
           <div className="coin-card" onClick={() => history.push(`/explore/${coin?.id}`)}>

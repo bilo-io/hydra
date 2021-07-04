@@ -2,6 +2,7 @@
 import icon from './XLM-icon.svg'
 
 export default {
+  id: 'stellar',
   name: "Stellar",
   code: "XLM",
   symbol: "XLM",

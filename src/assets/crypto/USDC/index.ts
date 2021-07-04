@@ -2,6 +2,7 @@
 import icon from './USDC-icon.svg'
 
 export default {
+  id: 'usd-coin',
   name: "USD Coin",
   code: "USDC",
   symbol: "₮",

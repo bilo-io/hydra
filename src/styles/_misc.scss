@@ -219,7 +219,7 @@ input {
     @extend .colors;
 
     border: 1px solid #ddd;
-    background-color: transparent !important;
+    // background-color: transparent;
     padding: 0.5rem;
     border-radius: 6px;
     color: #666 !important;
@@ -267,6 +267,18 @@ p {
 
     &.discovery {
         background-color: black;
+    }
+}
+
+.bg-blurr {
+    background-color: #00000088;
+    color: #fff;
+    backdrop-filter: blur(5px);
+    z-index: 2;
+
+    &.light {
+        color: #202020;
+        background-color: #eeeeee88;
     }
 }
 
