@@ -4,8 +4,6 @@ import { fetchChartData } from 'services/coingecko'
 import Async from 'components/Async';
 import Accordion from 'components/Accordion';
 import coins, { keys } from 'assets/crypto'
-import { setUseProxies } from 'immer';
-import Highcharts from 'highcharts'
 import { colors } from 'components/Charts/utils/colors';
 
 function Stats() {
