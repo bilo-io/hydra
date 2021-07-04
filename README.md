@@ -12,7 +12,7 @@
 - [Top 100 Cryptocurrency List](https://coinnws.com/cryptocurrency-list/)
 - [Whitepaper Database](https://coinnws.com/whitepaper-database/)
 
-# GitFlow 
+# GitFlow
 
 - `master`
 - `develop`
