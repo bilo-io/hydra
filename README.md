@@ -11,3 +11,13 @@
 
 - [Top 100 Cryptocurrency List](https://coinnws.com/cryptocurrency-list/)
 - [Whitepaper Database](https://coinnws.com/whitepaper-database/)
+
+# GitFlow
+
+- `master`
+- `develop`
+
+- `feature`
+- `bugfix`
+- `hotfix`
+- `support`
