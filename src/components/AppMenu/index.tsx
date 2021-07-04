@@ -38,17 +38,30 @@ function AppMenu(
             <FAIcon name='home' />&nbsp;&nbsp;
             Home
         </div>
+
         <div className='link' onClick={ () => goTo('/app/identity/profile')}>
             <FAIcon name='user' />&nbsp;&nbsp;
             Account
         </div>
+
         <div className='divider horizontal' style={ dividerStyle } />
+
             Apps
+
         <div className='divider horizontal' style={ dividerStyle } />
 
+        <div className='link' onClick={ () => {} }>
+            <FAIcon name='info-circle' />&nbsp;&nbsp;
+            About
+        </div>
 
-        <div className="link">About</div>
-        <div className="link">Log out</div>
+        <div className='divider horizontal' style={dividerStyle} />
+
+        <div className='link' onClick={() => { } }>
+            <FAIcon name='door-open' />&nbsp;&nbsp;
+            Log Out
+        </div>
+
 
         <div className="version">{pkg.version}</div>
       </div>

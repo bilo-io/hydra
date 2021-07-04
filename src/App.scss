@@ -7,6 +7,7 @@
 @import './styles/AppMenu.scss';
 @import './styles/Async.scss';
 @import './styles/Cards.scss';
+@import './styles/Charts.scss';
 @import './styles/Loader.scss';
 @import './styles/Navbar.scss';
 @import './styles/Page.scss';
@@ -18,6 +19,7 @@
 }
 
 .page {
+  @extend .no-scrollbar;
   width: 100vw;
   height: calc(100vh - 4rem);
   overflow-y: auto;
