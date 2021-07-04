@@ -30,7 +30,7 @@ function AppMenu(
     <div className={`app-menu ${isOpen ? '' : 'hidden'} ${isDark ? 'dark' : 'light'}`}>
       <div className="top">
         <div />
-        <img className="im" src={hydraLogo} alt="hydra-logo" style={{ marginTop: '2rem'}} />
+        <img className="im" src={hydraLogo} alt="hydra-logo" style={{ marginTop: '2rem', width: '3rem', height: '3rem'}} />
         <div />
       </div>
       <div className="content">

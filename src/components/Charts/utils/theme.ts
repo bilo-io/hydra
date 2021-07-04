@@ -1,15 +1,9 @@
+import { colors } from './colors'
 /* eslint-disable import/no-anonymous-default-export */
 // 20201028233936
 // https://raw.githubusercontent.com/jbkunst/highcharts-themes-collection/gh-pages/themes/alone.js
 export default {
-    colors: [
-        '#00adee',
-        '#2980b9',
-        '#2ecc71',
-        '#3499ad',
-        '#2c3e50',
-        '#03aedd'
-    ],
+    colors,
     chart: {
         backgroundColor: '#1D1D1D',
         style: {

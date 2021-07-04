@@ -4,6 +4,7 @@ import icon from './BTC-icon.svg'
 export default {
   name: "Bitcoin",
   code: "BTC",
+  id: "bitcoin",
   symbol: "BTC",
   website: "https://bitcoin.org/en/",
   wallets: "https://bitcoin.org/en/choose-your-wallet",

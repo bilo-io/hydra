@@ -12,7 +12,7 @@ import USDT from './USDT';
 import XLM from './XLM';
 import XRP from './XRP';
 
-export default {
+const coins = {
     ADA,
     BAT,
     BNB,
@@ -26,3 +26,7 @@ export default {
     XLM,
     XRP
 }
+
+export const keys = Object.keys(coins)
+
+export default coins

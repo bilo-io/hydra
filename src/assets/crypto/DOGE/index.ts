@@ -2,6 +2,7 @@
 import icon from './DOGE-icon.svg'
 
 export default {
+  id: 'dogecoin',
   name: "Doge coin",
   code: "DOGE",
   symbol: "DOGE",

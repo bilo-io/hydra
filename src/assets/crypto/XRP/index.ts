@@ -2,6 +2,7 @@
 import icon from './XRP-icon.svg'
 
 export default {
+  id: 'ripple',
   name: "Ripple",
   code: "XRP",
   symbol: "XRP",

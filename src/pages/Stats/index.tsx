@@ -3,30 +3,68 @@ import { LineChart } from 'components/Charts/LineChart'
 import { fetchChartData } from 'services/coingecko'
 import Async from 'components/Async';
 import Accordion from 'components/Accordion';
+import coins, { keys } from 'assets/crypto'
+import { setUseProxies } from 'immer';
+import Highcharts from 'highcharts'
+import { colors } from 'components/Charts/utils/colors';
 
 function Stats() {
   // #region STATE
-  const [charts,] = useState<any>({})
-  const [state, setState] = useState<any>({
-    currency: 'usd',
-    viewType: 'tile',
-    isLoading: {
-        ipAddress: true,
-        countryForIP: true,
-        cryptoInfo: true,
-        cryptoIndex: true,
-        chartData: true,
-        coins: true
-    },
-    data: {},
-    charts: {},
-    period: {
-        days: 7,
-        label: 'W'
-    }
-  })
+    const [series,setSeries] = useState<any>({})
+    const [activeKeys, setActiveKeys] = useState<string[]>([])
 
-  const chartKeys = ['bitcoin']
+    const [state, setState] = useState<any>({
+        currency: 'usd',
+        viewType: 'tile',
+        isLoading: {
+            ipAddress: true,
+            countryForIP: true,
+            cryptoInfo: true,
+            cryptoIndex: true,
+            chartData: true,
+            coins: true
+        },
+        data: {},
+        charts: {},
+        period: {
+            days: 7,
+            label: 'W'
+        }
+    })
+
+    const toggleKey = (key: string) => {
+        if (!activeKeys.includes(key)) {
+            // add
+            setActiveKeys([...activeKeys, key])
+            // @ts-ignore
+            const currentCoin = coins[key];
+
+            fetchChartData({ id: currentCoin?.id, currency: state?.currency, days: state?.period?.days })
+                .then((response) => {
+                    const apiData = response.data?.prices
+                    console.log('API response:', apiData)
+                    setState((prevState: any) => ({
+                        ...prevState,
+                        charts: {
+                            ...prevState.charts,
+                            [key]: apiData
+                        }
+                    }))
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        } else {
+            // remove
+            setActiveKeys(activeKeys.filter(current => current !== key))
+            const charts = state?.charts
+            delete charts[key]
+            setState((prevState: any) => ({
+                ...prevState,
+                charts
+            }))
+        }
+    }
   //#endregion
 
   //#region FUNCTIONS
@@ -57,70 +95,62 @@ function Stats() {
                 })
         })
     }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const addCoinToChart = (coin: any) => {
-        setState({
-            isLoading: {
-                ...state.isLoading,
-                chartData: true
-            }
-        })
-        console.log('fetching coin data: ', coin.id)
-        fetchChartData({ id: coin.id, currency: 'usd', days: 7 })
-            .then(response => {
-                setState({
-                    charts: {
-                        ...state.charts,
-                        [coin.id]: response
-                    }
-                })
-            })
-            .finally(() => {
-                setState({
-                    isLoading: {
-                        ...state.isLoading,
-                        chartData: false
-                    }
-                })
-            })
-    }
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const removeCoinFromChart = (coin: any) => {
-        const id = coin.id
-        const newCharts = state.charts
-        delete newCharts[id]
-        setState({
-            charts: newCharts
-        })
-    }
   //#endregion
 
   // #region LIFECYCLE
   useEffect(() => {
     console.log(state)
   }, [state])
-  // #endregion
-  const series = chartKeys?.map((key) => ({
-            data: charts[key]?.prices,
-            name: key
-        }))
 
-    console.log({ series })
+    useEffect(() => {
+        console.log(state.charts)
+        const newSeries = activeKeys?.map((key, i) => ({
+            data: state?.charts[key],
+            name: key,
+            type : "area",
+            fillColor : {
+              linearGradient : [0, 0, 0, 300],
+                stops: [
+                // @ts-ignore
+                [0, colors[i]],
+                [1, 'rgba(0,0,0,0)']
+              ]
+            },
+        }))
+        console.log('NewSeries', newSeries)
+        setSeries(newSeries)
+  }, [state?.charts, activeKeys])
+  // #endregion
+
+    const data = activeKeys.map((key) => ({ key, data: state?.charts[key] }))
   return (
       <div>
-        <Accordion title="Selection">
-            <div>
+          <div className="bg-blurr floating-top padded card">
+              <div style={{ marginBottom: '1rem', marginTop: '0.5rem' }}>Select coins</div>
+            <div className="flex-row auto-scroll-x no-scrollbar">
+                {
+                      keys.map((key) => (
+                          <div key={key} style={{ marginRight: '1rem'}}>
+                              <div style={{ opacity: activeKeys.includes(key) ? 1 : 0.5, cursor: 'pointer' }} onClick={() => toggleKey(key)}>
+                                    {/* @ts-ignore */}
+                                  <img src={coins[key].icon} alt={key} />
+                                  <div style={{ fontSize: '0.5rem', textAlign: 'center' }}>{key}</div>
+                              </div>
+                          </div>
+                      ))
+                }
+              </div>
+          </div>
 
-            </div>
-        </Accordion>
+          <div style={{ marginTop: '8rem' }}/>
+
         <Accordion title={'Chart'} isOpenDefault>
             <Async loading={true}>
                 <LineChart
                     isLoading={false}
-                    data={[]}
-                    series={ [{ data: state?.chart?.prices }] }
-                    title={`Coins: ${chartKeys.toString()}`}
+                      data={data}
+                    series={ series }
+                    title={`Coins: ${activeKeys.toString()}`}
                     period={state?.period}
                     onChangeRange={ (period: any) =>
                         fetchChartDataRoutine(state?.currency, state?.period)

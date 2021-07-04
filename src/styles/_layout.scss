@@ -107,3 +107,11 @@
     margin: auto;
     max-width: 50rem;
 }
+
+.floating-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: fit-content;
+}
