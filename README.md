@@ -11,3 +11,19 @@
 
 - [Top 100 Cryptocurrency List](https://coinnws.com/cryptocurrency-list/)
 - [Whitepaper Database](https://coinnws.com/whitepaper-database/)
+
+# GitFlow
+
+- `master`
+- `develop`
+
+- `feature`
+- `bugfix`
+- `hotfix`
+- `support`
+
+
+# Utils
+
+- [https://app.snyk.io/org/bilo-io/projects](https://app.snyk.io/org/bilo-io/projects)
+- [https://topology.conformal.link/setup?installation_id=18047574&setup_action=install](https://topology.conformal.link/setup?installation_id=18047574&setup_action=install)

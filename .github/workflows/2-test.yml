@@ -1,4 +1,4 @@
-name: CI
+name: CI Test
 on: [push]
 jobs:
   test:
@@ -9,5 +9,11 @@ jobs:
       run: yarn
     - name: Run tests
       run: yarn test
+  cypress:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install modules
+      run: yarn
     - name: cypress
       uses: cypress-io/github-action@v2.9.7

@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import cryptoData from 'assets/crypto'
+import { currency } from 'utils/locale'
+import { withCommas } from 'utils/format-number'
+import PieChart from 'components/Charts/PieChart'
 
 const adverts = [
     {
@@ -38,22 +41,76 @@ function Portfolio() {
   }, [])
 
   const userState = {
-    isVerified: false,
-    hasFunds: false,
-    hasHoldings: false,
+    isVerified: true,
+    hasFunds: true,
+    hasHoldings: true,
   }
 
+  const portfolio = {
+    totalAmount: 1_148_867.59,
+    fiatAmount: 148_867.59,
+    breakdown: [
+      {
+        code: 'BTC',
+        name: 'Bitcoin',
+        units: '1.5',
+        amount: 750_000
+      },
+      {
+        code: 'ETH',
+        name: 'Ethereum',
+        units: '7.91',
+        amount: 250_000
+      },
+      {
+        code: 'ZAR',
+        name: 'Rand',
+        units: '148_867.59',
+        amount:  148_867.59,
+      }
+    ]
+  }
+
+  const Advert = ({ item }: { item: any }) => {
+    return (
+      <div className="advert-card" style={{ background: item.color }}>
+        <div><strong>{item.name}</strong></div>
+        <br />
+        <div>{item.text}</div>
+      </div>
+    )
+  }
+
+  const PortfolioSummary = ({ data }: { data: any }) => (
+    <div className="portfolio-holdings">
+      <div className="text-center"
+      style={{
+        fontSize: '1.5rem',
+        marginTop: '1rem'
+      }}>
+        {currency?.symbol}{withCommas(data?.totalAmount)}
+      </div>
+      <div style={{ position: 'relative', overflow: 'hidden', width: '100%', margin: 'auto', marginTop: '-2rem' }}>
+        <PieChart selector={'amount'} data={portfolio.breakdown} isLoading={false} title=""/>
+      </div>
+    </div>
+  )
   return (
     <div>
-      <div className="advert-card" style={{ background: advert.color}}>
-        <div><strong>{advert.name}</strong></div>
-        <br />
-        <div>{advert.text}</div>
-      </div>
+
+      {userState.hasHoldings && <PortfolioSummary data={portfolio} />}
+
+      {
+        userState.hasHoldings ? (
+          <div style={{ paddingTop: '14rem' }} />
+        ) : (
+          <Advert item={advert} />
+        )
+      }
 
       <ActionSuggestions userState={userState} />
-      <BulTradeUI />
 
+      <BulTradeUI />
     </div>
   );
 }
