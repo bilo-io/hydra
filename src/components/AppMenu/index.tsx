@@ -2,6 +2,7 @@ import React from 'react';
 import FAIcon from 'react-fontawesome'
 import { useHistory } from 'react-router';
 import pkg from '../../../package.json';
+import hydraLogo from 'assets/img/hydra-icon.png';
 
 function AppMenu(
   {
@@ -28,25 +29,24 @@ function AppMenu(
   return (
     <div className={`app-menu ${isOpen ? '' : 'hidden'} ${isDark ? 'dark' : 'light'}`}>
       <div className="top">
-
+        <div />
+        <img className="im" src={hydraLogo} alt="hydra-logo" style={{ marginTop: '2rem'}} />
+        <div />
       </div>
       <div className="content">
 
         <div className="title">{'Hydra'}</div>
 
+        <div className='divider horizontal' style={dividerStyle} />
         <div className='link' onClick={ () => goTo('/')}>
             <FAIcon name='home' />&nbsp;&nbsp;
             Home
         </div>
-
+<div className='divider horizontal' style={dividerStyle} />
         <div className='link' onClick={ () => goTo('/app/identity/profile')}>
             <FAIcon name='user' />&nbsp;&nbsp;
             Account
         </div>
-
-        <div className='divider horizontal' style={ dividerStyle } />
-
-            Apps
 
         <div className='divider horizontal' style={ dividerStyle } />
 
