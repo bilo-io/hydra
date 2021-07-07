@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 
@@ -16,12 +16,13 @@ import AppMenu from 'components/AppMenu';
 
 function App() {
   const [isAppMenuOpen, setAppMenuOpen] = useState<boolean>(false)
+  const history = useHistory();
   const toggleAppMenu = () => {
     setAppMenuOpen(!isAppMenuOpen)
   }
   return (
     <Router>
-      <Navbar onToggle={toggleAppMenu} />
+      <Navbar onToggle={toggleAppMenu} history={history} />
       <AppMenu isOpen={isAppMenuOpen} isDark onToggle={toggleAppMenu} />
       <div className="page">
       <Switch>

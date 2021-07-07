@@ -1,11 +1,16 @@
 import React from 'react';
+import { Navbar } from '.'
 
-function NavbarStories() {
+export default {
+    title: 'Navbar',
+    component: Navbar
+}
+export function NavbarStories() {
   return (
     <div>
-      NavbarStories
+          {/* <Navbar onToggle={() => { }} history={{}} /> */}
+          Navbar
     </div>
   );
 }
 
-export default NavbarStories;

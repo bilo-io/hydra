@@ -53,10 +53,10 @@ const PriceChange = (
 }
 
 PriceChange.defaultProps = {
-  value: 100,
-  percentage: 12,
+  value: 0,
+  percentage: 0,
   symbol: '$',
-  isStacked: true
+  isStacked: false
 }
 
 export default PriceChange;
