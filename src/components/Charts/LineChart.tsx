@@ -10,7 +10,7 @@ import { periods, getTickInterval } from './utils/misc'
 // #endregion
 
 // @ts-ignore
-Highcharts.theme = theme;
+Highcharts.theme = theme
 // @ts-ignore
 Highcharts.setOptions(Highcharts.theme)
 
@@ -19,8 +19,8 @@ const staticOptions = {
         text: 'LineChart'
     },
     chart: {
-        renderTo : 'container',
-        type : 'spline',
+        renderTo: 'container',
+        type: 'spline'
         // backgroundColor : {
         //     linearGradient : [0, 0, 0, 400],
         //     stops : [
@@ -32,15 +32,15 @@ const staticOptions = {
     // 1 year
     tickInterval: 1000 * 60 * 60 * getTickInterval(1),
     series: [{
-        type : "area",
-            fillColor : {
-              linearGradient : [0, 0, 0, 300],
-                stops: [
+        type: 'area',
+        fillColor: {
+            linearGradient: [0, 0, 0, 300],
+            stops: [
                 // @ts-ignore
                 [0, Highcharts.getOptions().colors[0]],
                 [1, 'rgba(0,0,0,0)']
-              ]
-            },
+            ]
+        }
     }],
     xAxis: [{
         type: 'datetime',
@@ -59,14 +59,13 @@ interface LineChartProps {
 }
 
 export const LineChart = ({
-        data,
-        series,
-        title,
-        period,
-        isLoading,
-        onChangeRange
+    data,
+    series,
+    title,
+    period,
+    isLoading,
+    onChangeRange
 } : LineChartProps) => {
-
     const [options, setOptions] = useState({
         ...staticOptions
     })
@@ -89,9 +88,7 @@ export const LineChart = ({
                 text: title
             }
         })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data, series])
-
 
     const loadTimeRange = (period: any) => {
         onChangeRange?.(period)
@@ -117,21 +114,21 @@ export const LineChart = ({
                         <button key={i}
                             className={`hollow ${period.label === item.label ? 'primary' : ''}`}
                             onClick={() => loadTimeRange(item)}
-                            style={{ width: '5rem', borderRadius: '1rem'}}>
+                            style={{ width: '5rem', borderRadius: '1rem' }}>
                             { item?.label || 'X'}
                         </button>
                     ))
                 }
             </div>
             {/* <Async isLoading={ isLoading }> */}
-                <HighchartsReact
-                    highcharts={Highcharts}
-                    options={options}
-                    // constructorType='stockChart'
-                />
+            <HighchartsReact
+                highcharts={Highcharts}
+                options={options}
+                // constructorType='stockChart'
+            />
             {/* </Async> */}
         </div>
     )
 }
 
-export default LineChart;
+export default LineChart

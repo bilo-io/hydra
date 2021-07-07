@@ -1,6 +1,6 @@
-import Highcharts from 'highcharts';
-import HighchartsReact from 'highcharts-react-official';
-import React, { useEffect, useState } from 'react';
+import Highcharts from 'highcharts'
+import HighchartsReact from 'highcharts-react-official'
+import React, { useEffect, useState } from 'react'
 
 const staticOptions = {
     title: {
@@ -10,7 +10,7 @@ const staticOptions = {
         plotBackgroundColor: 'transparent',
         // plotShadow: false,
         type: 'pie',
-        backgroundColor: "rgba(0,0,0,0)",
+        backgroundColor: 'rgba(0,0,0,0)',
         borderColor: 'transparent',
         borderWidth: 12,
         top: -100,
@@ -24,7 +24,7 @@ const staticOptions = {
     },
     plotOptions: {
         pie: {
-            size:'20%',
+            size: '20%',
             innerSize: '90%',
             borderColor: 'transparent'
         }
@@ -36,7 +36,7 @@ const staticOptions = {
         point: {
             valueSuffix: '%'
         }
-    },
+    }
     // plotOptions: {
     //     pie: {
     //         allowPointSelect: true,
@@ -59,11 +59,11 @@ interface PieChartProps {
     onChangeRange?: Function,
 }
 
-function PieChart({
+function PieChart ({
     data,
     // series,
     title,
-    selector,
+    selector
     // period,
     // isLoading,
     // onChangeRange
@@ -75,7 +75,7 @@ function PieChart({
     const series = [{
         name: 'Breakdown',
         colorByPoint: true,
-        data: data.map((item) => ({ ...item, y: item[selector]}))
+        data: data.map((item) => ({ ...item, y: item[selector] }))
     }]
 
     useEffect(() => {
@@ -91,17 +91,16 @@ function PieChart({
                 text: title
             }
         })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data])
-  return (
-    <div>
-      <HighchartsReact
-            highcharts={Highcharts}
-            options={options}
+    return (
+        <div>
+            <HighchartsReact
+                highcharts={Highcharts}
+                options={options}
             // constructorType='stockChart'
-        />
-    </div>
-  );
+            />
+        </div>
+    )
 }
 
-export default PieChart;
+export default PieChart

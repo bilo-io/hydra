@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-function AssetCard() {
-  return (
-    <div>
+export const AssetCard = () => {
+    return (
+        <div>
       AssetCard
-    </div>
-  );
+        </div>
+    )
 }
 
-export default AssetCard;
+export default AssetCard

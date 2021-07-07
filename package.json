@@ -9,7 +9,7 @@
     "@testing-library/user-event": "^7.1.2",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
+    "@types/react": "^17.0.13",
     "@types/react-dom": "^16.9.0",
     "@types/react-redux": "^7.1.7",
     "axios": "^0.21.1",
@@ -31,10 +31,23 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint",
-    "cypress": "$(npm bin)/cypress open"
+    "cypress": "$(npm bin)/cypress open",
+    "storybook": "start-storybook -p 6006 -s public --debug-webpack",
+    "build-storybook": "build-storybook -s public",
+    "chromatic": "npx chromatic --project-token=$CHROMATIC_PROJECT_TOKEN"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
   },
   "browserslist": {
     "production": [
@@ -49,15 +62,37 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^6.3.2",
+    "@storybook/addon-essentials": "^6.3.2",
+    "@storybook/addon-links": "^6.3.2",
+    "@storybook/node-logger": "^6.3.2",
+    "@storybook/preset-create-react-app": "^3.1.7",
+    "@storybook/react": "^6.3.2",
     "@types/highcharts": "^7.0.0",
     "@types/react-fontawesome": "^1.6.4",
     "@types/react-router": "^5.1.15",
     "@types/react-router-dom": "^5.1.7",
     "@types/react-table": "^7.7.1",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "chromatic": "^5.9.2",
+    "css-loader": "^5.2.6",
     "cypress": "^7.6.0",
-    "node-sass": "^5.0.0"
+    "eslint": "^7.30.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-cypress": "^2.11.3",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-react": "^7.24.0",
+    "mini-css-extract-plugin": "^2.1.0",
+    "node-sass": "^5.0.0",
+    "sass": "^1.35.2",
+    "sass-loader": "10.1.1",
+    "style-loader": "^3.0.0"
   },
   "resolutions": {
-    "node-sass": "5.0.0"
+    "node-sass": "5.0.0",
+    "babel-loader": "8.1.0"
   }
 }

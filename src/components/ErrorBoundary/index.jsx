@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import FAIcon from 'react-fontawesome'
 // import { toPng } from 'dom-to-image'
 // import { Accordion } from '../'
@@ -7,6 +8,10 @@ export class ErrorBoundary extends Component {
     state = {
         hasError: false,
         isExpanded: false
+    }
+
+    static propTypes = {
+        children: PropTypes.any
     }
 
     static getDerivedStateFromError (error) {
@@ -28,16 +33,16 @@ export class ErrorBoundary extends Component {
         console.log('exportTo.png', node)
 
         // toPng(node)
-            // .then((dataUrl) => {
-            //     this.setState({
-            //         screenShot: dataUrl
-            //     })
+        // .then((dataUrl) => {
+        //     this.setState({
+        //         screenShot: dataUrl
+        //     })
 
-            //     console.log('screenshot', dataUrl)
-            // })
-            // .catch(error => {
-            //     console.log('error', error)
-            // })
+        //     console.log('screenshot', dataUrl)
+        // })
+        // .catch(error => {
+        //     console.log('error', error)
+        // })
     }
 
     render () {

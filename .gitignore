@@ -1,4 +1,5 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+package-lock.json
 
 # dependencies
 /node_modules
@@ -26,5 +27,12 @@ yarn-error.log*
 
 .vscode
 .history
+.dependencygraph
 
 .vercel
+
+# storybook & chromatic
+
+/storybook-static
+build-storybook.log
+
