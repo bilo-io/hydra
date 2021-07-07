@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-function Cards() {
-  return (
-    <div>
+function Cards () {
+    return (
+        <div>
       Cards
-    </div>
-  );
+        </div>
+    )
 }
 
-export default Cards;
+export default Cards
