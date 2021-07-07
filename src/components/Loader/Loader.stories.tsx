@@ -2,7 +2,7 @@ import React from 'react'
 import { Loader, LoaderType } from '.'
 
 export default {
-    title: 'Loader',
+    title: 'Core/Loader',
     component: Loader
 }
 export function LoaderStories () {

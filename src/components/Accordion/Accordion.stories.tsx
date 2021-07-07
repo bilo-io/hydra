@@ -2,7 +2,7 @@ import React from 'react'
 import Accordion from 'components/Accordion'
 
 export default {
-    title: 'Accordion',
+    title: 'Core/Accordion',
     component: Accordion
 }
 

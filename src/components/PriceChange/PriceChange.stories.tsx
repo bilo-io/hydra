@@ -2,14 +2,16 @@ import React from 'react'
 import PriceChange from 'components/PriceChange'
 
 export default {
-    title: 'PriceChange',
+    title: 'Fintech/PriceChange',
     component: PriceChange
 }
 
 export const PriceChageStory = () => {
     return (
         <div>
-            <PriceChange value={100} percentage={3.4}/>
+            <div style={{ width: '10rem' }}>
+                <PriceChange value={100} percentage={3.4}/>
+            </div>
         </div>
     )
 }

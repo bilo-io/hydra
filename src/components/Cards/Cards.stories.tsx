@@ -1,15 +1,15 @@
 import React from 'react'
-import Cards from '.'
+import { AssetCard } from './AssetCard'
 
 export default {
-    title: 'Cards',
-    component: Cards
+    title: 'Core/Cards',
+    component: AssetCard
 }
 
 export function CardsStories () {
     return (
         <div>
-            <div>Hello Cards</div>
+            <AssetCard />
         </div>
     )
 }

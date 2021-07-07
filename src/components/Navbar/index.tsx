@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import FAIcon from 'react-fontawesome'
 import appLogo from 'assets/img/hydra-icon.png'
+import { useHistory } from 'react-router'
 
-export function Navbar ({ onToggle, history }: { onToggle: Function; history: any }) {
+export function Navbar ({ onToggle }: { onToggle: Function }) {
+    const history = useHistory()
     const goTo = (path: string) => history?.push(path)
     const [activePath, setActivePath] = useState<any>(null)
 

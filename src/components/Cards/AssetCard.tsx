@@ -1,6 +1,6 @@
 import React from 'react'
 
-function AssetCard () {
+export const AssetCard = () => {
     return (
         <div>
       AssetCard

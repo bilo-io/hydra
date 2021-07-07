@@ -2,7 +2,7 @@ import React from 'react'
 import AppMenu from '.'
 
 export default {
-    title: 'AppMenu',
+    title: 'App/AppMenu',
     component: AppMenu
 }
 

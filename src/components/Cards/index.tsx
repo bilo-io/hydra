@@ -1,11 +1,5 @@
-import React from 'react'
+import { AssetCard } from './AssetCard'
 
-function Cards () {
-    return (
-        <div>
-      Cards
-        </div>
-    )
+export default {
+    AssetCard
 }
-
-export default Cards

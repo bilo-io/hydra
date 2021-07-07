@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router, Route, Switch, Redirect, useHistory } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 
 import Login from './pages/Login'
 import Portfolio from './pages/Portfolio'
@@ -12,15 +12,14 @@ import './App.scss'
 import Navbar from './components/Navbar'
 import AppMenu from 'components/AppMenu'
 
-function App () {
+const App = () => {
     const [isAppMenuOpen, setAppMenuOpen] = useState<boolean>(false)
-    const history = useHistory()
     const toggleAppMenu = () => {
         setAppMenuOpen(!isAppMenuOpen)
     }
     return (
         <Router>
-            <Navbar onToggle={toggleAppMenu} history={history} />
+            <Navbar onToggle={toggleAppMenu} />
             <AppMenu isOpen={isAppMenuOpen} isDark onToggle={toggleAppMenu} />
             <div className="page">
                 <Switch>
