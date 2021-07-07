@@ -1,16 +1,15 @@
-import React from 'react';
-import PriceChange from 'components/PriceChange';
+import React from 'react'
+import PriceChange from 'components/PriceChange'
 
 export default {
-  title: 'PriceChange',
-  component: PriceChange,
+    title: 'PriceChange',
+    component: PriceChange
 }
 
 export const PriceChageStory = () => {
-  return (
-    <div>
-      <PriceChange value={100} percentage={3.4}/>
-    </div>
-  );
+    return (
+        <div>
+            <PriceChange value={100} percentage={3.4}/>
+        </div>
+    )
 }
-

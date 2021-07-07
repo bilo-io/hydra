@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react'
 import { TabsComponent } from './TabsComponent'
 
@@ -12,6 +13,7 @@ export class Tabs extends Component {
 
     componentDidMount () {
         this.setState({
+
             activeTab: this.props.defaultTab,
             activeTabIndex: 0
         })

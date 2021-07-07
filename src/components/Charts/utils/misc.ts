@@ -10,19 +10,19 @@ export const periods: { label: string, days: number, date?: any }[] = [
     },
     {
         label: 'W',
-        days: 7,
+        days: 7
         // @ts-ignore
         // date: new Date() - 7 * MS_TO_DAYS
     },
     {
         label: 'M',
-        days: 30,
+        days: 30
         // @ts-ignore
         // date: new Date() - 30 * MS_TO_DAYS
     },
     {
         label: 'Y',
-        days: 365,
+        days: 365
         // @ts-ignore
         // date: new Date() - 365 * MS_TO_DAYS
     }
@@ -43,7 +43,7 @@ const allExports = {
     MS_TO_HOURS,
     MS_TO_DAYS,
     periods,
-    getTickInterval,
+    getTickInterval
 }
 
 export default allExports

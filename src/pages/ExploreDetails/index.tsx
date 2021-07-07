@@ -1,129 +1,129 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router'
 import { LineChart } from 'components/Charts/LineChart'
-import { fetchCoins, fetchChartData } from 'services/coingecko';
-import { currency, language } from 'utils/locale';
+import { fetchCoins, fetchChartData } from 'services/coingecko'
+import { currency, language } from 'utils/locale'
 import FAIcon from 'react-fontawesome'
-import Async from 'components/Async';
-import Accordion from 'components/Accordion';
+import Async from 'components/Async'
+import Accordion from 'components/Accordion'
 
-function ExploreDetails() {
-  // const history = useHistory();
-  //@ts-ignore
-  const { id } = useParams();
-  const [loading, setLoading] = useState<boolean>(true)
-  const [, setError] = useState<any>()
-  const [coinData, setCoinData] = useState<any>(null)
-  const [state, setState] = useState<any>({
-    currency: 'usd',
-    period: {
-        days: 7,
-        label: 'W'
-    },
-    chart: []
-  })
+function ExploreDetails () {
+    // const history = useHistory();
+    // @ts-ignore
+    const { id } = useParams()
+    const [loading, setLoading] = useState<boolean>(true)
+    const [, setError] = useState<any>()
+    const [coinData, setCoinData] = useState<any>(null)
+    const [state, setState] = useState<any>({
+        currency: 'usd',
+        period: {
+            days: 7,
+            label: 'W'
+        },
+        chart: []
+    })
 
-  //#region FUNCTIONS
-  const fetchChart = (period: any) => {
+    // #region FUNCTIONS
+    const fetchChart = (period: any) => {
     // setLoading(true);
-    setState((prevState: any) => ({
-      ...prevState,
-      period
-    }))
-
-    fetchChartData({ id, currency: state?.currency, days: period?.days })
-      .then((response) => {
         setState((prevState: any) => ({
-          ...prevState,
-          chart: response.data?.prices
+            ...prevState,
+            period
         }))
-      })
-      .catch(error => {
-        setError(error)
-      })
-      .finally(() => {
-        setLoading(false)
-      })
-  }
-  //#endregion
 
-  //#region LIFECYCLE
-  useEffect(() => {
-    fetchChart(state?.period)
-    fetchCoins(id)
-      .then(response => {
-        setCoinData(response.data)
-      })
-      .catch(error => {
-        setError(error)
-      })
-      .finally(() => {
+        fetchChartData({ id, currency: state?.currency, days: period?.days })
+            .then((response) => {
+                setState((prevState: any) => ({
+                    ...prevState,
+                    chart: response.data?.prices
+                }))
+            })
+            .catch(error => {
+                setError(error)
+            })
+            .finally(() => {
+                setLoading(false)
+            })
+    }
+    // #endregion
 
-      })
-  }, [])
+    // #region LIFECYCLE
+    useEffect(() => {
+        fetchChart(state?.period)
+        fetchCoins(id)
+            .then(response => {
+                setCoinData(response.data)
+            })
+            .catch(error => {
+                setError(error)
+            })
+            .finally(() => {
 
-  useEffect(() => {
-    fetchChart(state?.period)
-  }, [state?.period])
-  //#endregion LIFECYCLE
+            })
+    }, [])
 
-  return (
-    <div>
-      <div
-          className="full-width flex-row space-between"
-          style={{
-            position: 'absolute',
-            backdropFilter: 'blur(5px)',
-            backgroundColor: '#33333333',
-            zIndex: 10 }}>
-        <div className="flex-row">
-          <img src={coinData?.image?.thumb} alt={id} style={{ width: '2rem', margin: '0.5rem' }} />
-          <div style={{ lineHeight: '3rem' }}>{coinData?.name}</div>
+    useEffect(() => {
+        fetchChart(state?.period)
+    }, [state?.period])
+    // #endregion LIFECYCLE
+
+    return (
+        <div>
+            <div
+                className="full-width flex-row space-between"
+                style={{
+                    position: 'absolute',
+                    backdropFilter: 'blur(5px)',
+                    backgroundColor: '#33333333',
+                    zIndex: 10
+                }}>
+                <div className="flex-row">
+                    <img src={coinData?.image?.thumb} alt={id} style={{ width: '2rem', margin: '0.5rem' }} />
+                    <div style={{ lineHeight: '3rem' }}>{coinData?.name}</div>
+                </div>
+                <div style={{ lineHeight: '3rem', marginRight: '1rem' }}>{ currency?.symbol}{coinData?.market_data?.current_price[currency?.code]}</div>
+            </div>
+
+            <div style={{ paddingTop: '3rem' }}></div>
+
+            <Accordion title={'Price Chart'} isOpenDefault>
+                <Async isLoading={loading}>
+                    <LineChart
+                        isLoading={false}
+                        title=""
+                        data={state?.chart}
+                        series={[{ data: state?.chart || [] }]}
+                        period={state?.period}
+                        onChangeRange={ (period: any) =>
+                            fetchChart({ id, currency: state?.currency, days: period?.days })
+                        }
+                    />
+                </Async>
+            </Accordion>
+
+            <Accordion title={'Market data'}>
+
+            </Accordion>
+
+            <Accordion title={'Info'}>
+                <div dangerouslySetInnerHTML={{ __html: coinData?.description[language?.code] }} />
+            </Accordion>
+
+            <Accordion title={'Rating'}>
+                <div className="flex-row">
+                </div>
+            </Accordion>
+
+            <Accordion title={'Developer'} isOpenDefault>
+                <div className="padded">
+                    <div className="flex-row">
+                        <FAIcon name='star' />
+                        <div>{coinData?.developer_data?.stars}</div>
+                    </div>
+                </div>
+            </Accordion>
         </div>
-        <div style={{ lineHeight: '3rem', marginRight: '1rem' }}>{ currency?.symbol}{coinData?.market_data?.current_price[currency?.code]}</div>
-      </div>
-
-      <div style={{ paddingTop: '3rem' }}></div>
-
-      <Accordion title={'Price Chart'} isOpenDefault>
-          <Async isLoading={loading}>
-            <LineChart
-              isLoading={false}
-              title=""
-              data={state?.chart}
-              series={[{ data: state?.chart || [] }]}
-              period={state?.period}
-              onChangeRange={ (period: any) =>
-                fetchChart({ id, currency: state?.currency, days: period?.days })
-              }
-            />
-          </Async>
-      </Accordion>
-
-      <Accordion title={'Market data'}>
-
-      </Accordion>
-
-      <Accordion title={'Info'}>
-        <div dangerouslySetInnerHTML={{ __html: coinData?.description[language?.code] }} />
-      </Accordion>
-
-      <Accordion title={'Rating'}>
-        <div className="flex-row">
-        </div>
-      </Accordion>
-
-      <Accordion title={'Developer'} isOpenDefault>
-        <div className="padded">
-          <div className="flex-row">
-            <FAIcon name='star' />
-            <div>{coinData?.developer_data?.stars}</div>
-          </div>
-        </div>
-      </Accordion>
-    </div>
-  );
+    )
 }
 
-export default ExploreDetails;
+export default ExploreDetails
