@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router'
 import FAIcon from 'react-fontawesome'
 import appLogo from 'assets/img/hydra-icon.png'
 

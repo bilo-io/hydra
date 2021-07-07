@@ -1,5 +1,4 @@
 import React from 'react';
-import Async from '.'
 import LineChart from './LineChart';
 import PieChart from './PieChart';
 
@@ -14,7 +13,7 @@ export default {
 export function AsyncStories() {
   return (
     <div>
-      <PieChart data={[]} title="PieChart_Story" isLoading={ false } />
+      <PieChart data={[]} title="PieChart_Story" isLoading={ false } selector="value"/>
     </div>
   );
 }

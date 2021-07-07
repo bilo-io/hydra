@@ -9,7 +9,8 @@ export default {
 export function AsyncStories() {
   return (
     <div>
-      <Async isOpen={true} isDark onToggle={() => { }}/>
+      {/* <Async isOpen={true} isDark onToggle={() => { }}/> */}
+      <div>Async</div>
     </div>
   );
 }
