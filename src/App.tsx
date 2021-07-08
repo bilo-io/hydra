@@ -19,23 +19,32 @@ const App = () => {
     }
     return (
         <Router>
-            <Navbar onToggle={toggleAppMenu} />
-            <AppMenu isOpen={isAppMenuOpen} isDark onToggle={toggleAppMenu} />
-            <div className="page">
-                <Switch>
-                    <Route
-                        exact
-                        path={'/'}
-                        render={() => <Redirect to={'/portfolio'} />}
-                    />
+            <div className="flex-row">
 
-                    <Route path="/login" component={Login} />
-                    <Route path="/portfolio" component={Portfolio} />
-                    <Route exact path="/explore" component={Explore} />
-                    <Route path="/explore/:id" component={ExploreDetails} />
-                    <Route path="/stats" component={Stats} />
-                    <Route path="*" component={Error} />
-                </Switch>
+                {/* mobile */}
+                <Navbar onToggle={toggleAppMenu} className='navbar' />
+
+                {/* Desktop */}
+                <Navbar onToggle={toggleAppMenu} className='mobile-navbar' />
+
+                <AppMenu isOpen={isAppMenuOpen} isDark onToggle={toggleAppMenu} />
+
+                <div className="page">
+                    <Switch>
+                        <Route
+                            exact
+                            path={'/'}
+                            render={() => <Redirect to={'/portfolio'} />}
+                        />
+
+                        <Route path="/login" component={Login} />
+                        <Route path="/portfolio" component={Portfolio} />
+                        <Route exact path="/explore" component={Explore} />
+                        <Route path="/explore/:id" component={ExploreDetails} />
+                        <Route path="/stats" component={Stats} />
+                        <Route path="*" component={Error} />
+                    </Switch>
+                </div>
             </div>
         </Router>
     )

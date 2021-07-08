@@ -3,7 +3,7 @@ import FAIcon from 'react-fontawesome'
 import appLogo from 'assets/img/hydra-icon.png'
 import { useHistory } from 'react-router'
 
-export function Navbar ({ onToggle }: { onToggle: Function }) {
+export function Navbar ({ onToggle, className }: { onToggle: Function, className?: string }) {
     const history = useHistory()
     const goTo = (path: string) => history?.push(path)
     const [activePath, setActivePath] = useState<any>(null)
@@ -47,7 +47,7 @@ export function Navbar ({ onToggle }: { onToggle: Function }) {
     ]
 
     return (
-        <div className="mobile-navbar flex-row space-between">
+        <div className={`${className} flex-row space-between`}>
             {
                 (items || []).map((item, i) => {
                     // const isActive = window.location.pathname.includes(item.path)
@@ -74,6 +74,10 @@ export function Navbar ({ onToggle }: { onToggle: Function }) {
             }
         </div>
     )
+}
+
+Navbar.defaultProps = {
+    className: 'mobile-navbar'
 }
 
 export default Navbar

@@ -17,12 +17,22 @@ $navbar-size: 56px;
 
     transition: 0.3s all ease-in-out;
 
+    $breakpoint-tablet: 768px;
+
+    @media (min-width: 0px) and (max-width: $breakpoint-tablet) {
+        display: none;
+    }
+
+    @media (min-width: $breakpoint-tablet) and (max-width: 1000000px) {
+        display: flex;
+    }
+
     &.expanded {
         width: 16rem;
         transition: 0.3s all ease-in-out;
     }
 
-    .item {
+    .item,.normal-tab,.main-tab {
         width: 100%;
         min-height: $navbar-size;
         text-align: center;
@@ -116,6 +126,16 @@ $navbar-size: 56px;
     bottom: 0;
     left: 0;
     box-shadow: 0px 3px 10px rgba(black, 0.5);
+
+    $breakpoint-tablet: 768px;
+
+    @media (min-width: 0px) and (max-width: $breakpoint-tablet) {
+        display: flex;
+    }
+
+    @media (min-width: $breakpoint-tablet) and (max-width: 1000000px) {
+        display: none;
+    }
 
     .main-tab {
         background-color: $col-hydra-blue;
