@@ -8,7 +8,11 @@ import { colors } from 'components/Charts/utils/colors'
 
 function Stats () {
     // #region STATE
-    const [series, setSeries] = useState<any>({})
+    const [series, setSeries] = useState<any>({
+        prices: {},
+        totalVolume: {},
+        marketCap: {}
+    })
     const [activeKeys, setActiveKeys] = useState<string[]>([])
 
     const [state, setState] = useState<any>({
@@ -37,8 +41,8 @@ function Stats () {
         const currentCoin = coins[key]
         fetchChartData({ id: currentCoin?.id, currency: state?.currency, days: state?.period?.days })
             .then((response) => {
-                const apiData = response.data?.prices
-                console.log('API response:', apiData)
+                const apiData = response.data
+
                 setState((prevState: any) => ({
                     ...prevState,
                     charts: {
@@ -73,7 +77,6 @@ function Stats () {
         }
     }
     const fetchChartDataRoutine = (currency = 'usd', period = { label: 'W', days: 7 }) => {
-        console.log('fetching chart data')
         const { charts } = state
         setState((prevState: any) => ({
             ...prevState,
@@ -100,6 +103,20 @@ function Stats () {
                 })
         })
     }
+
+    const generateSeries = (data: any, key: string, i: number) => ({
+        data,
+        name: key,
+        type: 'area',
+        fillColor: {
+            linearGradient: [0, 0, 0, 300],
+            stops: [
+                // @ts-ignore
+                [0, colors[i]],
+                [1, 'rgba(0,0,0,0)']
+            ]
+        }
+    })
     // #endregion
 
     // #region LIFECYCLE
@@ -108,26 +125,24 @@ function Stats () {
     }, [state])
 
     useEffect(() => {
-        console.log(state.charts)
-        const newSeries = activeKeys?.map((key, i) => ({
-            data: state?.charts[key],
-            name: key,
-            type: 'area',
-            fillColor: {
-                linearGradient: [0, 0, 0, 300],
-                stops: [
-                // @ts-ignore
-                    [0, colors[i]],
-                    [1, 'rgba(0,0,0,0)']
-                ]
-            }
-        }))
+        const prices = activeKeys?.map((key, i) => generateSeries(state?.charts[key]?.prices, key, i))
+        const marketCap = activeKeys?.map((key, i) => generateSeries(state?.charts[key]?.market_caps, key, i))
+        const totalVolume = activeKeys?.map((key, i) => generateSeries(state?.charts[key]?.total_volumes, key, i))
+
+        const newSeries = {
+            prices,
+            marketCap,
+            totalVolume
+        }
+
         console.log('NewSeries', newSeries)
+
         setSeries(newSeries)
     }, [state?.charts, activeKeys])
     // #endregion
 
-    const data = activeKeys.map((key) => ({ key, data: state?.charts[key] }))
+    // const data = activeKeys.map((key) => ({ key, data: state?.charts[key] }))
+
     return (
         <div>
             <div className="bg-blurr floating-top padded card">
@@ -149,13 +164,41 @@ function Stats () {
 
             <div style={{ marginTop: '8rem' }}/>
 
-            <Accordion title={'Chart'} isOpenDefault>
+            <Accordion title={'Chart: Price'} isOpenDefault>
                 <Async loading={true}>
                     <LineChart
                         isLoading={false}
-                        data={data}
-                        series={ series }
-                        title={`Coins: ${activeKeys.toString()}`}
+                        data={[]}
+                        series={ series?.prices }
+                        title={`Prices: ${activeKeys.toString()}`}
+                        period={state?.period}
+                        onChangeRange={ (period: any) =>
+                            fetchChartDataRoutine(state?.currency, state?.period)
+                        }
+                    />
+                </Async>
+            </Accordion>
+            <Accordion title={'Chart: Total Volume'} isOpenDefault>
+                <Async loading={true}>
+                    <LineChart
+                        isLoading={false}
+                        data={[]}
+                        series={ series?.totalVolume }
+                        title={`Total Volume: ${activeKeys.toString()}`}
+                        period={state?.period}
+                        onChangeRange={ (period: any) =>
+                            fetchChartDataRoutine(state?.currency, state?.period)
+                        }
+                    />
+                </Async>
+            </Accordion>
+            <Accordion title={'Chart: Market Cap'} isOpenDefault>
+                <Async loading={true}>
+                    <LineChart
+                        isLoading={false}
+                        data={[]}
+                        series={ series?.marketCap }
+                        title={`Market Cap: ${activeKeys.toString()}`}
                         period={state?.period}
                         onChangeRange={ (period: any) =>
                             fetchChartDataRoutine(state?.currency, state?.period)

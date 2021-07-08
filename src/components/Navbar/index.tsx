@@ -48,7 +48,7 @@ export function Navbar ({ onToggle, className }: { onToggle: Function, className
         }
     ]
 
-    const isMobile = windowSize.width < 480
+    const isMobile = windowSize?.width && windowSize?.width < 480
     const renderItems = () => (items || []).map((item, i) => {
         // const isActive = window.location.pathname.includes(item.path)
         const isActive = activePath?.includes(item.path)
