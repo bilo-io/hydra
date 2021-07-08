@@ -1,0 +1,19 @@
+@mixin hideAbove($breakpoint) {
+    @media (min-width: 0px) and (max-width: $breakpoint) {
+        display: flex;
+    }
+
+    @media (min-width: $breakpoint) and (max-width: 1000000px) {
+        display: none;
+    }
+}
+
+@mixin hideBelow($breakpoint) {
+    @media (min-width: 0px) and (max-width: $breakpoint) {
+        display: none;
+    }
+
+    @media (min-width: $breakpoint) and (max-width: 1000000px) {
+        display: flex;
+    }
+}

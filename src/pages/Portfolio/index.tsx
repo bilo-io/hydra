@@ -108,7 +108,7 @@ function Portfolio () {
         </div>
     )
     return (
-        <div>
+        <>
 
             {userState.hasHoldings && <PortfolioSummary data={portfolio} />}
 
@@ -125,7 +125,7 @@ function Portfolio () {
             <ActionSuggestions userState={userState} />
 
             <BulkTradeUI />
-        </div>
+        </>
     )
 }
 

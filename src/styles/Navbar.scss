@@ -1,7 +1,14 @@
 $navbar-size: 56px;
+$navbar-big: 16rem;
+
+$breakpoint-tablet: 688px;
+$breakpoint-desktop: 1080px;
+$breakpoint-mobile: 480px;
 
 .navbar {
+    @include hideBelow($breakpoint-mobile);
     @extend .flex-col;
+    @extend .space-around;
     flex-grow: 1;
     position: relative;
     height: 100vh;
@@ -15,24 +22,28 @@ $navbar-size: 56px;
     -webkit-box-shadow: 3px 0px 29px 0px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 3px 0px 29px 0px rgba(0, 0, 0, 0.2);
 
+    @media (min-width: $breakpoint-desktop) and (max-width: 1000000px) {
+        width: $navbar-big;
+    }
+
     transition: 0.3s all ease-in-out;
-
-    $breakpoint-tablet: 768px;
-
-    @media (min-width: 0px) and (max-width: $breakpoint-tablet) {
-        display: none;
-    }
-
-    @media (min-width: $breakpoint-tablet) and (max-width: 1000000px) {
-        display: flex;
-    }
 
     &.expanded {
         width: 16rem;
         transition: 0.3s all ease-in-out;
     }
 
-    .item,.normal-tab,.main-tab {
+    .label {
+        width: 100%;
+        @include hideBelow($breakpoint-mobile);
+        height: $navbar-size;
+        line-height: $navbar-size;
+        padding-left: 1rem;
+    }
+
+    .item,
+    .normal-tab,
+    .main-tab {
         width: 100%;
         min-height: $navbar-size;
         text-align: center;
@@ -42,7 +53,7 @@ $navbar-size: 56px;
 
         span.fa {
             width: 1.2rem;
-            margin-top: 1rem;
+            margin-top: 1.3rem;
             margin-left: 1rem;
             margin-right: 1.1rem;
         }
@@ -116,6 +127,10 @@ $navbar-size: 56px;
 }
 
 .mobile-navbar {
+    @include hideAbove($breakpoint-mobile);
+    @extend .flex-row;
+    justify-content: space-between;
+
     position: fixed;
     z-index: 10;
     background-color: #00000088;
@@ -126,16 +141,6 @@ $navbar-size: 56px;
     bottom: 0;
     left: 0;
     box-shadow: 0px 3px 10px rgba(black, 0.5);
-
-    $breakpoint-tablet: 768px;
-
-    @media (min-width: 0px) and (max-width: $breakpoint-tablet) {
-        display: flex;
-    }
-
-    @media (min-width: $breakpoint-tablet) and (max-width: 1000000px) {
-        display: none;
-    }
 
     .main-tab {
         background-color: $col-hydra-blue;
@@ -156,5 +161,9 @@ $navbar-size: 56px;
         padding: 0.5rem;
         width: 1rem;
         height: 1rem;
+    }
+
+    .label {
+        display: none;
     }
 }
