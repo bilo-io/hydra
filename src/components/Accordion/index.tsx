@@ -42,11 +42,11 @@ const Accordion = ({
             <div
                 className="flex-row space-between title"
                 onClick={toggle}
-                style={{ width: '100%', height: '3rem', lineHeight: '3rem' }}
+                style={{ width: '100%' }}
             >
-                <span style={{ cursor: 'pointer', marginLeft: '1rem' }}>
-                    <span>{title}</span>
-                </span>
+                {/* <span style={{ cursor: 'pointer', marginLeft: '1rem' }}> */}
+                <span className="">{title}</span>
+                {/* </span> */}
                 <span>
                     <span>
                         {state?.isOpen

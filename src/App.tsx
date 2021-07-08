@@ -6,6 +6,7 @@ import Portfolio from './pages/Portfolio'
 import Explore from './pages/Explore'
 import ExploreDetails from './pages/ExploreDetails'
 import Error from './pages/Error'
+import News from './pages/News'
 import Stats from './pages/Stats'
 
 import './App.scss'
@@ -42,6 +43,7 @@ const App = () => {
                         <Route exact path="/explore" component={Explore} />
                         <Route path="/explore/:id" component={ExploreDetails} />
                         <Route path="/stats" component={Stats} />
+                        <Route path="/news" component={News} />
                         <Route path="*" component={Error} />
                     </Switch>
                 </div>

@@ -4,7 +4,10 @@ $transition-duration: 2s;
     @extend .card;
     position: relative;
     height: auto;
-    max-height: 3rem;
+    // min-height: 3rem;
+    // height: fit-content;
+    height: auto;
+    overflow: hidden;
 
     -webkit-transition: all $transition-duration ease-out;
     -moz-transition: all $transition-duration ease-out;
@@ -15,6 +18,11 @@ $transition-duration: 2s;
         opacity: 1;
         font-weight: bold;
         cursor: pointer;
+        // min-height: 4rem;
+        // height: fit-content;
+        width: 100%;
+        min-height: 3rem;
+        height: auto;
 
         &:hover {
             color: $col-active;
@@ -24,6 +32,7 @@ $transition-duration: 2s;
 
     .content {
         opacity: 0;
+        height: 0;
     }
 }
 
@@ -35,6 +44,11 @@ $transition-duration: 2s;
     .title {
         opacity: 1;
         cursor: pointer;
+        // min-height: 3rem;
+        width: 100%;
+        min-height: 3rem;
+        height: fit-content;
+        height: auto;
         // border-bottom: 1px solid #ddd;
 
         &:hover {

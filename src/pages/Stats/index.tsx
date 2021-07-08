@@ -76,6 +76,7 @@ function Stats () {
             removeCoinFromChart(key)
         }
     }
+
     const fetchChartDataRoutine = (currency = 'usd', period = { label: 'W', days: 7 }) => {
         const { charts } = state
         setState((prevState: any) => ({
@@ -135,13 +136,9 @@ function Stats () {
             totalVolume
         }
 
-        console.log('NewSeries', newSeries)
-
         setSeries(newSeries)
     }, [state?.charts, activeKeys])
     // #endregion
-
-    // const data = activeKeys.map((key) => ({ key, data: state?.charts[key] }))
 
     return (
         <div>

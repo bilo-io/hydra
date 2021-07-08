@@ -76,7 +76,6 @@
     "@typescript-eslint/eslint-plugin": "^4.28.2",
     "@typescript-eslint/parser": "^4.28.2",
     "chromatic": "^5.9.2",
-    "css-loader": "^5.2.6",
     "cypress": "^7.6.0",
     "eslint": "^7.30.0",
     "eslint-config-standard": "^16.0.3",
@@ -87,9 +86,7 @@
     "eslint-plugin-react": "^7.24.0",
     "mini-css-extract-plugin": "^2.1.0",
     "node-sass": "^5.0.0",
-    "sass": "^1.35.2",
-    "sass-loader": "^10",
-    "style-loader": "^3.0.0"
+    "sass": "^1.35.2"
   },
   "resolutions": {
     "node-sass": "5.0.0",
