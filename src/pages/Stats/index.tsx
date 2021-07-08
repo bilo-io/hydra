@@ -1,20 +1,30 @@
+/* eslint-disable camelcase */
+/* eslint-disable react/display-name */
 import React, { useEffect, useState } from 'react'
 import { LineChart } from 'components/Charts/LineChart'
-import { fetchChartData } from 'services/coingecko'
+import { fetchChartData, fetchCoins } from 'services/coingecko'
 import Async from 'components/Async'
 import Accordion from 'components/Accordion'
+import Table from 'components/Table'
 import coins, { keys } from 'assets/crypto'
 import { colors } from 'components/Charts/utils/colors'
+import Header from 'components/Table/Header'
+import PriceChange from 'components/PriceChange'
 
 function Stats () {
     // #region STATE
+    const [activeKeys, setActiveKeys] = useState<string[]>([])
+
     const [series, setSeries] = useState<any>({
         prices: {},
         totalVolume: {},
         marketCap: {}
     })
-    const [activeKeys, setActiveKeys] = useState<string[]>([])
-
+    const [searchState] = useState<any>({
+        orderType: 'all',
+        order: 'desc',
+        orderyColumn: 'coin'
+    })
     const [state, setState] = useState<any>({
         currency: 'usd',
         viewType: 'tile',
@@ -28,6 +38,7 @@ function Stats () {
         },
         data: {},
         charts: {},
+        info: {},
         period: {
             days: 7,
             label: 'W'
@@ -39,6 +50,17 @@ function Stats () {
     const addCoinToChart = (key: string) => {
         // @ts-ignore
         const currentCoin = coins[key]
+
+        fetchCoins(currentCoin.id)
+            .then(response => {
+                setState((prevState: any) => ({
+                    ...prevState,
+                    info: {
+                        ...prevState.info,
+                        [currentCoin.id]: response.data
+                    }
+                }))
+            })
         fetchChartData({ id: currentCoin?.id, currency: state?.currency, days: state?.period?.days })
             .then((response) => {
                 const apiData = response.data
@@ -85,6 +107,16 @@ function Stats () {
         }))
 
         Object.keys(charts).forEach(coin => {
+            fetchCoins(coin)
+                .then(response => {
+                    setState((prevState: any) => ({
+                        ...prevState,
+                        info: {
+                            ...prevState.info,
+                            [coin]: response
+                        }
+                    }))
+                })
             fetchChartData({ id: coin, currency: 'usd', days: period.days })
                 .then(response => {
                     setState({
@@ -140,6 +172,223 @@ function Stats () {
     }, [state?.charts, activeKeys])
     // #endregion
 
+    // #region TABLES
+    const rows = Object.keys(state?.info).map((key) => ({
+        ...state?.info?.[key]
+    }))
+    const columns = React.useMemo(
+        () => [
+            // {
+            //     accessor: 'id',
+            //     Header: () => (
+            //         <Header
+            //             value={'COIN'}
+            //             label={'Coin'}
+            //             order={searchState.order}
+            //             orderByColumn={searchState.orderByColumn}
+            //             onToggle={() => { }}
+            //         />
+            //     ),
+            //     Cell: ({ value, row }: { value: any; row: any }) => (
+            //         <div>{value}</div>
+            //     )
+            // },
+            {
+                accessor: 'name',
+                Header: () => (
+                    <Header
+                        value={'name'}
+                        label={'Name'}
+                        order={searchState.order}
+                        orderByColumn={searchState.orderByColumn}
+                        onToggle={() => { }}
+                    />
+                ),
+                Cell: ({ value, row }: { value: any; row: any }) => (
+                    <div>{value}</div>
+                )
+            },
+            {
+                accessor: 'market_data.current_price.usd',
+                Header: () => (
+                    <Header
+                        value={'currentPrice'}
+                        label={'Price'}
+                        order={searchState.order}
+                        orderByColumn={searchState.orderByColumn}
+                        onToggle={() => { }}
+                    />
+                ),
+                Cell: ({ value, row }: { value: any; row: any }) => (
+                    <div>${value}</div>
+                )
+            },
+            {
+                accessor: 'market_data.price_change_24h_in_currency.usd',
+                Header: () => (
+                    <Header
+                        value={'currentPrice'}
+                        label={'24H'}
+                        order={searchState.order}
+                        orderByColumn={searchState.orderByColumn}
+                        onToggle={() => { }}
+                    />
+                ),
+                Cell: ({ value, row }: { value: any; row: any }) => {
+                    const { price_change_24h } = row?.original
+
+                    return (
+                        <PriceChange
+                            isStacked
+                            percentage={price_change_24h}
+                            value={value}
+                        />
+                    )
+                }
+            },
+            {
+                accessor: 'market_data.price_change_percentage_7d_in_currency.usd',
+                Header: () => (
+                    <Header
+                        value={'currentPrice'}
+                        label={'1W'}
+                        order={searchState.order}
+                        orderByColumn={searchState.orderByColumn}
+                        onToggle={() => {}}
+                    />
+                ),
+                Cell: ({ value, row }: { value: any; row: any }) => {
+                    const { price_change_percentage_7d } = row?.original
+
+                    return (
+                        <PriceChange
+                            isStacked
+                            percentage={price_change_percentage_7d}
+                            value={value}
+                        />
+                    )
+                }
+            },
+            {
+                accessor: 'market_data.price_change_percentage_14d_in_currency.usd',
+                Header: () => (
+                    <Header
+                        value={'currentPrice'}
+                        label={'2W'}
+                        order={searchState.order}
+                        orderByColumn={searchState.orderByColumn}
+                        onToggle={() => {}}
+                    />
+                ),
+                Cell: ({ value, row }: { value: any; row: any }) => {
+                    const { price_change_percentage_14d } = row?.original
+
+                    return (
+                        <PriceChange
+                            isStacked
+                            percentage={price_change_percentage_14d}
+                            value={value}
+                        />
+                    )
+                }
+            },
+            {
+                accessor: 'market_data.price_change_percentage_30d_in_currency.usd',
+                Header: () => (
+                    <Header
+                        value={'currentPrice'}
+                        label={'1M'}
+                        order={searchState.order}
+                        orderByColumn={searchState.orderByColumn}
+                        onToggle={() => {}}
+                    />
+                ),
+                Cell: ({ value, row }: { value: any; row: any }) => {
+                    const { price_change_percentage_30d } = row?.original
+
+                    return (
+                        <PriceChange
+                            isStacked
+                            percentage={price_change_percentage_30d}
+                            value={value}
+                        />
+                    )
+                }
+
+            },
+            {
+                accessor: 'market_data.price_change_percentage_60d_in_currency.usd',
+                Header: () => (
+                    <Header
+                        value={'currentPrice'}
+                        label={'2M'}
+                        order={searchState.order}
+                        orderByColumn={searchState.orderByColumn}
+                        onToggle={() => {}}
+                    />
+                ),
+                Cell: ({ value, row }: { value: any; row: any }) => {
+                    const { price_change_24h_in_currency } = row?.original
+
+                    return (
+                        <PriceChange
+                            isStacked
+                            percentage={price_change_24h_in_currency}
+                            value={value}
+                        />
+                    )
+                }
+            },
+            {
+                accessor: 'market_data.price_change_percentage_200d_in_currency.usd',
+                Header: () => (
+                    <Header
+                        value={'currentPrice'}
+                        label={'6M'}
+                        order={searchState.order}
+                        orderByColumn={searchState.orderByColumn}
+                        onToggle={() => {}}
+                    />
+                ),
+                Cell: ({ value, row }: { value: any; row: any }) => {
+                    const { price_change_percentage_200d } = row?.original
+
+                    return (
+                        <PriceChange
+                            isStacked
+                            percentage={price_change_percentage_200d}
+                            value={value}
+                        />
+                    )
+                }
+            },
+            {
+                accessor: 'market_data.price_change_percentage_1y_in_currency.usd',
+                Header: () => (
+                    <Header
+                        value={'currentPrice'}
+                        label={'1Y'}
+                        order={searchState.order}
+                        orderByColumn={searchState.orderByColumn}
+                        onToggle={() => {}}
+                    />
+                ),
+                Cell: ({ value, row }: { value: any; row: any }) => {
+                    const { price_change_percentage_1y } = row?.original
+
+                    return (
+                        <PriceChange
+                            isStacked
+                            percentage={price_change_percentage_1y}
+                            value={value}
+                        />
+                    )
+                }
+            }
+
+        ], [])
+    // #endregion
+
     return (
         <div>
             <div className="bg-blurr floating-top padded card">
@@ -175,7 +424,7 @@ function Stats () {
                     />
                 </Async>
             </Accordion>
-            <Accordion title={'Chart: Total Volume'} isOpenDefault>
+            <Accordion title={'Chart: Total Volume'} isOpenDefault={false}>
                 <Async loading={true}>
                     <LineChart
                         isLoading={false}
@@ -189,7 +438,7 @@ function Stats () {
                     />
                 </Async>
             </Accordion>
-            <Accordion title={'Chart: Market Cap'} isOpenDefault>
+            <Accordion title={'Chart: Market Cap'} isOpenDefault={false}>
                 <Async loading={true}>
                     <LineChart
                         isLoading={false}
@@ -203,6 +452,22 @@ function Stats () {
                     />
                 </Async>
             </Accordion>
+            <Accordion title='Data Table' isOpenDefault>
+                <Table
+                    columns={columns}
+                    data={rows}
+                />
+            </Accordion>
+
+            <div>
+                {
+                    // activeKeys.map((key) => (
+                    //     <pre key={key}>
+                    //         {JSON.stringify(state?.info, undefined, 4)}
+                    //     </pre>
+                    // ))
+                }
+            </div>
         </div>
     )
 }

@@ -24,6 +24,11 @@ $transition-duration: 2s;
         min-height: 3rem;
         height: auto;
 
+        padding: {
+            top: 1rem;
+            left: 1rem;
+        }
+
         &:hover {
             color: $col-active;
             // background-color: rgba($col-active, 0.1);
@@ -49,6 +54,12 @@ $transition-duration: 2s;
         min-height: 3rem;
         height: fit-content;
         height: auto;
+
+        padding: {
+            top: 1rem;
+            left: 1rem;
+        }
+
         // border-bottom: 1px solid #ddd;
 
         &:hover {
