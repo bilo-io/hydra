@@ -3,6 +3,8 @@ import cryptoData from 'assets/crypto'
 import { currency } from 'utils/locale'
 import { withCommas } from 'utils/format-number'
 import PieChart from 'components/Charts/PieChart'
+import Advert from 'components/Cards/Advert'
+import ActionSuggestions from 'components/Cards/ActionSuggestions'
 
 const adverts = [
     {
@@ -27,32 +29,7 @@ const adverts = [
     }
 ]
 
-const ActionSuggestions = ({ userState }: { userState: any }) => <div>
-    {
-        !userState.isVerified && (
-            <div className="text-center">
-                <h4>Verify Account</h4>
-            </div>
-        )
-    }
-
-    {
-        !userState.hasFunds && (
-            <div className="text-center">
-                <h4>Add Funds</h4>
-            </div>
-        )
-    }
-
-    {
-        !userState.hasHoldings && (
-            <div className="text-center">
-                <h4>Invest</h4>
-            </div>
-        )
-    }
-</div>
-const BulTradeUI = () => {
+const BulkTradeUI = () => {
     // @ts-ignore
     const products = Object.keys(cryptoData).map(code => ({ code, ...cryptoData[code] }))
     return (
@@ -116,16 +93,6 @@ function Portfolio () {
         ]
     }
 
-    const Advert = ({ item }: { item: any }) => {
-        return (
-            <div className="advert-card" style={{ background: item.color }}>
-                <div><strong>{item.name}</strong></div>
-                <br />
-                <div>{item.text}</div>
-            </div>
-        )
-    }
-
     const PortfolioSummary = ({ data }: { data: any }) => (
         <div className="portfolio-holdings">
             <div className="text-center"
@@ -157,7 +124,7 @@ function Portfolio () {
 
             <ActionSuggestions userState={userState} />
 
-            <BulTradeUI />
+            <BulkTradeUI />
         </div>
     )
 }
