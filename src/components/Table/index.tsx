@@ -47,6 +47,7 @@ export const AdvancedTable = ({
                     {...getTableProps()}
                     className="w-full table-fixed border-separate"
                     style={{
+                        width: '100%',
                         borderSpacing: '0px 4px'
                     }}
                 >
@@ -82,6 +83,7 @@ export const AdvancedTable = ({
                         'pb-20': padded
                     })}
                     style={{
+                        width: '100%',
                         borderSpacing: '0px 4px'
                     }}
                 >

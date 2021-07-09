@@ -33,7 +33,7 @@ const PriceChange = (
         }}>
             <div style={{
                 color: textColor
-            }}>{percentage >= 0 ? '+' : '-'}{percentage}%</div>
+            }}>{percentage >= 0 ? '+' : ''}{percentage.toFixed(3)}%</div>
 
             {
                 symbol && value && (
@@ -47,7 +47,7 @@ const PriceChange = (
                         backgroundColor: 'rgba(0,0,0,0.4)'
                         // margin: 'auto',
                     }}>
-                        {symbol}{value && withCommas(value)}
+                        {symbol}{value && withCommas(Number(value.toFixed(3)))}
                     </div>
                 )}
         </div>

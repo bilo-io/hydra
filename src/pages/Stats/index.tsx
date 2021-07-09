@@ -235,7 +235,7 @@ function Stats () {
                     />
                 ),
                 Cell: ({ value, row }: { value: any; row: any }) => {
-                    const { price_change_24h } = row?.original
+                    const { price_change_24h } = row?.original?.market_data
 
                     return (
                         <PriceChange
@@ -258,7 +258,7 @@ function Stats () {
                     />
                 ),
                 Cell: ({ value, row }: { value: any; row: any }) => {
-                    const { price_change_percentage_7d } = row?.original
+                    const { price_change_percentage_7d } = row?.original?.market_data
 
                     return (
                         <PriceChange
@@ -281,7 +281,7 @@ function Stats () {
                     />
                 ),
                 Cell: ({ value, row }: { value: any; row: any }) => {
-                    const { price_change_percentage_14d } = row?.original
+                    const { price_change_percentage_14d } = row?.original?.market_data
 
                     return (
                         <PriceChange
@@ -304,7 +304,7 @@ function Stats () {
                     />
                 ),
                 Cell: ({ value, row }: { value: any; row: any }) => {
-                    const { price_change_percentage_30d } = row?.original
+                    const { price_change_percentage_30d } = row?.original?.market_data
 
                     return (
                         <PriceChange
@@ -351,7 +351,7 @@ function Stats () {
                     />
                 ),
                 Cell: ({ value, row }: { value: any; row: any }) => {
-                    const { price_change_percentage_200d } = row?.original
+                    const { price_change_percentage_200d } = row?.original?.market_data
 
                     return (
                         <PriceChange

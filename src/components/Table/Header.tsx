@@ -19,7 +19,7 @@ export const Header = ({
     const isActive = value === orderByColumn
 
     return (
-        <button className="hollow focus:outline-none" type="button" onClick={() => onToggle(value)}>
+        <div className="hollow focus:outline-none" onClick={() => onToggle(value)}>
             <div className="flex flex-row">
                 <div>{label}</div>
                 {isActive && (
@@ -35,7 +35,7 @@ export const Header = ({
                     </div>
                 )}
             </div>
-        </button>
+        </div>
     )
 }
 
