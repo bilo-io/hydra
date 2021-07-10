@@ -22,6 +22,7 @@ jobs:
 
     - name: Cache node modules
       uses: actions/cache@v2
+      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
       env:
         cache-name: cache-node-modules
       with:
@@ -42,7 +43,7 @@ jobs:
       steps:
       - uses: actions/checkout@v2
       - uses: actions/cache@v2
-        if: steps.cache-primes.outputs.cache-hit != 'true'
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
       # - uses: c-hive/gha-yarn-cache@v2
 
