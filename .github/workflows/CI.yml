@@ -16,10 +16,13 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+
       # CI - Install dependencies
     - run: yarn install
+
       # CI - Build
     - run: yarn build --if-present
+
       # CI - Test
     - run: yarn test
       # CI - Cypress
@@ -27,7 +30,6 @@ jobs:
       uses: cypress-io/github-action@v2.9.7
 
       # CI - eslint
-
     - name: ESLint Plus
       uses: bradennapier/eslint-plus-action@v3
 
