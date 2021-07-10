@@ -1,13 +1,4 @@
-// import { configure, addDecorator } from "@storybook/react";
-// import "../src/App.scss";
-// import "!style-loader!css-loader!sass-loader!../src/App.scss";
-
-// function loadStories() {
-//   req.keys().forEach(req);
-//   applyDefaultTheme();
-// }
-
-// configure(loadStories, module);
+import '../src/App.scss'
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -17,4 +8,4 @@ export const parameters = {
       date: /Date$/,
     },
   },
-};
+}

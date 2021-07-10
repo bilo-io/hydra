@@ -16,6 +16,7 @@
     "clsx": "^1.1.1",
     "highcharts": "^9.1.2",
     "highcharts-react-official": "^3.0.0",
+    "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-fontawesome": "^1.7.1",
@@ -33,13 +34,21 @@
     "eject": "react-scripts eject",
     "lint": "eslint",
     "cypress": "$(npm bin)/cypress open",
-    "storybook": "start-storybook -p 6006 -s public --debug-webpack",
-    "build-storybook": "build-storybook -s public",
-    "chromatic": "npx chromatic --project-token=$CHROMATIC_PROJECT_TOKEN"
+    "chromatic": "npx chromatic --project-token=$CHROMATIC_PROJECT_TOKEN",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app",
     "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      },
       {
         "files": [
           "**/*.stories.*"
@@ -63,12 +72,12 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.3.2",
-    "@storybook/addon-essentials": "^6.3.2",
-    "@storybook/addon-links": "^6.3.2",
-    "@storybook/node-logger": "^6.3.2",
-    "@storybook/preset-create-react-app": "^3.1.7",
-    "@storybook/react": "^6.3.2",
+    "@storybook/addon-actions": "^6.3.4",
+    "@storybook/addon-essentials": "^6.3.4",
+    "@storybook/addon-links": "^6.3.4",
+    "@storybook/node-logger": "6.3.4",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.3.4",
     "@types/highcharts": "^7.0.0",
     "@types/react-fontawesome": "^1.6.4",
     "@types/react-router": "^5.1.15",
@@ -86,7 +95,6 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-react": "^7.24.0",
     "mini-css-extract-plugin": "^2.1.0",
-    "node-sass": "^5.0.0",
     "sass": "^1.35.2"
   },
   "resolutions": {
