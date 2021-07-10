@@ -7,7 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-
     - uses: c-hive/gha-yarn-cache@v2
 
     - name: Install JS dependencies
@@ -17,8 +16,9 @@ jobs:
       runs-on: ubuntu-latest
       needs: install
       steps:
-      - name: Cache restore
-        uses: c-hive/gha-yarn-cache@v2
+      - uses: actions/checkout@v2
+      - uses: c-hive/gha-yarn-cache@v2
+
       - name: ESLint Plus
         uses: bradennapier/eslint-plus-action@v3
 
@@ -26,6 +26,9 @@ jobs:
       runs-on: ubuntu-latest
       needs: install
       steps:
+      - uses: actions/checkout@v2
+      - uses: c-hive/gha-yarn-cache@v2
+
       - name: Build
         run: yarn build
 
@@ -33,8 +36,8 @@ jobs:
       runs-on: ubuntu-latest
       needs: [install, eslint]
       steps:
-        - name: Cache restore
-          uses: c-hive/gha-yarn-cache@v2
+        - uses: actions/checkout@v2
+        - uses: c-hive/gha-yarn-cache@v2
         - name: Jest
           run: yarn test
 
