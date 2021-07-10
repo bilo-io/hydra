@@ -20,7 +20,8 @@ const staticOptions = {
     },
     chart: {
         renderTo: 'container',
-        type: 'spline'
+        type: 'spline',
+        backgroundColor: 'transparent'
         // backgroundColor : {
         //     linearGradient : [0, 0, 0, 400],
         //     stops : [
@@ -56,6 +57,7 @@ interface LineChartProps {
     period: any,
     isLoading: boolean,
     onChangeRange?: Function,
+    showRangePicker?: boolean,
 }
 
 export const LineChart = ({
@@ -64,7 +66,8 @@ export const LineChart = ({
     title,
     period,
     isLoading,
-    onChangeRange
+    onChangeRange,
+    showRangePicker
 } : LineChartProps) => {
     const [options, setOptions] = useState({
         ...staticOptions
@@ -109,7 +112,7 @@ export const LineChart = ({
             borderRadius: '8px'
         }}>
             <div className='flex-row'>
-                {
+                { showRangePicker &&
                     (periods || []).map((item, i) => (
                         <button key={i}
                             className={`hollow ${period.label === item.label ? 'primary' : ''}`}
