@@ -12,25 +12,33 @@
 > - steps to reproduce scenario
 > - things to look out for
 
-### Todos
+## Preview 👁
 
-- [ ] Unit Tests, Cypress Tests
-- [ ] Storybook stories
-- [ ] Documentation
+> - Attach screenshots of the relevant flows, and `.gif`s where animation communicates the changes better.
+> - To create a `.gif` use suitable screen recording software (e.g. **Quicktime** on `MacOS`) and use the service [https://ezgif.com/video-to-gif](https://ezgif.com/video-to-gif)
 
-## Preview
+Example:
 
-![]()
-
-> If applicable add a preview screenshot or `.gif`
-> NOTE: you can try this [video-to-gif](https://ezgif.com/video-to-gif) service
+<img
+  alt="Gif-Sample"
+  src="https://i.gifer.com/S9OV.gif"
+  style="height: 10rem;"
+/>
 
 ## Changes
 
 - [ ] Breaking changes to components / utils / pages, etc.
 - [ ] New features in components / utils / pages, etc.
-- [ ] Requires test updates
 - [ ] Wrote test updates
+- [ ] Visual changes
+- [ ] Logical changes
+
+## Checklist ✅
+
+- [ ] Unit Tests (Jest)
+- [ ] E2E Tests (Cypress)
+- [ ] Visual Tests (Storybook)
+- [ ] Documentation
 
 ## Steps to reproduce / test PR
 
