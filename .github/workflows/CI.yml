@@ -24,7 +24,13 @@ jobs:
     - run: yarn build --if-present
 
       # CI - Test
-    - run: yarn test
+    - run: yarn test --coverage
+      # CI - Coverage
+    - name: Codecov upload
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+
       # CI - Cypress
     - name: Cypress
       uses: cypress-io/github-action@v2.9.7
