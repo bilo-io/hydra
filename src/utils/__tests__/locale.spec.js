@@ -1,7 +1,10 @@
-import { currencies, languages } from '../locale'
+import { currencies, languages, language, currency } from '../locale'
 
 describe('Locale', () => {
     describe('Currencies', () => {
+        test('default currency: USD', () => {
+            expect(currency.code).toBe('usd')
+        })
         test('supported language count: 4', () => {
             expect(currencies.length).toBe(4)
         })
@@ -12,6 +15,9 @@ describe('Locale', () => {
     })
 
     describe('Languages', () => {
+        test('default language: EN', () => {
+            expect(language.code).toBe('en')
+        })
         test('supported language count: 5', () => {
             expect(languages.length).toEqual(5)
         })

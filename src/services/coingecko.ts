@@ -20,7 +20,7 @@ export const fetchChartData = async ({ id, currency, days }: { id: string, curre
     })
 }
 
-export const getMarkets = async ({ currencyCode }: { currencyCode: string }) => {
+export const fetchMarkets = async ({ currencyCode }: { currencyCode: string }) => {
     const url = `${baseUrl}/coins/markets?vs_currency=${currencyCode || 'usd'}&sparkline=true`
 
     return await axios({

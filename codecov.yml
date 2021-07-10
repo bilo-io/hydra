@@ -2,6 +2,8 @@ ignore:
   - "src/store"
   - "src/assets"
   - "src/components"
+  - "src/features"
+  - "src/hooks"
   - "src/pages"
   - "src/styles"
   - "test_*.rb"       # wildcards accepted

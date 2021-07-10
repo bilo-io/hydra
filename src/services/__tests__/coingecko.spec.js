@@ -1,4 +1,4 @@
-import { fetchCoins, fetchChartData } from '../coingecko'
+import { fetchCoins, fetchChartData, fetchMarkets } from '../coingecko'
 // @ts-ignore
 // eslint-disable-next-line no-undef
 // jest.mock('axios')
@@ -21,6 +21,12 @@ describe('API.Coingecko', () => {
             expect(Object.keys(response.data.id)).toBe([
                 'prices'
             ])
+        })
+    })
+
+    test('fetchMarkets(\'usd\')', () => {
+        fetchMarkets({ currencyCode: 'usd' }).then((response) => {
+            expect(response.data.length).toBe(0)
         })
     })
 })
