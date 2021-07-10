@@ -19,6 +19,8 @@ jobs:
     - run: yarn install
     - run: yarn build --if-present
     - run: yarn test
+    - name: Cypress
+      uses: cypress-io/github-action@v2.9.7
 
   eslint:
       runs-on: ubuntu-latest
@@ -45,10 +47,6 @@ jobs:
   #     needs: [install, eslint]
   #     steps:
 
-      - name: Jest
-        run: yarn test
-      - name: Cypress
-        uses: cypress-io/github-action@v2.9.7
   # e2e-tests:
   #     name: E2E Tests
   #     runs-on: ubuntu-latest
