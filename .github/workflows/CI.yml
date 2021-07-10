@@ -29,6 +29,8 @@ jobs:
       steps:
       - uses: actions/checkout@v2
       - uses: actions/cache@v2
+        with:
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
       # - uses: c-hive/gha-yarn-cache@v2
 
       - name: ESLint Plus
@@ -40,6 +42,8 @@ jobs:
       steps:
       - uses: actions/checkout@v2
       - uses: actions/cache@v2
+        with:
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
       # - uses: c-hive/gha-yarn-cache@v2
 
       - name: Build
