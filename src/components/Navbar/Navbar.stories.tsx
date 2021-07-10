@@ -7,8 +7,9 @@ export default {
 }
 export function NavbarStories () {
     return (
-        <div>
-            <Navbar onToggle={() => { }} />
+        <div className={'fill-container'}>
+            <Navbar className='navbar' onToggle={() => { }} />
+            <Navbar className='mobile-navbar' onToggle={() => { }} />
         </div>
     )
 }

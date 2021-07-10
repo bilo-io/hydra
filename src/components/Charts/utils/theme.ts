@@ -8,7 +8,7 @@ export default {
         backgroundColor: '#1D1D1D',
         style: {
             fontFamily: 'Roboto',
-            color: '#666666'
+            color: '#FFF'
         }
     },
     title: {

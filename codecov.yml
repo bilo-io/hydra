@@ -1,0 +1,8 @@
+ignore:
+  - "src/store"
+  - "src/assets"
+  - "src/components"
+  - "src/pages"
+  - "src/styles"
+  - "test_*.rb"       # wildcards accepted
+  - "**/*.py"         # glob accepted

@@ -1,0 +1,59 @@
+name: CI
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+      # CI - Install dependencies
+    - run: yarn install
+
+      # CI - Build
+    - run: yarn build --if-present
+
+      # CI - Test
+    - run: yarn test --coverage
+      # CI - Coverage
+    - name: Codecov upload
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+
+      # CI - Cypress
+    - name: Cypress
+      uses: cypress-io/github-action@v2.9.7
+
+      # CI - eslint
+    - name: ESLint Plus
+      uses: bradennapier/eslint-plus-action@v3
+
+
+  visual-tests:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn install
+      - name: Chromatic publish
+        uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
