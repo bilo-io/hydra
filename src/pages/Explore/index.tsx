@@ -43,7 +43,7 @@ function Explore () {
     return (
         <div>
             <Async isLoading={loading}>
-                <div className="bg-blurr floating-top padded card">
+                <div className="bg-blur floating-top padded card">
                     <input
                         type={'text'}
                         value={filter}

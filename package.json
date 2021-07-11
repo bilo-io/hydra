@@ -35,7 +35,7 @@
     "lint": "eslint",
     "cypress": "$(npm bin)/cypress open",
     "chromatic": "npx chromatic --project-token=$CHROMATIC_PROJECT_TOKEN",
-    "storybook": "start-storybook -p 6006 -s public",
+    "storybook": "start-storybook -p 9001 -s public",
     "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
@@ -78,6 +78,7 @@
     "@storybook/node-logger": "6.3.4",
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.3.4",
+    "@storybook/theming": "^6.3.4",
     "@types/highcharts": "^7.0.0",
     "@types/react-fontawesome": "^1.6.4",
     "@types/react-router": "^5.1.15",
@@ -95,7 +96,8 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-react": "^7.24.0",
     "mini-css-extract-plugin": "^2.1.0",
-    "sass": "^1.35.2"
+    "sass": "^1.35.2",
+    "storybook-dark-mode": "^1.0.8"
   },
   "resolutions": {
     "node-sass": "5.0.0",

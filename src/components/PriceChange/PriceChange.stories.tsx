@@ -2,7 +2,7 @@ import React from 'react'
 import PriceChange from 'components/PriceChange'
 
 export default {
-    title: 'Fintech/PriceChange',
+    title: 'Core/PriceChange',
     component: PriceChange
 }
 

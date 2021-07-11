@@ -7,10 +7,12 @@ import FAIcon from 'react-fontawesome'
 import Async from 'components/Async'
 import Accordion from 'components/Accordion'
 
-function ExploreDetails () {
+function ExploreDetails ({ storybook }: { storybook: any }) {
     // const history = useHistory();
     // @ts-ignore
-    const { id } = useParams()
+    let { id } = useParams?.()
+    if (!id) { id = storybook.id }
+
     const [loading, setLoading] = useState<boolean>(true)
     const [, setError] = useState<any>()
     const [coinData, setCoinData] = useState<any>(null)

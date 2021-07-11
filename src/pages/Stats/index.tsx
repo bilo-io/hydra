@@ -391,7 +391,7 @@ function Stats () {
 
     return (
         <div>
-            <div className="bg-blurr floating-top padded card">
+            <div className="bg-blur floating-top padded card">
                 <div style={{ marginBottom: '1rem', marginTop: '0.5rem' }}>Select coins</div>
                 <div className="flex-row auto-scroll-x no-scrollbar">
                     {
@@ -399,7 +399,7 @@ function Stats () {
                             <div key={key} style={{ marginRight: '1rem' }}>
                                 <div style={{ opacity: activeKeys.includes(key) ? 1 : 0.5, cursor: 'pointer' }} onClick={() => toggleKey(key)}>
                                     {/* @ts-ignore */}
-                                    <img src={coins[key].icon} alt={key} />
+                                    <img src={coins[key].icon} alt={key} style={{ width: '2rem', height: '1uto' }}/>
                                     <div style={{ fontSize: '0.5rem', textAlign: 'center' }}>{key}</div>
                                 </div>
                             </div>
