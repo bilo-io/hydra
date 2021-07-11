@@ -9,6 +9,6 @@ export default {
     website: 'https://chain.link/',
     whitePaperUrl: 'https://research.chain.link/whitepaper-v2.pdf',
     youtube: 'https://www.youtube.com/watch?v=0v8Cni-gy8o',
-    color: '#F60',
+    color: '#F4B731',
     icon
 }

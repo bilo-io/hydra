@@ -8,6 +8,6 @@ export default {
     symbol: '⨎',
     website: 'https://basicattentiontoken.org/',
     youtube: 'https://www.youtube.com/watch?v=yKAJDZ92PeU',
-    color: '#F3BA2F',
+    color: '#42C1CA',
     icon
 }

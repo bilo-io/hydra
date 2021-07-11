@@ -8,6 +8,6 @@ export default {
     symbol: 'MKR',
     website: 'https://basicattentiontoken.org/',
     youtube: 'https://www.youtube.com/watch?v=yKAJDZ92PeU',
-    color: '#F3BA2F',
+    color: '#4fa89b',
     icon
 }

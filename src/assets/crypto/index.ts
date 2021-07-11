@@ -31,7 +31,6 @@ import ZEC from './ZEC'
 const coins = {
     BTC,
     ETH,
-    ETC,
     ADA,
     BAT,
     BNB,
@@ -59,6 +58,7 @@ export const keys = Object.keys(coins)
 export default coins
 
 const exludedCoins = {
+    ETC,
     IOST,
     LSK,
     QTUM,
