@@ -11,7 +11,7 @@ describe('API.Coingecko', () => {
     })
 
     test("fetchCoins('bitcoin')", () => {
-        fetchCoins().then((response) => {
+        fetchCoins('bitcoin').then((response) => {
             expect(response.data.id).toBe('bitcoin')
         })
     })
