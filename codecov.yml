@@ -1,10 +1,10 @@
 ignore:
-  - "src/store"
   - "src/assets"
   - "src/components"
   - "src/features"
   - "src/hooks"
   - "src/pages"
+  - "src/store"
   - "src/styles"
   - "test_*.rb"       # wildcards accepted
   - "**/*.py"         # glob accepted
