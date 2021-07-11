@@ -2,7 +2,7 @@
 import icon from './THETA-icon.svg'
 
 export default {
-    id: 'theta',
+    id: 'theta-token',
     name: 'Theta',
     code: 'THETA',
     symbol: 'THETA',

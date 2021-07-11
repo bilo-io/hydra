@@ -30,7 +30,6 @@ import ZEC from './ZEC'
 
 const coins = {
     BTC,
-    BTG,
     ETH,
     ETC,
     ADA,
@@ -45,16 +44,11 @@ const coins = {
     XLM,
     XRP,
     VET,
-    ZEC,
     XMR,
     THETA,
-    QTUM,
-    ONT,
     MONERO,
     MKR,
     MATIC,
-    LSK,
-    IOST,
     FIL,
     DAI
 
@@ -63,3 +57,14 @@ const coins = {
 export const keys = Object.keys(coins)
 
 export default coins
+
+const exludedCoins = {
+    IOST,
+    LSK,
+    QTUM,
+    ONT,
+    BTG,
+    ZEC
+}
+
+console.log({ exludedCoins })

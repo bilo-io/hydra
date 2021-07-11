@@ -3,7 +3,7 @@ import icon from './ETC-icon.svg'
 
 export default {
     id: 'etc',
-    name: 'Ethereum C',
+    name: 'Ethereum Classic',
     code: 'ETC',
     symbol: 'ETC',
     website: 'https://chain.link/',

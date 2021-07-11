@@ -2,12 +2,13 @@
 import icon from './MATIC-icon.svg'
 
 export default {
-    id: 'matic',
+    id: 'matic-network',
     name: 'MATIC',
     code: 'MATIC',
     symbol: 'MATIC',
-    website: 'https://basicattentiontoken.org/',
-    youtube: 'https://www.youtube.com/watch?v=yKAJDZ92PeU',
-    color: '#F3BA2F',
+    website: 'https://polygon.technology/',
+    whitepaperUrl: 'https://polygon.technology/papers/',
+    youtube: 'https://www.youtube.com/watch?v=KuMovI0jAo0',
+    color: '#8f5ae8',
     icon
 }
