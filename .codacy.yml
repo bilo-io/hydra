@@ -15,6 +15,7 @@ languages:
   css:
     extensions:
       - "-css.resource"
+      # - "-scss.resource" # not sure if this even works for scss
 exclude_paths:
   - ".bundle/**"
   - "spec/**/*"
@@ -23,3 +24,4 @@ exclude_paths:
   - "**/tests/**"
   - "**/*.md"
   - "storybook-static/**/*"
+  - "src/styles/**/*"
