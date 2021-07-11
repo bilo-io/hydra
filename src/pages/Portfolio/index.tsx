@@ -39,7 +39,7 @@ const BulkTradeUI = () => {
                     <div key={i} className="product-card">
                         {/* </div> style={{ background: `linear-gradient(to left, ${product?.color} 10%, #202020 100%)`}}> */}
                         <div className="flex-row">
-                            <img src={product.icon} alt={product.code} />
+                            <img src={product.icon} alt={product.code} style={{ width: '2rem', height: '2rem' }}/>
                             <div style={{ lineHeight: '2rem' }}>{product.name}</div>
                         </div>
                     </div>

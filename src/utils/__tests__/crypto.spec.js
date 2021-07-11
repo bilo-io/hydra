@@ -1,7 +1,7 @@
 import { keys } from '../crypto'
 
 describe('Crypto', () => {
-    test('Has coins :', () => {
-        expect(keys.length).toBe(12)
+    test('Has coins (21)', () => {
+        expect(keys?.length).toBe(21)
     })
 })

@@ -7,13 +7,13 @@ import Async from 'components/Async'
 import Accordion from 'components/Accordion'
 import Table from 'components/Table'
 import coins, { keys } from 'assets/crypto'
-import { colors } from 'components/Charts/utils/colors'
+// import { colors } from 'components/Charts/utils/colors'
 import Header from 'components/Table/Header'
 import PriceChange from 'components/PriceChange'
 
 function Stats () {
     // #region STATE
-    const [activeKeys, setActiveKeys] = useState<string[]>([])
+    const [activeKeys, setActiveKeys] = useState<string[]>(['USDC', 'DOGE'])
 
     const [series, setSeries] = useState<any>({
         prices: {},
@@ -141,11 +141,13 @@ function Stats () {
         data,
         name: key,
         type: 'area',
+        // @ts-ignore
+        color: coins?.[key]?.color,
         fillColor: {
             linearGradient: [0, 0, 0, 300],
             stops: [
                 // @ts-ignore
-                [0, colors[i]],
+                [0, coins?.[key]?.color],
                 [1, 'rgba(0,0,0,0)']
             ]
         }
@@ -153,6 +155,11 @@ function Stats () {
     // #endregion
 
     // #region LIFECYCLE
+    useEffect(() => {
+        // fetchChartDataRoutine(state?.currency, state?.period)
+        // @ts-ignore
+        activeKeys.forEach((key) => addCoinToChart(key))
+    }, [])
     useEffect(() => {
         console.log(state)
     }, [state])
@@ -391,15 +398,15 @@ function Stats () {
 
     return (
         <div>
-            <div className="bg-blurr floating-top padded card">
+            <div className="bg-blur floating-top padded card">
                 <div style={{ marginBottom: '1rem', marginTop: '0.5rem' }}>Select coins</div>
                 <div className="flex-row auto-scroll-x no-scrollbar">
                     {
                         keys.map((key) => (
                             <div key={key} style={{ marginRight: '1rem' }}>
-                                <div style={{ opacity: activeKeys.includes(key) ? 1 : 0.5, cursor: 'pointer' }} onClick={() => toggleKey(key)}>
+                                <div style={{ opacity: activeKeys.includes(key) ? 1 : 0.35, cursor: 'pointer' }} onClick={() => toggleKey(key)}>
                                     {/* @ts-ignore */}
-                                    <img src={coins[key].icon} alt={key} />
+                                    <img src={coins[key].icon} alt={key} style={{ width: '2rem', height: '1uto' }}/>
                                     <div style={{ fontSize: '0.5rem', textAlign: 'center' }}>{key}</div>
                                 </div>
                             </div>

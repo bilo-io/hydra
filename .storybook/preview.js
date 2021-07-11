@@ -1,4 +1,5 @@
-import '../src/App.scss'
+import { themes } from "@storybook/theming";
+import "../src/App.scss";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -8,4 +9,10 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+  darkMode: {
+    // Override the default dark theme
+    dark: { ...themes.dark, appBg: "#333333" },
+    // Override the default light theme
+    light: { ...themes.normal, appBg: "#FFFFFF" },
+  },
+};

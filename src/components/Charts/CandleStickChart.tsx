@@ -48,7 +48,6 @@ const CandleStickChart = ({ title, data }: { title: string, data: any[]}) => {
                 constructorType={'stockChart'}
                 options={options}
             />
-            {JSON.stringify(data, undefined, 4)}
         </div>
     )
 }
