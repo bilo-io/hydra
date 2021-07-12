@@ -41,6 +41,9 @@ const BulkTradeUI = () => {
                         <div className="flex-row">
                             <img src={product.icon} alt={product.code} style={{ width: '2rem', height: '2rem' }}/>
                             <div style={{ lineHeight: '2rem' }}>{product.name}</div>
+                            {/* <Download hasIcon src={product?.}>
+                                Whitepaper
+                            </Download> */}
                         </div>
                     </div>
                 ))
