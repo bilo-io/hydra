@@ -10,7 +10,7 @@ import ETC from './ETC'
 import ETH from './ETH'
 import FIL from './FIL'
 import IOST from './IOST'
-import LINK from './LINK'
+import LN from './LN'
 import LSK from './LSK'
 import MATIC from './MATIC'
 import MKR from './MKR'
@@ -19,7 +19,7 @@ import NEO from './NEO'
 import ONT from './ONT'
 import QTUM from './QTUM'
 import THETA from './THETA'
-import TRON from './TRON'
+import TRX from './TRX'
 import USDC from './USDC'
 import USDT from './USDT'
 import VET from './VET'
@@ -36,8 +36,8 @@ const coins = {
     BNB,
     DOGE,
     NEO,
-    LINK,
-    TRON,
+    LN,
+    TRX,
     USDC,
     USDT,
     XLM,

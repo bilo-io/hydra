@@ -19,7 +19,7 @@ export const Header = ({
     const isActive = value === orderByColumn
 
     return (
-        <div className="hollow focus:outline-none" onClick={() => onToggle(value)}>
+        <div className="hollow focus:outline-none" onClick={() => onToggle(value)} style={{ textAlign: 'left' }}>
             <div className="flex flex-row">
                 <div>{label}</div>
                 {isActive && (

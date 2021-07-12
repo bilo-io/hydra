@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 
 import Login from './pages/Login'
-import Portfolio from './pages/Portfolio'
+import Products from './pages/Products'
 import Explore from './pages/Explore'
 import ExploreDetails from './pages/ExploreDetails'
 import Error from './pages/Error'
@@ -39,7 +39,7 @@ const App = () => {
                         />
 
                         <Route path="/login" component={Login} />
-                        <Route path="/portfolio" component={Portfolio} />
+                        <Route path="/products" component={Products} />
                         <Route exact path="/explore" component={Explore} />
                         <Route path="/explore/:id" component={ExploreDetails} />
                         <Route path="/stats" component={Stats} />

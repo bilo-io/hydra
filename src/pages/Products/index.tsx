@@ -49,7 +49,8 @@ const BulkTradeUI = () => {
     )
 }
 
-function Portfolio () {
+const Products = () => {
+    const showHoldings = false
     const [advert, setAdvert] = useState<any>(adverts[Math.floor(Math.random() * adverts.length)])
 
     useEffect(() => {
@@ -93,7 +94,7 @@ function Portfolio () {
         ]
     }
 
-    const PortfolioSummary = ({ data }: { data: any }) => (
+    const ProductsSummary = ({ data }: { data: any }) => (
         <div className="portfolio-holdings">
             <div className="text-center"
                 style={{
@@ -110,12 +111,12 @@ function Portfolio () {
     return (
         <>
 
-            {userState.hasHoldings && <PortfolioSummary data={portfolio} />}
+            {showHoldings && userState.hasHoldings && <ProductsSummary data={portfolio} />}
 
             {
                 userState.hasHoldings
                     ? (
-                        <div style={{ paddingTop: '14rem' }} />
+                        showHoldings && <div style={{ paddingTop: '14rem' }} />
                     )
                     : (
                         <Advert item={advert} />
@@ -129,4 +130,4 @@ function Portfolio () {
     )
 }
 
-export default Portfolio
+export default Products

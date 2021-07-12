@@ -4,7 +4,7 @@ import icon from './LINK-icon.svg'
 export default {
     id: 'link',
     name: 'Chainlink',
-    code: 'LINK',
+    code: 'LN',
     symbol: 'LINK',
     website: 'https://chain.link/',
     whitePaperUrl: 'https://research.chain.link/whitepaper-v2.pdf',

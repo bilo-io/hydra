@@ -7,6 +7,8 @@ export default {
     code: 'BNB',
     symbol: '₮',
     website: 'https://basicattentiontoken.org/',
+    whitePaper: require('./BNB-whitepaper.pdf'),
+    whitepaperUrl: '',
     youtube: 'https://www.youtube.com/watch?v=yKAJDZ92PeU',
     color: '#F3BA2F',
     icon

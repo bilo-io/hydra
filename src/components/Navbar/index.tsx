@@ -29,10 +29,10 @@ export function Navbar ({ onToggle, className }: { onToggle: Function, className
         },
         {
             main: true,
-            name: 'Portfolio',
-            path: '/portfolio',
+            name: 'Products',
+            path: '/products',
             icon: '',
-            onClick: () => goTo('/portfolio')
+            onClick: () => goTo('/products')
         },
         {
             name: 'Stats',

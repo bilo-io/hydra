@@ -57,7 +57,7 @@ function Stats () {
                     ...prevState,
                     info: {
                         ...prevState.info,
-                        [currentCoin.id]: response.data
+                        [key]: response.data
                     }
                 }))
             })
@@ -81,10 +81,15 @@ function Stats () {
     const removeCoinFromChart = (key: string) => {
         setActiveKeys(activeKeys.filter(current => current !== key))
         const charts = state?.charts
+        const info = state?.info
+
         delete charts[key]
+        delete info[key]
+
         setState((prevState: any) => ({
             ...prevState,
-            charts
+            charts,
+            info
         }))
     }
 
@@ -185,31 +190,28 @@ function Stats () {
     }))
     const columns = React.useMemo(
         () => [
-            // {
-            //     accessor: 'id',
-            //     Header: () => (
-            //         <Header
-            //             value={'COIN'}
-            //             label={'Coin'}
-            //             order={searchState.order}
-            //             orderByColumn={searchState.orderByColumn}
-            //             onToggle={() => { }}
-            //         />
-            //     ),
-            //     Cell: ({ value, row }: { value: any; row: any }) => (
-            //         <div>{value}</div>
-            //     )
-            // },
+            {
+                accessor: 'icon',
+                Header: () => (
+                    <div style={{ width: '1rem' }}></div>
+                ),
+                Cell: ({ value, row }: { value: any; row: any }) => {
+                    const key = row?.original?.symbol?.toUpperCase()
+                    // @ts-ignore
+                    return <img src={coins[key].icon} style={{ width: '2rem', height: 'auto' }}/>
+                }
+            },
             {
                 accessor: 'name',
                 Header: () => (
-                    <Header
-                        value={'name'}
-                        label={'Name'}
-                        order={searchState.order}
-                        orderByColumn={searchState.orderByColumn}
-                        onToggle={() => { }}
-                    />
+                    <div style={{ width: 'fit-content' }}>Name</div>
+                    // <Header
+                    //     value={'name'}
+                    //     label={'Name'}
+                    //     order={searchState.order}
+                    //     orderByColumn={searchState.orderByColumn}
+                    //     onToggle={() => { }}
+                    // />
                 ),
                 Cell: ({ value, row }: { value: any; row: any }) => (
                     <div>{value}</div>
@@ -245,11 +247,14 @@ function Stats () {
                     const { price_change_24h } = row?.original?.market_data
 
                     return (
-                        <PriceChange
-                            isStacked
-                            percentage={price_change_24h}
-                            value={value}
-                        />
+                        <div className="w-fit-content">
+
+                            <PriceChange
+                                isStacked
+                                percentage={price_change_24h}
+                                value={value}
+                            />
+                        </div>
                     )
                 }
             },
@@ -268,11 +273,13 @@ function Stats () {
                     const { price_change_percentage_7d } = row?.original?.market_data
 
                     return (
-                        <PriceChange
-                            isStacked
-                            percentage={price_change_percentage_7d}
-                            value={value}
-                        />
+                        <div className="w-fit-content">
+                            <PriceChange
+                                isStacked
+                                percentage={price_change_percentage_7d}
+                                value={value}
+                            />
+                        </div>
                     )
                 }
             },
@@ -291,11 +298,13 @@ function Stats () {
                     const { price_change_percentage_14d } = row?.original?.market_data
 
                     return (
-                        <PriceChange
-                            isStacked
-                            percentage={price_change_percentage_14d}
-                            value={value}
-                        />
+                        <div className="w-fit-content">
+                            <PriceChange
+                                isStacked
+                                percentage={price_change_percentage_14d}
+                                value={value}
+                            />
+                        </div>
                     )
                 }
             },
@@ -314,11 +323,13 @@ function Stats () {
                     const { price_change_percentage_30d } = row?.original?.market_data
 
                     return (
-                        <PriceChange
-                            isStacked
-                            percentage={price_change_percentage_30d}
-                            value={value}
-                        />
+                        <div className="w-fit-content">
+                            <PriceChange
+                                isStacked
+                                percentage={price_change_percentage_30d}
+                                value={value}
+                            />
+                        </div>
                     )
                 }
 
@@ -335,14 +346,17 @@ function Stats () {
                     />
                 ),
                 Cell: ({ value, row }: { value: any; row: any }) => {
-                    const { price_change_24h_in_currency } = row?.original
+                    const { price_change_60d_in_currency } = row?.original
 
                     return (
-                        <PriceChange
-                            isStacked
-                            percentage={price_change_24h_in_currency}
-                            value={value}
-                        />
+                        <div className="w-fit-content">
+                            <PriceChange
+                                isStacked
+                                // @ts-ignore
+                                percentage={price_change_60d_in_currency?.usd}
+                                value={value}
+                            />
+                        </div>
                     )
                 }
             },
@@ -361,11 +375,13 @@ function Stats () {
                     const { price_change_percentage_200d } = row?.original?.market_data
 
                     return (
-                        <PriceChange
-                            isStacked
-                            percentage={price_change_percentage_200d}
-                            value={value}
-                        />
+                        <div className="w-fit-content">
+                            <PriceChange
+                                isStacked
+                                percentage={price_change_percentage_200d}
+                                value={value}
+                            />
+                        </div>
                     )
                 }
             },
@@ -384,16 +400,18 @@ function Stats () {
                     const { price_change_percentage_1y } = row?.original
 
                     return (
-                        <PriceChange
-                            isStacked
-                            percentage={price_change_percentage_1y}
-                            value={value}
-                        />
+                        <div className="w-fit-content">
+                            <PriceChange
+                                isStacked
+                                percentage={price_change_percentage_1y}
+                                value={value}
+                            />
+                        </div>
                     )
                 }
             }
 
-        ], [])
+        ], [Object.keys(state?.info), state?.info])
     // #endregion
 
     return (

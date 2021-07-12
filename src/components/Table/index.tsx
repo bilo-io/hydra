@@ -48,7 +48,9 @@ export const AdvancedTable = ({
                     className="w-full table-fixed border-separate"
                     style={{
                         width: '100%',
-                        borderSpacing: '0px 4px'
+                        // borderSpacing: '0px 4px',
+                        tableLayout: 'fixed',
+                        borderCollapse: 'separate'
                     }}
                 >
                     <thead className="rounded-lg">
@@ -59,6 +61,9 @@ export const AdvancedTable = ({
                                     <th
                                         {...column.getHeaderProps()}
                                         key={i}
+                                        style={{
+                                            textAlign: 'left'
+                                        }}
                                         className={clsx(
                                             '',
                                             'bg-input-background text-header-text text-sm text-left px-3 py-2 font-normal',
