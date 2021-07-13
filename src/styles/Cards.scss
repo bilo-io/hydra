@@ -1,68 +1,72 @@
 .coin-card {
-    $padding: 0.5rem;
-    width: calc(100% - 4 * #{$padding});
-    padding: $padding;
-    margin: $padding;
-    border-radius: 8px;
-    background: linear-gradient(to left, $col-hydra-dark, $col-hydra-black);
+  $padding: 0.5rem;
 
-    img {
-        height: 3rem;
-    }
+  width: calc(100% - 4 * #{$padding});
+  padding: $padding;
+  margin: $padding;
+  border-radius: 8px;
+  background: linear-gradient(to left, $col-hydra-dark, $col-hydra-black);
 
-    .name {
-        line-height: 3rem;
-        margin-left: 0.5rem;
-    }
+  img {
+    height: 3rem;
+  }
 
-    .price {
-        line-height: 3rem;
-        font-weight: bold;
-    }
+  .name {
+    line-height: 3rem;
+    margin-left: 0.5rem;
+  }
+
+  .price {
+    line-height: 3rem;
+    font-weight: bold;
+  }
 }
 
 // to promote in-app features
 .advert-card {
-    $padding: 0.5rem;
-    width: calc(100% - 4 * #{$padding});
-    padding: $padding;
-    margin: $padding;
-    border-radius: 8px;
-    min-height: 6rem;
+  $padding: 0.5rem;
+
+  width: calc(100% - 4 * #{$padding});
+  padding: $padding;
+  margin: $padding;
+  border-radius: 8px;
+  min-height: 6rem;
 }
 
 .asset-card {
-    $padding: 0.5rem;
-    width: calc(100% - 4 * #{$padding});
-    padding: $padding;
-    margin: $padding;
-    border-radius: 8px;
-    min-height: 6rem;
+  $padding: 0.5rem;
+
+  width: calc(100% - 4 * #{$padding});
+  padding: $padding;
+  margin: $padding;
+  border-radius: 8px;
+  min-height: 6rem;
 }
 
 .product-card {
-    $padding: 0.5rem;
-    width: calc(100% - 4 * #{$padding});
-    padding: $padding;
-    margin: $padding;
-    border-radius: 8px;
-    min-height: 6rem;
+  $padding: 0.5rem;
 
-    background-color: #333;
+  width: calc(100% - 4 * #{$padding});
+  padding: $padding;
+  margin: $padding;
+  border-radius: 8px;
+  min-height: 6rem;
+  background-color: #333;
 }
 
 .portfolio-holdings {
-    @extend .card;
-    $padding: 1rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 5;
-    width: calc(100vw - 2 * #{$padding});
-    height: 12rem;
-    padding: $padding;
-    background: #11111188;
-    backdrop-filter: blur(7px);
-    color: white;
-    overflow: hidden;
+  @extend .card;
+  $padding: 1rem;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: calc(100vw - 2 * #{$padding});
+  height: 12rem;
+  padding: $padding;
+  background: #1118;
+  backdrop-filter: blur(7px);
+  color: white;
+  overflow: hidden;
 }

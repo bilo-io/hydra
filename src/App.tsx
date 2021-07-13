@@ -35,7 +35,7 @@ const App = () => {
                         <Route
                             exact
                             path={'/'}
-                            render={() => <Redirect to={'/portfolio'} />}
+                            render={() => <Redirect to={'/stats'} />}
                         />
 
                         <Route path="/login" component={Login} />

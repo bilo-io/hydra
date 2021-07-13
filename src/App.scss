@@ -4,7 +4,6 @@
 @import './styles/_misc.scss';
 @import './styles/_overrides.scss';
 @import './styles/responsive.scss';
-
 @import './styles/Accordion.scss';
 @import './styles/AppMenu.scss';
 @import './styles/Async.scss';
@@ -23,12 +22,22 @@
 body {
   background-color: $col-hydra-black;
   color: #eee;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans';
+  // 'Helvetica Neue';
 }
 
 .page {
   @extend .no-scrollbar;
+
   width: 100vw;
   height: calc(100vh - 4rem);
   overflow-y: auto;
@@ -47,6 +56,6 @@ body {
   }
 
   100% {
-    transform: translateY(0px);
+    transform: translateY(0);
   }
 }

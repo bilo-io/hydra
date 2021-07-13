@@ -1,88 +1,83 @@
 $transition-duration: 2s;
 
 .accordion {
-    @extend .card;
-    position: relative;
+  @extend .card;
+
+  position: relative;
+  height: auto;
+  overflow: hidden;
+  -webkit-transition: all $transition-duration ease-out;
+  -moz-transition: all $transition-duration ease-out;
+  -o-transition: all $transition-duration ease-out;
+  transition: all $transition-duration ease-out;
+
+  .title {
+    opacity: 1;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    min-height: 3rem;
     height: auto;
-    // min-height: 3rem;
-    // height: fit-content;
-    height: auto;
-    overflow: hidden;
 
-    -webkit-transition: all $transition-duration ease-out;
-    -moz-transition: all $transition-duration ease-out;
-    -o-transition: all $transition-duration ease-out;
-    transition: all $transition-duration ease-out;
-
-    .title {
-        opacity: 1;
-        font-weight: bold;
-        cursor: pointer;
-        // min-height: 4rem;
-        // height: fit-content;
-        width: 100%;
-        min-height: 3rem;
-        height: auto;
-
-        padding: {
-            top: 1rem;
-            left: 1rem;
-        }
-
-        &:hover {
-            color: $col-active;
-            // background-color: rgba($col-active, 0.1);
-        }
+    padding: {
+      top: 1rem;
+      left: 1rem;
     }
 
-    .content {
-        opacity: 0;
-        height: 0;
+    &:hover {
+      color: $col-active;
+      // background-color: rgba($col-active, 0.1);
     }
+  }
+
+  .content {
+    opacity: 0;
+    height: 0;
+  }
 }
 
 .accordion-open {
-    height: auto;
-    max-height: 100vh;
+  height: auto;
+  max-height: 100vh;
+  opacity: 1;
+
+  .title {
     opacity: 1;
+    cursor: pointer;
+    // min-height: 3rem;
+    width: 100%;
+    min-height: 3rem;
+    height: fit-content;
+    height: auto;
 
-    .title {
-        opacity: 1;
-        cursor: pointer;
-        // min-height: 3rem;
-        width: 100%;
-        min-height: 3rem;
-        height: fit-content;
-        height: auto;
-
-        padding: {
-            top: 1rem;
-            left: 1rem;
-        }
-
-        // border-bottom: 1px solid #ddd;
-
-        &:hover {
-            color: $col-active;
-            // background-color: rgba($col-active, 0.1);
-        }
+    padding: {
+      top: 1rem;
+      left: 1rem;
     }
 
-    .content {
-        opacity: 1;
-        padding-top: 0.5rem;
-        padding-bottom: 1rem;
-        height: auto;
-        max-height: calc(100% - 3rem);
-        overflow: hidden;
-        overflow-y: auto;
-        margin: auto;
-        // border-top: 1px solid #ddd;
-        // border-bottom: 1px solid #ddd;
-    }
+    // border-bottom: 1px solid #ddd;
 
-    -webkit-transition: all $transition-duration ease-out;
-    -moz-transition: all $transition-duration ease-out;
-    -o-transition: all $transition-duration ease-out;
-    transition: all $transition-duration ease-out;
+    &:hover {
+      color: $col-active;
+      // background-color: rgba($col-active, 0.1);
+    }
+  }
+
+  .content {
+    opacity: 1;
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+    height: auto;
+    max-height: calc(100% - 3rem);
+    overflow: hidden;
+    overflow-y: auto;
+    margin: auto;
+    // border-top: 1px solid #ddd;
+    // border-bottom: 1px solid #ddd;
+  }
+
+  -webkit-transition: all $transition-duration ease-out;
+  -moz-transition: all $transition-duration ease-out;
+  -o-transition: all $transition-duration ease-out;
+  transition: all $transition-duration ease-out;
 }

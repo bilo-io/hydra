@@ -1,6 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
 import icon from './ADA-icon.svg'
-
 export default {
     id: 'cardano',
     name: 'Cardano',
