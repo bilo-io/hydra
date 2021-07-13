@@ -1,5 +1,3 @@
-# processors:
-#   - stylelint-processor-html
 extends: stylelint-config-standard
 syntax: scss
 plugins:
@@ -24,3 +22,6 @@ indentation:
     - value
 max-empty-lines: 1
 unit-whitelist: [ px, '%', em ]
+ignoreFiles: [
+    '**/*.js'
+  ]
