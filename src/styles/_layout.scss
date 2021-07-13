@@ -127,3 +127,14 @@
     width: 100%;
     height: fit-content;
 }
+
+.mx-auto {
+    margin: {
+        left: auto;
+        right: auto;
+    }
+}
+
+.w-fit-content {
+    width: fit-content;
+}
