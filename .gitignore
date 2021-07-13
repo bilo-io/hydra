@@ -33,6 +33,6 @@ yarn-error.log*
 
 # storybook & chromatic
 
-/storybook-static
+storybook-static/
 build-storybook.log
 
