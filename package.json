@@ -36,8 +36,11 @@
     "cypress": "$(npm bin)/cypress open",
     "chromatic": "npx chromatic --project-token=$CHROMATIC_PROJECT_TOKEN",
     "storybook": "start-storybook -p 9001 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "stylelint:css": "npx stylelint \"**/*.css\"",
+    "stylelint:scss": "npx stylelint \"**/*.scss\""
   },
+  "sasslintConfig": "./.sass-lint.yml",
   "eslintConfig": {
     "extends": "react-app",
     "overrides": [
@@ -97,7 +100,9 @@
     "eslint-plugin-react": "^7.24.0",
     "mini-css-extract-plugin": "^2.1.0",
     "sass": "^1.35.2",
-    "storybook-dark-mode": "^1.0.8"
+    "storybook-dark-mode": "^1.0.8",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0"
   },
   "resolutions": {
     "node-sass": "5.0.0",
