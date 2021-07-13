@@ -1,14 +1,14 @@
-.no-scrollbar::-webkit-scrollbar {
-  /* Chrome, Safari and Opera */
-  display: none;
-}
-
 .no-scrollbar {
   /* IE and Edge */
   -ms-overflow-style: none;
 
   /* Firefox */
   scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  /* Chrome, Safari and Opera */
+  display: none;
 }
 
 .flex-row {
