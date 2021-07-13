@@ -5,9 +5,6 @@ $transition-duration: 2s;
 
   position: relative;
   height: auto;
-  // min-height: 3rem;
-  // height: fit-content;
-  height: auto;
   overflow: hidden;
   -webkit-transition: all $transition-duration ease-out;
   -moz-transition: all $transition-duration ease-out;
@@ -18,8 +15,6 @@ $transition-duration: 2s;
     opacity: 1;
     font-weight: bold;
     cursor: pointer;
-    // min-height: 4rem;
-    // height: fit-content;
     width: 100%;
     min-height: 3rem;
     height: auto;

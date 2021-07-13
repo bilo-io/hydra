@@ -10,14 +10,17 @@ rules:
   no-empty-source: ~
   block-no-empty: ~
   color-no-invalid-hex: true
+  no-descending-specificity: null
+  font-family-no-missing-generic-family-keyword: null
   comment-empty-line-before:
-  - always
-  - ignore:
+    - always
+    - ignore:
         - stylelint-commands
         - after-comment
-    indentation:
-        - 2
-        - except:
-        - value
-    max-empty-lines: 1
-    unit-whitelist: [ px, '%', em ]
+
+indentation:
+    - 2
+    - except:
+    - value
+max-empty-lines: 1
+unit-whitelist: [ px, '%', em ]

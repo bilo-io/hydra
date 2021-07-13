@@ -5,6 +5,49 @@ $breakpoint-tablet: 688px;
 $breakpoint-desktop: 1080px;
 $breakpoint-mobile: 480px;
 
+.mobile-navbar {
+  @include hideAbove($breakpoint-mobile);
+
+  @extend .flex-row;
+
+  justify-content: space-between;
+  position: fixed;
+  z-index: 10;
+  background-color: #0008;
+  backdrop-filter: blur(5px);
+  color: red;
+  width: 100vw;
+  height: 3rem;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 3px 10px rgba(black, 0.5);
+
+  .main-tab {
+    background-color: $col-hydra-blue;
+    cursor: pointer;
+    color: $col-hydra-blue;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    margin-top: -0.5rem;
+    padding: 0.5rem;
+  }
+
+  .normal-tab {
+    margin-top: 0.25rem;
+    cursor: pointer;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .label {
+    display: none;
+  }
+}
+
 .navbar {
   @include hideBelow($breakpoint-mobile);
 
@@ -126,48 +169,5 @@ $breakpoint-mobile: 480px;
   .active {
     color: $col-active;
     // border-left: 2px solid $col-active;
-  }
-}
-
-.mobile-navbar {
-  @include hideAbove($breakpoint-mobile);
-
-  @extend .flex-row;
-
-  justify-content: space-between;
-  position: fixed;
-  z-index: 10;
-  background-color: #0008;
-  backdrop-filter: blur(5px);
-  color: red;
-  width: 100vw;
-  height: 3rem;
-  bottom: 0;
-  left: 0;
-  box-shadow: 0 3px 10px rgba(black, 0.5);
-
-  .main-tab {
-    background-color: $col-hydra-blue;
-    cursor: pointer;
-    color: $col-hydra-blue;
-    border-radius: 50%;
-    width: 3rem;
-    height: 3rem;
-    margin-top: -0.5rem;
-    padding: 0.5rem;
-  }
-
-  .normal-tab {
-    margin-top: 0.25rem;
-    cursor: pointer;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    padding: 0.5rem;
-    width: 1rem;
-    height: 1rem;
-  }
-
-  .label {
-    display: none;
   }
 }

@@ -162,7 +162,6 @@ $fade-duration: 0.3s;
   line-height: calc(2rem - 2px);
   border-radius: 8px;
   outline: none;
-  color: #333;
   cursor: pointer;
   text-align: center;
   border: 1px solid transparent;
@@ -302,9 +301,9 @@ p {
   @extend .card-1;
   // width: 80%;
   max-width: 40rem;
-  margin-top: 2rem;
   height: auto;
   margin: auto;
+  margin-top: 2rem;
 }
 
 .edit-inline {
