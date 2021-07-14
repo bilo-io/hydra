@@ -18,13 +18,22 @@ export function Counter () {
 
   const incrementValue = Number(incrementAmount) || 0
 
+  const countUp = () => dispatch(increment())
+  const countDown = () => dispatch(decrement())
+
+  const setIncrement = (e: any) => setIncrementAmount(e.target.value)
+
+  const handleIncrementByAmount = () => dispatch(incrementByAmount(incrementValue))
+  const handleIncrementAsync = () => dispatch(incrementAsync(incrementValue))
+  const handleIncrementIfOdd = () => dispatch(incrementIfOdd(incrementValue))
+
   return (
     <div>
       <div className={styles.row}>
         <button
           className={styles.button}
           aria-label="Decrement value"
-          onClick={() => dispatch(decrement())}
+          onClick={countUp}
         >
           -
         </button>
@@ -32,7 +41,7 @@ export function Counter () {
         <button
           className={styles.button}
           aria-label="Increment value"
-          onClick={() => dispatch(increment())}
+          onClick={countDown}
         >
           +
         </button>
@@ -42,23 +51,23 @@ export function Counter () {
           className={styles.textbox}
           aria-label="Set increment amount"
           value={incrementAmount}
-          onChange={(e) => setIncrementAmount(e.target.value)}
+          onChange={setIncrement}
         />
         <button
           className={styles.button}
-          onClick={() => dispatch(incrementByAmount(incrementValue))}
+          onClick={handleIncrementByAmount}
         >
           Add Amount
         </button>
         <button
           className={styles.asyncButton}
-          onClick={() => dispatch(incrementAsync(incrementValue))}
+          onClick={handleIncrementAsync}
         >
           Add Async
         </button>
         <button
           className={styles.button}
-          onClick={() => dispatch(incrementIfOdd(incrementValue))}
+          onClick={handleIncrementIfOdd}
         >
           Add If Odd
         </button>

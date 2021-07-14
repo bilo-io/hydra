@@ -15,7 +15,8 @@ function AppMenu (
     onToggle: Function;
     }) {
   const history = useHistory()
-  const goTo = (path: string) => history.push(path)
+  const goTo = (path: string) => () => history.push(path)
+  const noop = () => {}
 
   const dividerStyle = {
     width: '16rem',
@@ -36,26 +37,26 @@ function AppMenu (
         <div className="title">{'Hydra'}</div>
 
         <div className='divider horizontal' style={dividerStyle} />
-        <div className='link' onClick={ () => goTo('/')}>
+        <div className='link' onClick={ goTo('/')}>
           <FAIcon name='home' />&nbsp;&nbsp;
             Home
         </div>
         <div className='divider horizontal' style={dividerStyle} />
-        <div className='link' onClick={ () => goTo('/app/identity/profile')}>
+        <div className='link' onClick={ goTo('/app/identity/profile')}>
           <FAIcon name='user' />&nbsp;&nbsp;
             Account
         </div>
 
         <div className='divider horizontal' style={ dividerStyle } />
 
-        <div className='link' onClick={ () => {} }>
+        <div className='link' onClick={ noop }>
           <FAIcon name='info-circle' />&nbsp;&nbsp;
             About
         </div>
 
         <div className='divider horizontal' style={dividerStyle} />
 
-        <div className='link' onClick={() => { } }>
+        <div className='link' onClick={ noop }>
           <FAIcon name='door-open' />&nbsp;&nbsp;
             Log Out
         </div>

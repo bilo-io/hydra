@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import axios from 'axios'
-const baseUrl = 'https://api.coingecko.com/api/v3'
+const baseUrl: string = 'https://api.coingecko.com/api/v3'
 
 export const fetchCoins = async (id?: string) => {
   const url = `${baseUrl}/coins${id ? `/${id}` : ''}`

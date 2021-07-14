@@ -3,6 +3,7 @@ import { AssetCard } from './AssetCard'
 import { Advert } from './Advert'
 import { ActionSuggestions } from './ActionSuggestions'
 import { CoinCard } from './CoinCard'
+import { noop } from 'utils/misc'
 
 export default {
   title: 'Core/Cards',
@@ -30,7 +31,7 @@ export const CryptoCards = () => {
       <AssetCard />
       <h4>CoinCard</h4>
 
-      <CoinCard item={{ code: 'BTC', name: 'Bitcoin' }} onClick={() => { }} currency={{ code: 'usd', symbol: '$' }} />
+      <CoinCard item={{ code: 'BTC', name: 'Bitcoin' }} onClick={noop} currency={{ code: 'usd', symbol: '$' }} />
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import AppMenu from '.'
+import { noop } from 'utils/misc'
 
 export default {
   title: 'App/AppMenu',
@@ -9,7 +10,7 @@ export default {
 export function AppMenuStories () {
   return (
     <div>
-      <AppMenu isOpen isDark onToggle={() => { }}/>
+      <AppMenu isOpen isDark onToggle={noop}/>
     </div>
   )
 }

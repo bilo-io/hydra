@@ -14,12 +14,12 @@ export const Header = ({
     value: string;
     order: string;
     orderByColumn: string;
-    onToggle: Function;
+    onToggle?: Function;
 }) => {
   const isActive = value === orderByColumn
 
   return (
-    <div className="hollow focus:outline-none" onClick={() => onToggle(value)} style={{ textAlign: 'left' }}>
+    <div className="hollow focus:outline-none" onClick={() => onToggle?.(value)} style={{ textAlign: 'left' }}>
       <div className="flex flex-row">
         <div>{label}</div>
         {isActive && (
