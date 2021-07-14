@@ -24,13 +24,12 @@ export class ErrorBoundary extends Component {
     }
 
     contactSupport = () => {
-      console.log('TODO: <ErrorBoundary/>.contactSupport')
       this.captureScreen()
     }
 
     captureScreen = () => {
-      const node = document.getElementById('vision-studio-app-root')
-      console.log('exportTo.png', node)
+      // const node = document.getElementById('vision-studio-app-root')
+      // console.log('exportTo.png', node)
 
       // toPng(node)
       // .then((dataUrl) => {

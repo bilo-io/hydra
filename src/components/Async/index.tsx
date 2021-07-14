@@ -11,34 +11,34 @@ import ErrorBoundary from '../ErrorBoundary'
 // #endregion
 
 const Async = ({ onMount, margin, isLoading, children, loader }: any) => {
-    useEffect(() => {
-        onMount()
-    }, [])
+  useEffect(() => {
+    onMount()
+  }, [])
 
-    return (
-        <>
-            <ErrorBoundary>
-                {isLoading
-                    ? loader || (
-                        <div
-                            style={{
-                                margin: 'auto',
-                                marginTop: margin,
-                                marginBottom: margin
-                            }}
-                        >
-                            <div className="loader" />
-                        </div>
-                    )
-                    : children}
-            </ErrorBoundary>
-        </>
-    )
+  return (
+    <>
+      <ErrorBoundary>
+        {isLoading
+          ? loader || (
+            <div
+              style={{
+                margin: 'auto',
+                marginTop: margin,
+                marginBottom: margin
+              }}
+            >
+              <div className="loader" />
+            </div>
+          )
+          : children}
+      </ErrorBoundary>
+    </>
+  )
 }
 
 Async.defaultProps = {
-    onMount: () => console.log('<Async/>.unMount = () => {}'),
-    margin: '0rem'
+  onMount: () => console.log('<Async/>.unMount = () => {}'),
+  margin: '0rem'
 }
 
 export default Async

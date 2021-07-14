@@ -6,17 +6,20 @@ const newsThumbnail = 'https://static.coindesk.com/wp-content/uploads/2018/08/et
 
 export const News = () => {
   // eslint-disable-next-line no-unused-vars
-  const [articles, setArticles] = useState<any>({})
   const category = 'business'
-
   const country = { name: 'United States of America', code: 'us' }
   const keywords = ['bitcoin', 'crypto', 'finance', 'bank', 'money', 'fashion', 'software', 'future']
+
+  const [articles, setArticles] = useState<any>({})
+  const [error, setError] = useState<any>(null)
+  const handleError = (error) => {
+    setError(JSON.stringify(error, undefined, 2))
+  }
 
   useEffect(() => {
     keywords.forEach((query: string) => {
       getHeadlines({ country: country.code, limit: 100, category, query })
         .then(response => {
-          // console.log(response.data?.articles, { articles })
           const items = response.data?.articles
           if (items.length > 0) {
             setArticles({
@@ -25,9 +28,7 @@ export const News = () => {
             })
           }
         })
-        .catch(error => {
-          console.log(error)
-        })
+        .catch(handleError)
     })
   }, [])
 
@@ -52,7 +53,9 @@ export const News = () => {
         <div>{article?.author}</div>
         <a target='_blank' href={article?.url} rel="noreferrer">- {article?.source?.name || article?.url}</a>
         {/* </div> */}
-        {/* <pre>{JSON.stringify(article, undefined, 4)}</pre> */}
+        {
+          error && <pre style={{ color: '#f00', margin: '1rem', textAlign: 'center' }}>{JSON.stringify(error, undefined, 4)}</pre>
+        }
       </div>
     </Accordion>
   )

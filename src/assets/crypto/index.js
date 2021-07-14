@@ -50,14 +50,9 @@ const coins = {
   MATIC,
   FIL,
   DAI
-
 }
 
-export const keys = Object.keys(coins)
-
-export default coins
-
-const exludedCoins = {
+export const exludedCoins = {
   ETC,
   IOST,
   LSK,
@@ -67,4 +62,6 @@ const exludedCoins = {
   ZEC
 }
 
-console.log({ exludedCoins })
+export const keys = Object.keys(coins)
+
+export default coins
