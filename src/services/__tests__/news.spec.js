@@ -18,4 +18,12 @@ describe('API.News', () => {
             expect(response.data.length).toBe(2)
         })
     })
+
+    test('getHeadlines()', () => {
+        getHeadlines({
+            limit: 2
+        }).then((response) => {
+            expect(response.data.length).toBe(2)
+        })
+    })
 })
