@@ -6,6 +6,7 @@ import { currency, language } from 'utils/locale'
 import FAIcon from 'react-fontawesome'
 import Async from 'components/Async'
 import Accordion from 'components/Accordion'
+import HTML from 'components/HTML'
 
 function ExploreDetails ({ storybook }: { storybook: any }) {
   // const history = useHistory();
@@ -106,7 +107,7 @@ function ExploreDetails ({ storybook }: { storybook: any }) {
       <Accordion title={'Market data'} />
 
       <Accordion title={'Info'}>
-        <div dangerouslySetInnerHTML={{ __html: coinData?.description[language?.code] }} />
+        <HTML content={coinData?.description[language?.code]} />
       </Accordion>
 
       <Accordion title={'Rating'}>
