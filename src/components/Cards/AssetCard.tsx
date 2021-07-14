@@ -1,11 +1,11 @@
 import React from 'react'
 
 export const AssetCard = () => {
-    return (
-        <div>
+  return (
+    <div>
       AssetCard
-        </div>
-    )
+    </div>
+  )
 }
 
 export default AssetCard

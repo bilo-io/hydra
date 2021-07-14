@@ -3,34 +3,35 @@ import { AssetCard } from './AssetCard'
 import { Advert } from './Advert'
 import { ActionSuggestions } from './ActionSuggestions'
 import { CoinCard } from './CoinCard'
+import { noop } from 'utils/misc'
 
 export default {
-    title: 'Core/Cards',
-    component: AssetCard
+  title: 'Core/Cards',
+  component: AssetCard
 }
 
 export function CardsStories () {
-    return (
-        <div>
-            <Advert item={{ text: 'Advert item.text' }}/>
-            <ActionSuggestions userState={{
-                isVerified: true,
-                hasFunds: true,
-                hasHoldings: false
+  return (
+    <div>
+      <Advert item={{ text: 'Advert item.text' }}/>
+      <ActionSuggestions userState={{
+        isVerified: true,
+        hasFunds: true,
+        hasHoldings: false
 
-            }} />
-        </div>
-    )
+      }} />
+    </div>
+  )
 }
 
 export const CryptoCards = () => {
-    return (
-        <div>
-            <h4>AssetCard</h4>
-            <AssetCard />
-            <h4>CoinCard</h4>
+  return (
+    <div>
+      <h4>AssetCard</h4>
+      <AssetCard />
+      <h4>CoinCard</h4>
 
-            <CoinCard item={{ code: 'BTC', name: 'Bitcoin' }} onClick={() => { }} currency={{ code: 'usd', symbol: '$' }} />
-        </div>
-    )
+      <CoinCard item={{ code: 'BTC', name: 'Bitcoin' }} onClick={noop} currency={{ code: 'usd', symbol: '$' }} />
+    </div>
+  )
 }

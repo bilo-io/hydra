@@ -17,7 +17,6 @@ function Explore () {
   // #region FUNCTIONS
   const filterCoins = (event: any) => {
     const { value } = event.target
-    console.log(value)
     setFilter(value)
     setFilteredCoins(value.length === 0 ? coins : coins.filter((coin) => coin.name.toLowerCase().includes(value.toLowerCase()) || coin.id.includes(value.toLowerCase())))
   }
@@ -29,7 +28,6 @@ function Explore () {
     fetchCoins().then((response:any) => {
       setCoins(response?.data)
       setFilteredCoins(response?.data)
-      console.log(response)
     })
       .catch(error => {
         setError(error)

@@ -13,6 +13,7 @@ import PriceChange from 'components/PriceChange'
 
 function Stats () {
   // #region STATE
+  const [error, setError] = useState<any>(null)
   const [activeKeys, setActiveKeys] = useState<string[]>(['USDC', 'DOGE'])
 
   const [series, setSeries] = useState<any>({
@@ -47,6 +48,7 @@ function Stats () {
   // #endregion
 
   // #region FUNCTIONS
+  const handleError = (err: any) => setError(err)
   const addCoinToChart = (key: string) => {
     // @ts-ignore
     const currentCoin = coins[key]
@@ -73,35 +75,7 @@ function Stats () {
           }
         }))
       })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-
-  const removeCoinFromChart = (key: string) => {
-    setActiveKeys(activeKeys.filter(current => current !== key))
-    const charts = state?.charts
-    const info = state?.info
-
-    delete charts[key]
-    delete info[key]
-
-    setState((prevState: any) => ({
-      ...prevState,
-      charts,
-      info
-    }))
-  }
-
-  const toggleKey = (key: string) => {
-    if (!activeKeys.includes(key)) {
-      // add
-      setActiveKeys([...activeKeys, key])
-      addCoinToChart(key)
-    } else {
-      // remove
-      removeCoinFromChart(key)
-    }
+      .catch(handleError)
   }
 
   const fetchChartDataRoutine = (currency = 'usd', period = { label: 'W', days: 7 }) => {
@@ -142,6 +116,35 @@ function Stats () {
     })
   }
 
+  const handleFetchChartData = (period: any) =>
+    fetchChartDataRoutine(state?.currency, state?.period)
+
+  const removeCoinFromChart = (key: string) => {
+    setActiveKeys(activeKeys.filter(current => current !== key))
+    const charts = state?.charts
+    const info = state?.info
+
+    delete charts[key]
+    delete info[key]
+
+    setState((prevState: any) => ({
+      ...prevState,
+      charts,
+      info
+    }))
+  }
+
+  const toggleKey = (key: string) => {
+    if (!activeKeys.includes(key)) {
+      // add
+      setActiveKeys([...activeKeys, key])
+      addCoinToChart(key)
+    } else {
+      // remove
+      removeCoinFromChart(key)
+    }
+  }
+
   const generateSeries = (data: any, key: string, i: number) => ({
     data,
     name: key,
@@ -157,6 +160,7 @@ function Stats () {
       ]
     }
   })
+  const toggleCoin = (key: string) => () => toggleKey(key)
   // #endregion
 
   // #region LIFECYCLE
@@ -166,7 +170,6 @@ function Stats () {
     activeKeys.forEach((key) => addCoinToChart(key))
   }, [])
   useEffect(() => {
-    console.log(state)
   }, [state])
 
   useEffect(() => {
@@ -210,7 +213,7 @@ function Stats () {
           //     label={'Name'}
           //     order={searchState.order}
           //     orderByColumn={searchState.orderByColumn}
-          //     onToggle={() => { }}
+          //     onToggle={noop}
           // />
         ),
         Cell: ({ value, row }: { value: any; row: any }) => (
@@ -225,7 +228,6 @@ function Stats () {
             label={'Price'}
             order={searchState.order}
             orderByColumn={searchState.orderByColumn}
-            onToggle={() => { }}
           />
         ),
         Cell: ({ value, row }: { value: any; row: any }) => (
@@ -240,7 +242,6 @@ function Stats () {
             label={'24H'}
             order={searchState.order}
             orderByColumn={searchState.orderByColumn}
-            onToggle={() => { }}
           />
         ),
         Cell: ({ value, row }: { value: any; row: any }) => {
@@ -266,7 +267,6 @@ function Stats () {
             label={'1W'}
             order={searchState.order}
             orderByColumn={searchState.orderByColumn}
-            onToggle={() => {}}
           />
         ),
         Cell: ({ value, row }: { value: any; row: any }) => {
@@ -291,7 +291,6 @@ function Stats () {
             label={'2W'}
             order={searchState.order}
             orderByColumn={searchState.orderByColumn}
-            onToggle={() => {}}
           />
         ),
         Cell: ({ value, row }: { value: any; row: any }) => {
@@ -316,7 +315,6 @@ function Stats () {
             label={'1M'}
             order={searchState.order}
             orderByColumn={searchState.orderByColumn}
-            onToggle={() => {}}
           />
         ),
         Cell: ({ value, row }: { value: any; row: any }) => {
@@ -342,7 +340,6 @@ function Stats () {
             label={'2M'}
             order={searchState.order}
             orderByColumn={searchState.orderByColumn}
-            onToggle={() => {}}
           />
         ),
         Cell: ({ value, row }: { value: any; row: any }) => {
@@ -368,7 +365,6 @@ function Stats () {
             label={'6M'}
             order={searchState.order}
             orderByColumn={searchState.orderByColumn}
-            onToggle={() => {}}
           />
         ),
         Cell: ({ value, row }: { value: any; row: any }) => {
@@ -393,7 +389,6 @@ function Stats () {
             label={'1Y'}
             order={searchState.order}
             orderByColumn={searchState.orderByColumn}
-            onToggle={() => {}}
           />
         ),
         Cell: ({ value, row }: { value: any; row: any }) => {
@@ -422,7 +417,7 @@ function Stats () {
           {
             keys.map((key) => (
               <div key={key} style={{ marginRight: '1rem' }}>
-                <div style={{ opacity: activeKeys.includes(key) ? 1 : 0.35, cursor: 'pointer' }} onClick={() => toggleKey(key)}>
+                <div style={{ opacity: activeKeys.includes(key) ? 1 : 0.35, cursor: 'pointer' }} onClick={toggleCoin(key)}>
                   {/* @ts-ignore */}
                   <img src={coins[key].icon} alt={key} style={{ width: '2rem', height: '1uto' }}/>
                   <div style={{ fontSize: '0.5rem', textAlign: 'center' }}>{key}</div>
@@ -436,47 +431,41 @@ function Stats () {
       <div style={{ marginTop: '8rem' }}/>
 
       <Accordion title={'Chart: Price'} isOpenDefault>
-        <Async loading={true}>
+        <Async loading>
           <LineChart
-            isLoading={false}
             data={[]}
-            series={ series?.prices }
-            title={`Prices: ${activeKeys.toString()}`}
             period={state?.period}
-            onChangeRange={ (period: any) =>
-              fetchChartDataRoutine(state?.currency, state?.period)
-            }
+            series={series?.prices}
+            title={`Prices: ${activeKeys.toString()}`}
+            onChangeRange={handleFetchChartData}
           />
         </Async>
       </Accordion>
+
       <Accordion title={'Chart: Total Volume'} isOpenDefault={false}>
-        <Async loading={true}>
+        <Async loading>
           <LineChart
-            isLoading={false}
             data={[]}
+            period={state?.period}
             series={ series?.totalVolume }
             title={`Total Volume: ${activeKeys.toString()}`}
-            period={state?.period}
-            onChangeRange={ (period: any) =>
-              fetchChartDataRoutine(state?.currency, state?.period)
-            }
+            onChangeRange={handleFetchChartData}
           />
         </Async>
       </Accordion>
+
       <Accordion title={'Chart: Market Cap'} isOpenDefault={false}>
-        <Async loading={true}>
+        <Async loading>
           <LineChart
-            isLoading={false}
             data={[]}
+            period={state?.period}
             series={ series?.marketCap }
             title={`Market Cap: ${activeKeys.toString()}`}
-            period={state?.period}
-            onChangeRange={ (period: any) =>
-              fetchChartDataRoutine(state?.currency, state?.period)
-            }
+            onChangeRange={handleFetchChartData}
           />
         </Async>
       </Accordion>
+
       <Accordion title='Data Table' isOpenDefault>
         <Table
           columns={columns}
@@ -485,13 +474,7 @@ function Stats () {
       </Accordion>
 
       <div>
-        {
-          // activeKeys.map((key) => (
-          //     <pre key={key}>
-          //         {JSON.stringify(state?.info, undefined, 4)}
-          //     </pre>
-          // ))
-        }
+        { error && JSON.stringify(error) }
       </div>
     </div>
   )

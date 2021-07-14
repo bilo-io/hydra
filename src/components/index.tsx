@@ -6,10 +6,10 @@ import { ErrorBoundary } from './ErrorBoundary'
 import { Tabs } from './Tabs'
 
 export default {
-    Accordion,
-    Async,
-    ErrorBoundary,
-    Loader,
-    LoaderType,
-    Tabs
+  Accordion,
+  Async,
+  ErrorBoundary,
+  Loader,
+  LoaderType,
+  Tabs
 }

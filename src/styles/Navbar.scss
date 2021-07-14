@@ -48,7 +48,7 @@ $breakpoint-mobile: 480px;
   }
 }
 
-.navbar {
+.desktop-navbar {
   @include hideBelow($breakpoint-mobile);
 
   @extend .flex-col;

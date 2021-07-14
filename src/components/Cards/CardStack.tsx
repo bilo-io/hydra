@@ -1,11 +1,11 @@
 import React from 'react'
 
 export function CardStack () {
-    return (
-        <div>
+  return (
+    <div>
       CardStack
-        </div>
-    )
+    </div>
+  )
 }
 
 export default CardStack

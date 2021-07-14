@@ -4,33 +4,33 @@ import { TabsComponent } from './TabsComponent'
 
 export class Tabs extends Component {
     static defaultProps = {
-        keys: []
+      keys: []
     }
 
     state = {
-        activeTab: undefined
+      activeTab: undefined
     }
 
     componentDidMount () {
-        this.setState({
+      this.setState({
 
-            activeTab: this.props.defaultTab,
-            activeTabIndex: 0
-        })
+        activeTab: this.props.defaultTab,
+        activeTabIndex: 0
+      })
     }
 
     render () {
-        const { activeTab, activeTabIndex } = this.state
-        const { keys, className } = this.props
-        return <div>
-            <TabsComponent
-                items={keys}
-                activeIndex={ activeTabIndex }
-                onClickItem={(item, i) => this.setState({ activeTab: item, activeTabIndex: i })}
-            />
-            <div className={ className }>
-                { activeTab && this.props[activeTab] }
-            </div>
+      const { activeTab, activeTabIndex } = this.state
+      const { keys, className } = this.props
+      return <div>
+        <TabsComponent
+          items={keys}
+          activeIndex={ activeTabIndex }
+          onClickItem={(item, i) => this.setState({ activeTab: item, activeTabIndex: i })}
+        />
+        <div className={ className }>
+          { activeTab && this.props[activeTab] }
         </div>
+      </div>
     }
 }

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 // #region Modules
 import React, { useEffect } from 'react'
+import { noop } from 'utils/misc'
 // #endregion Modules
 
 // #region Components
@@ -37,7 +38,7 @@ const Async = ({ onMount, margin, isLoading, children, loader }: any) => {
 }
 
 Async.defaultProps = {
-  onMount: () => console.log('<Async/>.unMount = () => {}'),
+  onMount: noop,
   margin: '0rem'
 }
 

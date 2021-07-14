@@ -1,8 +1,6 @@
 import React from 'react'
 import { withCommas } from '../../utils/format-number'
 
-console.log('Hello')
-
 const PriceChange = (
   { percentage, value, symbol, isStacked }
     :

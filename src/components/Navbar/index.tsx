@@ -4,7 +4,7 @@ import appLogo from 'assets/img/hydra-icon.png'
 import { useHistory } from 'react-router'
 import useWindowSize from 'hooks/use-window-size'
 
-export function Navbar ({ onToggle, className }: { onToggle: Function, className?: string }) {
+export const Navbar = ({ onToggle, type }: { onToggle: Function, type?: string }) => {
   const history = useHistory()
   const goTo = (path: string) => history?.push(path)
   const [activePath, setActivePath] = useState<any>(null)
@@ -76,7 +76,7 @@ export function Navbar ({ onToggle, className }: { onToggle: Function, className
   })
 
   return (
-    <div className={`${className}`}>
+    <div className={`${type}-navbar`}>
       {
         isMobile
           ? renderItems()
@@ -91,7 +91,7 @@ export function Navbar ({ onToggle, className }: { onToggle: Function, className
 }
 
 Navbar.defaultProps = {
-  className: 'mobile-navbar'
+  className: 'mobile'
 }
 
 export default Navbar

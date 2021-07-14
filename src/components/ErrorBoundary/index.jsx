@@ -15,7 +15,6 @@ export class ErrorBoundary extends Component {
     }
 
     static getDerivedStateFromError (error) {
-      console.log({ message: error.message, stack: error.stack })
       // if (/Loading chunk [\d]+ failed/.test(error.message)) {
       //     console.log('RELOADING WINDOW')
       //     window.location.reload()
@@ -24,25 +23,11 @@ export class ErrorBoundary extends Component {
     }
 
     contactSupport = () => {
-      console.log('TODO: <ErrorBoundary/>.contactSupport')
       this.captureScreen()
     }
 
     captureScreen = () => {
-      const node = document.getElementById('vision-studio-app-root')
-      console.log('exportTo.png', node)
-
-      // toPng(node)
-      // .then((dataUrl) => {
-      //     this.setState({
-      //         screenShot: dataUrl
-      //     })
-
-      //     console.log('screenshot', dataUrl)
-      // })
-      // .catch(error => {
-      //     console.log('error', error)
-      // })
+      // TODO: screen capture util of entire app container <div id="root" />
     }
 
     render () {
@@ -68,7 +53,7 @@ export class ErrorBoundary extends Component {
             <div className='message'>
               { JSON.stringify(message) }
             </div>
-            <div onClick={ () => this.setState({ isExpanded: !this.state.isExpanded }) }>
+            <div onClick={ () => this.setState({ isExpanded: !isExpanded }) }>
               <FAIcon name={ isExpanded ? 'chevron-up' : 'chevron-down' } style={{ marginTop: '1rem', marginRight: '1rem' }}/>
             </div>
           </div>
