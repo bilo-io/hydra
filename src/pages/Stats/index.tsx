@@ -13,6 +13,7 @@ import PriceChange from 'components/PriceChange'
 
 function Stats () {
   // #region STATE
+  const [error, setError] = useState<any>(null)
   const [activeKeys, setActiveKeys] = useState<string[]>(['USDC', 'DOGE'])
 
   const [series, setSeries] = useState<any>({
@@ -47,6 +48,7 @@ function Stats () {
   // #endregion
 
   // #region FUNCTIONS
+  const handleError = (err: any) => setError(err)
   const addCoinToChart = (key: string) => {
     // @ts-ignore
     const currentCoin = coins[key]
@@ -73,9 +75,7 @@ function Stats () {
           }
         }))
       })
-      .catch(error => {
-        
-      })
+      .catch(handleError)
   }
 
   const removeCoinFromChart = (key: string) => {
@@ -166,7 +166,7 @@ function Stats () {
     activeKeys.forEach((key) => addCoinToChart(key))
   }, [])
   useEffect(() => {
-    
+
   }, [state])
 
   useEffect(() => {
@@ -485,13 +485,7 @@ function Stats () {
       </Accordion>
 
       <div>
-        {
-          // activeKeys.map((key) => (
-          //     <pre key={key}>
-          //         {JSON.stringify(state?.info, undefined, 4)}
-          //     </pre>
-          // ))
-        }
+        { error && JSON.stringify(error) }
       </div>
     </div>
   )

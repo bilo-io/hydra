@@ -10,6 +10,10 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
 
+const handleError = (err: any) => {
+  console.warn('serviceWorker.handleError: ', err)
+}
+
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
     // [::1] is the IPv6 localhost address.
@@ -47,7 +51,7 @@ export function register (config?: Config) {
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
         navigator.serviceWorker.ready.then(() => {
-          
+
         })
       } else {
         // Is not localhost. Just register service worker
@@ -73,7 +77,6 @@ function registerValidSW (swUrl: string, config?: Config) {
               // At this point, the updated precached content has been fetched,
               // but the previous service worker will still serve the older
               // content until all client tabs are closed.
-              
 
               // Execute callback
               if (config && config.onUpdate) {
@@ -83,7 +86,6 @@ function registerValidSW (swUrl: string, config?: Config) {
               // At this point, everything has been precached.
               // It's the perfect time to display a
               // "Content is cached for offline use." message.
-              
 
               // Execute callback
               if (config && config.onSuccess) {
@@ -94,9 +96,7 @@ function registerValidSW (swUrl: string, config?: Config) {
         }
       }
     })
-    .catch((error) => {
-      
-    })
+    .catch(handleError)
 }
 
 function checkValidServiceWorker (swUrl: string, config?: Config) {
@@ -123,7 +123,7 @@ function checkValidServiceWorker (swUrl: string, config?: Config) {
       }
     })
     .catch(() => {
-      
+
     })
 }
 
@@ -133,8 +133,6 @@ export function unregister () {
       .then((registration) => {
         registration.unregister()
       })
-      .catch((error) => {
-        
-      })
+      .catch(handleError)
   }
 }

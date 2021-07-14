@@ -37,7 +37,7 @@ const Async = ({ onMount, margin, isLoading, children, loader }: any) => {
 }
 
 Async.defaultProps = {
-  onMount: () => ,
+  onMount: () => { },
   margin: '0rem'
 }
 

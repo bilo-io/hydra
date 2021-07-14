@@ -12,7 +12,7 @@ export const News = () => {
 
   const [articles, setArticles] = useState<any>({})
   const [error, setError] = useState<any>(null)
-  const handleError = (error) => {
+  const handleError = (error: any) => {
     setError(JSON.stringify(error, undefined, 2))
   }
 
