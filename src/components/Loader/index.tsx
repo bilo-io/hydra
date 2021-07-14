@@ -26,22 +26,22 @@ export const Spinner = (props: any) => <span style={{ borderWidth: '2px' }} clas
   : ''}`}/>
 
 export const RainBowLoader = (props: any) => <div className='bar-loader'>
-  <div className='bar1'></div>
-  <div className='bar2'></div>
-  <div className='bar3'></div>
-  <div className='bar4'></div>
-  <div className='bar5'></div>
-  <div className='bar6'></div>
+  <div className='bar1' />
+  <div className='bar2' />
+  <div className='bar3' />
+  <div className='bar4' />
+  <div className='bar5' />
+  <div className='bar6' />
 </div>
 
 export const FullScreenLoader = (props: any) => (
   <div id='preloader'>
-    <div id='loader'></div>
+    <div id='loader' />
   </div>
 )
 
 export const UI3Spin = (prop: any) => (
-  <div></div>
+  <div />
 )
 
 export const Loader = ({ type, color, style }: { type: string, color?: string, style?: any }) => {
@@ -63,9 +63,7 @@ export const Loader = ({ type, color, style }: { type: string, color?: string, s
   case LoaderType.UI3SPIN:
     return <UI3Spin color={color} />
   default:
-    console.warn(
-      `<Loader />: couldn't find loader with type: '${loaderType}'`
-    )
+    
     return <div>Loading...</div>
   }
 }

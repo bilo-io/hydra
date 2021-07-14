@@ -9,7 +9,7 @@ export default {
 export function AppMenuStories () {
   return (
     <div>
-      <AppMenu isOpen={true} isDark onToggle={() => { }}/>
+      <AppMenu isOpen isDark onToggle={() => { }}/>
     </div>
   )
 }

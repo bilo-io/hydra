@@ -15,7 +15,7 @@ export class ErrorBoundary extends Component {
     }
 
     static getDerivedStateFromError (error) {
-      console.log({ message: error.message, stack: error.stack })
+      
       // if (/Loading chunk [\d]+ failed/.test(error.message)) {
       //     console.log('RELOADING WINDOW')
       //     window.location.reload()

@@ -74,7 +74,7 @@ function Stats () {
         }))
       })
       .catch(error => {
-        console.log(error)
+        
       })
   }
 
@@ -166,7 +166,7 @@ function Stats () {
     activeKeys.forEach((key) => addCoinToChart(key))
   }, [])
   useEffect(() => {
-    console.log(state)
+    
   }, [state])
 
   useEffect(() => {
@@ -193,7 +193,7 @@ function Stats () {
       {
         accessor: 'icon',
         Header: () => (
-          <div style={{ width: '1rem' }}></div>
+          <div style={{ width: '1rem' }} />
         ),
         Cell: ({ value, row }: { value: any; row: any }) => {
           const key = row?.original?.symbol?.toUpperCase()
@@ -436,7 +436,7 @@ function Stats () {
       <div style={{ marginTop: '8rem' }}/>
 
       <Accordion title={'Chart: Price'} isOpenDefault>
-        <Async loading={true}>
+        <Async loading>
           <LineChart
             isLoading={false}
             data={[]}
@@ -450,7 +450,7 @@ function Stats () {
         </Async>
       </Accordion>
       <Accordion title={'Chart: Total Volume'} isOpenDefault={false}>
-        <Async loading={true}>
+        <Async loading>
           <LineChart
             isLoading={false}
             data={[]}
@@ -464,7 +464,7 @@ function Stats () {
         </Async>
       </Accordion>
       <Accordion title={'Chart: Market Cap'} isOpenDefault={false}>
-        <Async loading={true}>
+        <Async loading>
           <LineChart
             isLoading={false}
             data={[]}
