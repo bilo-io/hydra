@@ -86,7 +86,7 @@ function ExploreDetails ({ storybook }: { storybook: any }) {
         <div style={{ lineHeight: '3rem', marginRight: '1rem' }}>{ currency?.symbol}{coinData?.market_data?.current_price[currency?.code]}</div>
       </div>
 
-      <div style={{ paddingTop: '3rem' }}></div>
+      <div style={{ paddingTop: '3rem' }} />
 
       <Accordion title={'Price Chart'} isOpenDefault>
         <Async isLoading={loading}>
@@ -103,17 +103,14 @@ function ExploreDetails ({ storybook }: { storybook: any }) {
         </Async>
       </Accordion>
 
-      <Accordion title={'Market data'}>
-
-      </Accordion>
+      <Accordion title={'Market data'} />
 
       <Accordion title={'Info'}>
         <div dangerouslySetInnerHTML={{ __html: coinData?.description[language?.code] }} />
       </Accordion>
 
       <Accordion title={'Rating'}>
-        <div className="flex-row">
-        </div>
+        <div className="flex-row" />
       </Accordion>
 
       <Accordion title={'Developer'} isOpenDefault>

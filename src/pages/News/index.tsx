@@ -45,7 +45,7 @@ export const News = () => {
         <div>Overview:</div>
         <div>{article?.description}</div>
         <br />
-        <div></div>
+        <div />
         <div>{article?.content}</div>
         <br />
         {/* <div style={{ fontStyle: 'italic' }}> */}
