@@ -4,7 +4,7 @@ import PieChart from './PieChart'
 import CandleStickChart from './CandleStickChart'
 
 export default {
-    LineChart,
-    PieChart,
-    CandleStickChart
+  LineChart,
+  PieChart,
+  CandleStickChart
 }

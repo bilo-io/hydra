@@ -5,9 +5,9 @@ import { Card } from './Card'
 import { CardStack } from './CardStack'
 
 export default {
-    AssetCard,
-    Advert,
-    ActionSuggestions,
-    Card,
-    CardStack
+  AssetCard,
+  Advert,
+  ActionSuggestions,
+  Card,
+  CardStack
 }
