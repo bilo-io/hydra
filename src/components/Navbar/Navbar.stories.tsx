@@ -8,8 +8,8 @@ export default {
 export function NavbarStories () {
   return (
     <div className={'fill-container'}>
-      <Navbar className='navbar' onToggle={() => { }} />
-      <Navbar className='mobile-navbar' onToggle={() => { }} />
+      <Navbar type='desktop' onToggle={() => { }} />
+      <Navbar type='mobile' onToggle={() => { }} />
     </div>
   )
 }

@@ -22,11 +22,8 @@ const App = () => {
     <Router>
       <div className="flex-row">
 
-        {/* mobile */}
-        <Navbar onToggle={toggleAppMenu} className='navbar' />
-
-        {/* Desktop */}
-        <Navbar onToggle={toggleAppMenu} className='mobile-navbar' />
+        <Navbar type='desktop' onToggle={toggleAppMenu} />
+        <Navbar type='mobile' onToggle={toggleAppMenu} />
 
         <AppMenu isOpen={isAppMenuOpen} isDark onToggle={toggleAppMenu} />
 
