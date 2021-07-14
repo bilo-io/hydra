@@ -193,7 +193,7 @@ function Stats () {
             {
                 accessor: 'icon',
                 Header: () => (
-                    <div style={{ width: '1rem' }}></div>
+                    <div style={{ width: '1rem' }} />
                 ),
                 Cell: ({ value, row }: { value: any; row: any }) => {
                     const key = row?.original?.symbol?.toUpperCase()
