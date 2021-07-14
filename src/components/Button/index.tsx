@@ -1,11 +1,11 @@
 import React from 'react'
 
 function Button ({
-    children,
-    color,
-    shape,
-    className,
-    style
+  children,
+  color,
+  shape,
+  className,
+  style
 }: {
     children: any,
     color?: string | 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'white',
@@ -13,11 +13,11 @@ function Button ({
     className?: string,
     style?: any
 }) {
-    return (
-        <button className={`${color} ${shape} ${className}`} style={style}>
-            { children }
-        </button>
-    )
+  return (
+    <button className={`${color} ${shape} ${className}`} style={style}>
+      { children }
+    </button>
+  )
 }
 
 export default Button
