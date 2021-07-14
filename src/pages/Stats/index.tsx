@@ -166,7 +166,6 @@ function Stats () {
     activeKeys.forEach((key) => addCoinToChart(key))
   }, [])
   useEffect(() => {
-
   }, [state])
 
   useEffect(() => {

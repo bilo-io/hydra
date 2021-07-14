@@ -17,7 +17,7 @@ export const LoaderType = {
 
 export const Ellipsis = ({ color }: { color?: string }) => <span className='ellipsis' style={{
   color: color || 'white'
-}}></span>
+}} />
 
 export const MDSpinner = (props: any) => <span className='md-spin'/>
 
@@ -63,7 +63,7 @@ export const Loader = ({ type, color, style }: { type: string, color?: string, s
   case LoaderType.UI3SPIN:
     return <UI3Spin color={color} />
   default:
-    
+
     return <div>Loading...</div>
   }
 }

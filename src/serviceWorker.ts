@@ -123,7 +123,6 @@ function checkValidServiceWorker (swUrl: string, config?: Config) {
       }
     })
     .catch(() => {
-
     })
 }
 

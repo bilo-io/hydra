@@ -53,7 +53,7 @@ export class ErrorBoundary extends Component {
             <div className='message'>
               { JSON.stringify(message) }
             </div>
-            <div onClick={ () => this.setState({ isExpanded: !this.state.isExpanded }) }>
+            <div onClick={ () => this.setState({ isExpanded: !isExpanded }) }>
               <FAIcon name={ isExpanded ? 'chevron-up' : 'chevron-down' } style={{ marginTop: '1rem', marginRight: '1rem' }}/>
             </div>
           </div>
