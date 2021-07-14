@@ -29,27 +29,27 @@ import XRP from './XRP'
 import ZEC from './ZEC'
 
 const coins = {
-    BTC,
-    ETH,
-    ADA,
-    BAT,
-    BNB,
-    DOGE,
-    NEO,
-    LN,
-    TRX,
-    USDC,
-    USDT,
-    XLM,
-    XRP,
-    VET,
-    XMR,
-    THETA,
-    MONERO,
-    MKR,
-    MATIC,
-    FIL,
-    DAI
+  BTC,
+  ETH,
+  ADA,
+  BAT,
+  BNB,
+  DOGE,
+  NEO,
+  LN,
+  TRX,
+  USDC,
+  USDT,
+  XLM,
+  XRP,
+  VET,
+  XMR,
+  THETA,
+  MONERO,
+  MKR,
+  MATIC,
+  FIL,
+  DAI
 
 }
 
@@ -58,13 +58,13 @@ export const keys = Object.keys(coins)
 export default coins
 
 const exludedCoins = {
-    ETC,
-    IOST,
-    LSK,
-    QTUM,
-    ONT,
-    BTG,
-    ZEC
+  ETC,
+  IOST,
+  LSK,
+  QTUM,
+  ONT,
+  BTG,
+  ZEC
 }
 
 console.log({ exludedCoins })
