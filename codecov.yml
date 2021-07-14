@@ -5,7 +5,7 @@ ignore:
   - "src/assets/**/*"
   - "src/components/**/*"
   - "src/features/**/*"
-  - "src/hooks/**/*"
+  - "src/hooks/**/*.ts"
   - "src/pages/**/*"
   - "src/store/**/*"
   - "src/styles/**/*"
