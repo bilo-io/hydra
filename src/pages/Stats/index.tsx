@@ -437,45 +437,45 @@ function Stats () {
       <Accordion title={'Chart: Price'} isOpenDefault>
         <Async loading>
           <LineChart
-            isLoading={false}
             data={[]}
+            period={state?.period}
             series={ series?.prices }
             title={`Prices: ${activeKeys.toString()}`}
-            period={state?.period}
             onChangeRange={ (period: any) =>
               fetchChartDataRoutine(state?.currency, state?.period)
             }
           />
         </Async>
       </Accordion>
+
       <Accordion title={'Chart: Total Volume'} isOpenDefault={false}>
         <Async loading>
           <LineChart
-            isLoading={false}
             data={[]}
+            period={state?.period}
             series={ series?.totalVolume }
             title={`Total Volume: ${activeKeys.toString()}`}
-            period={state?.period}
             onChangeRange={ (period: any) =>
               fetchChartDataRoutine(state?.currency, state?.period)
             }
           />
         </Async>
       </Accordion>
+
       <Accordion title={'Chart: Market Cap'} isOpenDefault={false}>
         <Async loading>
           <LineChart
-            isLoading={false}
             data={[]}
+            period={state?.period}
             series={ series?.marketCap }
             title={`Market Cap: ${activeKeys.toString()}`}
-            period={state?.period}
             onChangeRange={ (period: any) =>
               fetchChartDataRoutine(state?.currency, state?.period)
             }
           />
         </Async>
       </Accordion>
+
       <Accordion title='Data Table' isOpenDefault>
         <Table
           columns={columns}

@@ -55,7 +55,7 @@ interface LineChartProps {
     series: any[],
     title: any,
     period: any,
-    isLoading: boolean,
+    isLoading?: boolean,
     onChangeRange?: Function,
     showRangePicker?: boolean,
 }

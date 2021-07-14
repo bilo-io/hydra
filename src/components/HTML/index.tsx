@@ -1,8 +1,10 @@
 import React from 'react'
+import DOMPurify from 'dompurify'
 
 const Html = ({ content }: { content: string }) => {
+  const cleanContent = DOMPurify.sanitize(content)
   return (
-    <div dangerouslySetInnerHTML={{ __html: content }} />
+    <div dangerouslySetInnerHTML={{ __html: cleanContent }} />
   )
 }
 

@@ -92,7 +92,6 @@ function ExploreDetails ({ storybook }: { storybook: any }) {
       <Accordion title={'Price Chart'} isOpenDefault>
         <Async isLoading={loading}>
           <LineChart
-            isLoading={false}
             title=""
             data={state?.chart}
             series={[{ data: state?.chart || [] }]}
