@@ -28,20 +28,7 @@ export class ErrorBoundary extends Component {
     }
 
     captureScreen = () => {
-      // const node = document.getElementById('vision-studio-app-root')
-      // console.log('exportTo.png', node)
-
-      // toPng(node)
-      // .then((dataUrl) => {
-      //     this.setState({
-      //         screenShot: dataUrl
-      //     })
-
-      //     console.log('screenshot', dataUrl)
-      // })
-      // .catch(error => {
-      //     console.log('error', error)
-      // })
+      // TODO: screen capture util of entire app container <div id="root" />
     }
 
     render () {

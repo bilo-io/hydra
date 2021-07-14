@@ -2,14 +2,14 @@ import React from 'react'
 import AppMenu from '.'
 
 export default {
-    title: 'App/AppMenu',
-    component: AppMenu
+  title: 'App/AppMenu',
+  component: AppMenu
 }
 
 export function AppMenuStories () {
-    return (
-        <div>
-            <AppMenu isOpen={true} isDark onToggle={() => { }}/>
-        </div>
-    )
+  return (
+    <div>
+      <AppMenu isOpen={true} isDark onToggle={() => { }}/>
+    </div>
+  )
 }
