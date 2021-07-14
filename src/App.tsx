@@ -14,42 +14,42 @@ import Navbar from './components/Navbar'
 import AppMenu from 'components/AppMenu'
 
 const App = () => {
-    const [isAppMenuOpen, setAppMenuOpen] = useState<boolean>(false)
-    const toggleAppMenu = () => {
-        setAppMenuOpen(!isAppMenuOpen)
-    }
-    return (
-        <Router>
-            <div className="flex-row">
+  const [isAppMenuOpen, setAppMenuOpen] = useState<boolean>(false)
+  const toggleAppMenu = () => {
+    setAppMenuOpen(!isAppMenuOpen)
+  }
+  return (
+    <Router>
+      <div className="flex-row">
 
-                {/* mobile */}
-                <Navbar onToggle={toggleAppMenu} className='navbar' />
+        {/* mobile */}
+        <Navbar onToggle={toggleAppMenu} className='navbar' />
 
-                {/* Desktop */}
-                <Navbar onToggle={toggleAppMenu} className='mobile-navbar' />
+        {/* Desktop */}
+        <Navbar onToggle={toggleAppMenu} className='mobile-navbar' />
 
-                <AppMenu isOpen={isAppMenuOpen} isDark onToggle={toggleAppMenu} />
+        <AppMenu isOpen={isAppMenuOpen} isDark onToggle={toggleAppMenu} />
 
-                <div className="page">
-                    <Switch>
-                        <Route
-                            exact
-                            path={'/'}
-                            render={() => <Redirect to={'/stats'} />}
-                        />
+        <div className="page">
+          <Switch>
+            <Route
+              exact
+              path={'/'}
+              render={() => <Redirect to={'/stats'} />}
+            />
 
-                        <Route path="/login" component={Login} />
-                        <Route path="/products" component={Products} />
-                        <Route exact path="/explore" component={Explore} />
-                        <Route path="/explore/:id" component={ExploreDetails} />
-                        <Route path="/stats" component={Stats} />
-                        <Route path="/news" component={News} />
-                        <Route path="*" component={Error} />
-                    </Switch>
-                </div>
-            </div>
-        </Router>
-    )
+            <Route path="/login" component={Login} />
+            <Route path="/products" component={Products} />
+            <Route exact path="/explore" component={Explore} />
+            <Route path="/explore/:id" component={ExploreDetails} />
+            <Route path="/stats" component={Stats} />
+            <Route path="/news" component={News} />
+            <Route path="*" component={Error} />
+          </Switch>
+        </div>
+      </div>
+    </Router>
+  )
 }
 
 export default App

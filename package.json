@@ -33,6 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint",
+    "lint:fix": "eslint --fix src/",
     "cypress": "$(npm bin)/cypress open",
     "chromatic": "npx chromatic --project-token=$CHROMATIC_PROJECT_TOKEN",
     "storybook": "start-storybook -p 9001 -s public",
