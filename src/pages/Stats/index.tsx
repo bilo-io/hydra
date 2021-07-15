@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 /* eslint-disable react/display-name */
 import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router'
 import { LineChart } from 'components/Charts/LineChart'
 import { fetchChartData, fetchCoins } from 'services/coingecko'
 import Async from 'components/Async'
@@ -13,6 +14,8 @@ import PriceChange from 'components/PriceChange'
 
 function Stats () {
   // #region STATE
+  // eslint-disable-next-line no-unused-vars
+  const location = useLocation()
   const [error, setError] = useState<any>(null)
   const [activeKeys, setActiveKeys] = useState<string[]>(['USDC', 'DOGE'])
 
@@ -78,14 +81,16 @@ function Stats () {
       .catch(handleError)
   }
 
-  const fetchChartDataRoutine = (currency = 'usd', period = { label: 'W', days: 7 }) => {
+  const fetchChartDataRoutine = (currency = 'usd', period = { label: 'W', days: 7 }, coins = ['BTC']) => {
     const { charts } = state
     setState((prevState: any) => ({
       ...prevState,
       period
     }))
 
-    Object.keys(charts).forEach(coin => {
+    const data = coins || Object.keys(charts)
+
+    data.forEach(coin => {
       fetchCoins(coin)
         .then(response => {
           setState((prevState: any) => ({
@@ -118,6 +123,20 @@ function Stats () {
 
   const handleFetchChartData = (period: any) =>
     fetchChartDataRoutine(state?.currency, state?.period)
+
+  // const keysToUrl = (keys: string[]) => {
+  //   const newLocation = `/stats?coins=${keys.join(',')}`
+  //   history.push({ newLocation })
+  // }
+
+  // eslint-disable-next-line no-unused-vars
+  const keysFromUrl = () => {
+    const queryString = location?.search?.split?.('?')?.[1]
+    const coins = queryString?.split?.('&')?.[0]?.split('=')[1]?.split(',')
+    console.log(coins)
+    // setActiveKeys(coins)
+    // fetchChartDataRoutine(state?.currency, state?.period, coins)
+  }
 
   const removeCoinFromChart = (key: string) => {
     setActiveKeys(activeKeys.filter(current => current !== key))
@@ -170,7 +189,8 @@ function Stats () {
     activeKeys.forEach((key) => addCoinToChart(key))
   }, [])
   useEffect(() => {
-  }, [state])
+    keysFromUrl()
+  }, [])
 
   useEffect(() => {
     const prices = activeKeys?.map((key, i) => generateSeries(state?.charts[key]?.prices, key, i))
