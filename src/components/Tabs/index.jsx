@@ -17,8 +17,7 @@ export const Tabs = ({ keys, defaultTab }) => {
         items={keys}
         activeIndex={activeTabIndex}
         onClickItem={(item, i) =>
-          this.setState({ activeTab: item, activeTabIndex: i })
-        }
+          this.setState({ activeTab: item, activeTabIndex: i })}
       />
       <div>{activeTab && this.props[activeTab]}</div>
     </div>
