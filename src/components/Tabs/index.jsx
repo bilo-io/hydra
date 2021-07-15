@@ -1,36 +1,32 @@
 /* eslint-disable react/prop-types */
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import { TabsComponent } from './TabsComponent'
 
-export class Tabs extends Component {
-    static defaultProps = {
-      keys: []
-    }
+export const Tabs = ({ keys, defaultTab }) => {
+  const [activeTab, setActiveTab] = useState(undefined)
+  const [activeTabIndex, setActiveTabIndex] = useState(undefined)
 
-    state = {
-      activeTab: undefined
-    }
+  useEffect(() => {
+    setActiveTab(defaultTab)
+    setActiveTabIndex(keys?.findIndex(defaultTab) || 0)
+  }, [[]])
 
-    componentDidMount () {
-      this.setState({
-
-        activeTab: this.props.defaultTab,
-        activeTabIndex: 0
-      })
-    }
-
-    render () {
-      const { activeTab, activeTabIndex } = this.state
-      const { keys, className } = this.props
-      return <div>
-        <TabsComponent
-          items={keys}
-          activeIndex={ activeTabIndex }
-          onClickItem={(item, i) => this.setState({ activeTab: item, activeTabIndex: i })}
-        />
-        <div className={ className }>
-          { activeTab && this.props[activeTab] }
-        </div>
-      </div>
-    }
+  return (
+    <div>
+      <TabsComponent
+        items={keys}
+        activeIndex={activeTabIndex}
+        onClickItem={(item, i) =>
+          this.setState({ activeTab: item, activeTabIndex: i })
+        }
+      />
+      <div>{activeTab && this.props[activeTab]}</div>
+    </div>
+  )
 }
+
+Tabs.defaultProps = {
+  keys: []
+}
+
+export default Tabs
