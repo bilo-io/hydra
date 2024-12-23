@@ -1,5 +1,5 @@
-import CryptoCurrencies from "./crypto/CryptoCurrencies";
-import Landing from "./Landing";
+import Currencies from "./currencies";
+import Portfolio from "./Portfolio";
 import NotFound from "./NotFound";
 
 import TradeBuy from './trade/TradeBuy'
@@ -8,12 +8,18 @@ import TradeSell from './trade/TradeSell'
 export const routes = [
     {
         path: '/',
-        element: <Landing />
+        element: <Portfolio />
+    },
+    // Currencies
+    {
+        path: '/currencies/crypto',
+        element: <Currencies type={'crypto'} />
     },
     {
-        path: '/crypto/currencies',
-        element: <CryptoCurrencies />
+        path: '/currencies/fiat',
+        element: <Currencies type={'fiat'} />
     },
+    // Trade
     {
         path: '/trade/buy',
         element: <TradeBuy />
