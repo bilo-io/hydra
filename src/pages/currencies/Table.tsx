@@ -33,8 +33,7 @@ export const TableCurrencies: React.FC<TableCurrenciesProps> = ({ data }) => {
                 <div>{value}</div>
             )
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    ], [data])
+    ], [])
 
     return (
         <div>

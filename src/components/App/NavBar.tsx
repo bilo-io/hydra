@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import logoSvg from '../../assets/portfolio-case.svg'
+import settingsSvg from '../../assets/settings-cog.svg'
 
 type AppNavBarProps = object
 
@@ -39,6 +40,7 @@ export const AppNavBar: React.FC<AppNavBarProps> = () => {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
+                justifyContent: 'space-between',
                 backgroundColor: '#80C'
             }}>
             <img
@@ -51,6 +53,11 @@ export const AppNavBar: React.FC<AppNavBarProps> = () => {
                 }}
                 onClick={() => navigate('/')}
             />
+            <div style={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+            }}>
             {links.map((item: INavLink) => (
                 <div onClick={() => navigate(item.path)} style={{
                     marginLeft: '1rem',
@@ -60,6 +67,17 @@ export const AppNavBar: React.FC<AppNavBarProps> = () => {
                     {item.name}
                 </div>
             ))}
+            </div>
+            <img
+                src={settingsSvg}
+                width="32"
+                style={{
+                    marginLeft: '1rem',
+                    marginRight: '2rem',
+                    cursor: 'pointer'
+                }}
+                onClick={() => navigate('/settings')}
+            />
         </div>
     );
 };

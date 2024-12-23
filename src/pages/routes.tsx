@@ -4,6 +4,7 @@ import NotFound from "./NotFound";
 
 import TradeBuy from './trade/TradeBuy'
 import TradeSell from './trade/TradeSell'
+import Settings from "./settings";
 
 export const routes = [
     {
@@ -27,6 +28,10 @@ export const routes = [
     {
         path: '/trade/sell',
         element: <TradeSell />
+    },
+    {
+        path: '/settings',
+        element: <Settings />
     },
     {
         path: '*',
