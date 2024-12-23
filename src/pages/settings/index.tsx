@@ -9,7 +9,7 @@ export const Settings: React.FC<SettingsProps> = () => {
     const { t } = useTranslation();
 
     return (
-        <View>
+        <View className='w-full'>
             <Text className='text-xl font-semibold'>
                 {t('settings')}
             </Text>

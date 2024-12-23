@@ -27,7 +27,7 @@ export const Currencies: React.FC<CryptoCurrenciesProps> = () => {
     }
 
     return (
-        <View>
+        <View className='w-full'>
             <Text className='text-xl font-semibold'>
                 {t('currencies')}
             </Text>

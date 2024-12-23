@@ -5,37 +5,46 @@ import { useTheme } from '../../context/ThemeContext';
 import logoSvg from '../../assets/portfolio-case.svg'
 import settingsSvg from '../../assets/settings-cog.svg'
 import { useTranslation } from 'react-i18next';
+import Icon from '../Core/Icon';
+import { useHover } from '../../hooks/useHover';
 
 type AppNavBarProps = object
 
 interface INavLink {
     name: string,
     path: string,
+    icon?: string,
 }
 
 export const AppNavBar: React.FC<AppNavBarProps> = () => {
     const navigate = useNavigate()
     const { theme } = useTheme();
     const { t } = useTranslation();
+    const { isHovered, onHoverStart, onHoverEnd } = useHover();
 
     const links: INavLink[] = [
         {
             name: t('currencies'),
             path: '/currencies',
+            icon: 'Banknotes',
         },
         {
             name: t('trade'),
             path: '/trade',
+            icon: 'ArrowsRightLeft',
         },
         {
             name: t('transactions'),
-            path: '/transactions'
+            path: '/transactions',
+            icon: 'ListBullet',
         }
     ]
 
     return (
         <div
-            className="w-48 flex flex-col justify-between items-center"
+            className="w-16 hover:w-48 flex flex-col justify-between items-center"
+            onMouseEnter={onHoverStart}
+            onMouseLeave={onHoverEnd}
             style={{
                 height: '100vh',
                 // @ts-ignore
@@ -49,12 +58,16 @@ export const AppNavBar: React.FC<AppNavBarProps> = () => {
             />
             <div className="flex flex-col justify-between items-start">
             {links.map((item: INavLink) => (
-                <div key={item.path} onClick={() => navigate(item.path)} style={{
+                <div key={item.path} onClick={() => navigate(item.path)}
+                    className='flex flex-row'
+                    style={{
                     margin: '1rem',
                     cursor: 'pointer',
                     color: '#FFF'
                 }}>
-                    {item.name}
+                    <Icon name={item.icon as string} className='size-6'/>
+                    &nbsp;
+                    {isHovered ? item.name : ''}
                 </div>
             ))}
             </div>
