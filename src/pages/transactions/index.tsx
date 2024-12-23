@@ -37,7 +37,7 @@ export const Transactions: React.FC<TransactionsProps> = () => {
     ]
 
     return (
-        <View className='w-full'>
+        <View isPage className='w-full'>
             <Text className='text-xl font-semibold'>{t('transactions')}</Text>
             <TableTransactions data={transactions} />
         </View>

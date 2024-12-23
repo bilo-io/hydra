@@ -8,7 +8,7 @@ export const Portfolio: React.FC<LandingProps> = () => {
     const { t } = useTranslation();
 
     return (
-        <View className='w-full'>
+        <View isPage className='w-full'>
             <Text className='text-xl font-semibold'>{t('portfolio')}</Text>
         </View>
     );

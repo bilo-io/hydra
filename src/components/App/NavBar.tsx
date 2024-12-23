@@ -24,14 +24,14 @@ export const AppNavBar: React.FC<AppNavBarProps> = () => {
 
     const links: INavLink[] = [
         {
-            name: t('currencies'),
-            path: '/currencies',
-            icon: 'Banknotes',
-        },
-        {
             name: t('trade'),
             path: '/trade',
             icon: 'ArrowsRightLeft',
+        },
+        {
+            name: t('currencies'),
+            path: '/currencies',
+            icon: 'Banknotes',
         },
         {
             name: t('transactions'),
@@ -42,7 +42,7 @@ export const AppNavBar: React.FC<AppNavBarProps> = () => {
 
     return (
         <div
-            className="w-16 hover:w-48 flex flex-col justify-between items-center"
+            className="w-16 hover:w-48 transition-all duration-200 ease-in-out flex flex-col justify-between items-center"
             onMouseEnter={onHoverStart}
             onMouseLeave={onHoverEnd}
             style={{

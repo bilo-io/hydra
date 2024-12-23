@@ -44,7 +44,7 @@ const Table = ({ data, columns }: { data: any[], columns: ColumnDef<any>[], }) =
     }))
 
     return (
-        <div className="p-2">
+        <div className="p-0">
             <table className='w-full'>
                 <thead>
                     {table.getHeaderGroups().map(headerGroup => (
