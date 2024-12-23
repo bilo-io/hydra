@@ -1,17 +1,18 @@
-import Currencies from "./currencies";
-import Portfolio from "./Portfolio";
-import NotFound from "./NotFound";
+/* eslint-disable react-refresh/only-export-components */
+import { lazy } from 'react'
 
-import TradeBuy from './trade/TradeBuy'
-import TradeSell from './trade/TradeSell'
-import Settings from "./settings";
+const Currencies = lazy(() => import("./currencies"));
+const Portfolio = lazy(() => import("./Portfolio"));
+const Settings = lazy(() => import( "./settings"))
+const Trade = lazy(() => import( './trade'))
+const Transactions = lazy(() => import( "./transactions"))
+const NotFound = lazy(() => import("./NotFound"));
 
 export const routes = [
     {
         path: '/',
         element: <Portfolio />
     },
-    // Currencies
     {
         path: '/currencies/crypto',
         element: <Currencies type={'crypto'} />
@@ -20,14 +21,13 @@ export const routes = [
         path: '/currencies/fiat',
         element: <Currencies type={'fiat'} />
     },
-    // Trade
     {
-        path: '/trade/buy',
-        element: <TradeBuy />
+        path: '/trade',
+        element: <Trade />
     },
     {
-        path: '/trade/sell',
-        element: <TradeSell />
+        path: '/transactions',
+        element: <Transactions />
     },
     {
         path: '/settings',

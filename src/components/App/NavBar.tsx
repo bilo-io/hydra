@@ -23,12 +23,12 @@ export const AppNavBar: React.FC<AppNavBarProps> = () => {
             path: '/currencies/fiat'
         },
         {
-            name: 'Buy',
-            path: '/trade/buy',
+            name: 'Trade',
+            path: '/trade',
         },
         {
-            name: 'Sell',
-            path: '/trade/sell'
+            name: 'Transactions',
+            path: '/transactions'
         }
     ]
 

@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import TableCurrencies, { ICurrency } from './Table';
+import TableCurrencies from './Table';
 import { fetchMarkets } from '../../apis/coingecko';
 
 type CryptoCurrenciesProps = {
