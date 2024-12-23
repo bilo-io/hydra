@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
-import Table from '../../components/Core/Table/Table';
+import Table from '../../components/Core/Table';
 import { ColumnDef } from '@tanstack/react-table';
 
 interface TableCurrenciesProps {

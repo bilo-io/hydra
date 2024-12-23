@@ -1,10 +1,15 @@
 import React from 'react';
+import { View, Text } from '../components/Core';
 
 type NotFoundProps = object
 
 export const NotFound: React.FC<NotFoundProps> = () => {
     return (
-        <div>NotFound</div>
+        <View>
+            <Text>
+                NotFound
+            </Text>
+        </View>
     );
 };
 

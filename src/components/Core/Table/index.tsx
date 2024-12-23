@@ -29,7 +29,7 @@ const Table: React.FC<TableProps> = ({
                     {table.getHeaderGroups().map(headerGroup => (
                         <tr key={headerGroup.id}>
                             {headerGroup.headers.map(header => (
-                                <th key={header.id} style={{ textAlign: 'left'}}>
+                                <th key={header.id} style={{ textAlign: 'left' }}>
                                     {header.isPlaceholder
                                         ? null
                                         : flexRender(
