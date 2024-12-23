@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Field from '../../components/Core/Forms/Field'; // Assuming the Field component is in the same folder
-import ThemeSwitcher from '../../components/Config/ThemeSwitcher';
+import ThemePicker from '../../components/Config/ThemePicker';
 import Button from '../../components/Core/Forms/Button';
 import LanguagePicker from '../../components/Config/LanguagePicker';
 
@@ -16,9 +16,6 @@ const schema = Yup.object({
 
 type FormData = {
     baseCurrency: 'usd' | 'zar' | 'euro';
-    language: 'en' | 'de' | 'fr';
-    theme: 'dark' | 'light' | 'custom';
-    customThemeColor?: string;
 };
 
 const MyForm = () => {
@@ -56,7 +53,7 @@ const MyForm = () => {
             <hr />
             <br />
 
-            <ThemeSwitcher />
+            <ThemePicker />
             <br />
             <hr />
             <br />

@@ -4,7 +4,7 @@ import { useTheme } from '../../context/ThemeContext';
 import Button from '../Core/Forms/Button';
 import { View } from '../Core';
 
-const ThemeSwitcher: React.FC = () => {
+const ThemePicker: React.FC = () => {
     const { setTheme } = useTheme();
 
     return (
@@ -18,4 +18,4 @@ const ThemeSwitcher: React.FC = () => {
     );
 };
 
-export default ThemeSwitcher;
+export default ThemePicker;

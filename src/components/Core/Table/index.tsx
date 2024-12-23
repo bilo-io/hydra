@@ -70,9 +70,11 @@ const Table: React.FC<TableProps> = ({
                 </tfoot>
             </table>
             <div className="h-4" />
+            {/* 
             <Button onClick={() => rerender()} className="border p-2">
                 Rerender
-            </Button>
+            </Button> 
+            */}
         </div>
     )
 }
