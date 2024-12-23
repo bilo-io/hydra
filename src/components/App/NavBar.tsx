@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../../context/ThemeContext';
 import logoSvg from '../../assets/portfolio-case.svg'
 import settingsSvg from '../../assets/settings-cog.svg'
 
@@ -12,6 +14,7 @@ interface INavLink {
 
 export const AppNavBar: React.FC<AppNavBarProps> = () => {
     const navigate = useNavigate()
+    const { theme } = useTheme();
 
     const links: INavLink[] = [
         {
@@ -33,7 +36,8 @@ export const AppNavBar: React.FC<AppNavBarProps> = () => {
             className="h-16 flex flex-row justify-between items-center"
             style={{
                 width: '100vw',
-                backgroundColor: '#80C'
+                // @ts-ignore
+                backgroundColor: theme.primary
             }}>
             <img
                 src={logoSvg}
@@ -47,7 +51,7 @@ export const AppNavBar: React.FC<AppNavBarProps> = () => {
                 alignItems: 'center',
             }}>
             {links.map((item: INavLink) => (
-                <div onClick={() => navigate(item.path)} style={{
+                <div key={item.path} onClick={() => navigate(item.path)} style={{
                     marginLeft: '1rem',
                     marginRight: '1rem',
                     cursor: 'pointer'

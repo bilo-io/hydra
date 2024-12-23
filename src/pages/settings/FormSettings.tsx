@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Field from '../../components/Core/Forms/Field'; // Assuming the Field component is in the same folder
+import ThemeSwitcher from '../../context/ThemeSwitcher';
 
 // Validation schema with Yup
 const schema = Yup.object({
@@ -79,6 +80,8 @@ const MyForm = () => {
                     ]}
                 />
             </div>
+
+            <ThemeSwitcher />
 
             {/* @ts-ignore */}
             {errors.theme?.value === 'custom' && (
