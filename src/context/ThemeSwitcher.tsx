@@ -1,17 +1,18 @@
 // ThemeSwitcher.tsx
 import React from 'react';
 import { useTheme } from './ThemeContext';
+import Button from '../components/Core/Forms/Button';
 
 const ThemeSwitcher: React.FC = () => {
     const { setTheme } = useTheme();
 
     return (
         <div>
-            <button onClick={() => setTheme('light')}>Light Theme</button>
-            <button onClick={() => setTheme('dark')}>Dark Theme</button>
-            <button onClick={() => setTheme('stitch')}>Stitch Theme</button>
-            <button onClick={() => setTheme('ocean')}>Ocean Theme</button>
-            <button onClick={() => setTheme('custom')}>Custom Theme</button>
+            <Button onClick={() => setTheme('light')}>Light Theme</Button>
+            <Button onClick={() => setTheme('dark')}>Dark Theme</Button>
+            <Button onClick={() => setTheme('stitch')}>Stitch Theme</Button>
+            <Button onClick={() => setTheme('ocean')}>Ocean Theme</Button>
+            <Button onClick={() => setTheme('custom')}>Custom Theme</Button>
         </div>
     );
 };

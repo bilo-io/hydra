@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ColumnDef, flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table"
 import React from "react"
+import Button from "../Forms/Button"
 
 interface TableProps {
     data: any[],
@@ -69,9 +70,9 @@ const Table: React.FC<TableProps> = ({
                 </tfoot>
             </table>
             <div className="h-4" />
-            <button onClick={() => rerender()} className="border p-2">
+            <Button onClick={() => rerender()} className="border p-2">
                 Rerender
-            </button>
+            </Button>
         </div>
     )
 }

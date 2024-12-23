@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Field from '../../components/Core/Forms/Field'; // Assuming the Field component is in the same folder
 import ThemeSwitcher from '../../context/ThemeSwitcher';
+import Button from '../../components/Core/Forms/Button';
 
 // Validation schema with Yup
 const schema = Yup.object({
@@ -83,6 +84,8 @@ const MyForm = () => {
 
             <ThemeSwitcher />
 
+            <br />
+
             {/* @ts-ignore */}
             {errors.theme?.value === 'custom' && (
                 <div>
@@ -97,7 +100,7 @@ const MyForm = () => {
             )}
 
             <div>
-                <button type="submit">Submit</button>
+                <Button type="submit">{'Submit'}</Button>
             </div>
         </form>
     );
