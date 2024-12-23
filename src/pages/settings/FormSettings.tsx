@@ -4,22 +4,14 @@ import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Field from '../../components/Core/Forms/Field'; // Assuming the Field component is in the same folder
-import ThemeSwitcher from '../../context/ThemeSwitcher';
+import ThemeSwitcher from '../../components/Config/ThemeSwitcher';
 import Button from '../../components/Core/Forms/Button';
+import LanguagePicker from '../../components/Config/LanguagePicker';
 
 // Validation schema with Yup
 const schema = Yup.object({
     baseCurrency: Yup.string().oneOf(['usd', 'zar', 'euro'], 'Invalid currency')
         .required('Base currency is required'),
-    language: Yup.string().oneOf(['en', 'de', 'fr'], 'Invalid language')
-        .required('Language is required'),
-    theme: Yup.string().oneOf(['dark', 'light', 'custom'], 'Invalid theme')
-        .required('Theme is required'),
-    customThemeColor: Yup.string()
-    //     .when('theme', {
-    //     is: 'custom',
-    //     then: Yup.string().required('Custom theme color is required')
-    // }),
 }).required();
 
 type FormData = {
@@ -39,7 +31,7 @@ const MyForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className='px-4'>
             <div>
                 <Field
                     name="baseCurrency"
@@ -54,36 +46,19 @@ const MyForm = () => {
                 />
             </div>
 
-            <div>
-                <Field
-                    name="language"
-                    control={control}
-                    type="select"
-                    label="Language"
-                    options={[
-                        { value: 'en', label: 'English' },
-                        { value: 'de', label: 'German' },
-                        { value: 'fr', label: 'French' }
-                    ]}
-                />
-            </div>
+            <br />
+            <hr />
+            <br />
 
-            <div>
-                <Field
-                    name="theme"
-                    control={control}
-                    type="select"
-                    label="Theme"
-                    options={[
-                        { value: 'dark', label: 'Dark' },
-                        { value: 'light', label: 'Light' },
-                        { value: 'custom', label: 'Custom' }
-                    ]}
-                />
-            </div>
+            <LanguagePicker />
+            
+            <br />
+            <hr />
+            <br />
 
             <ThemeSwitcher />
-
+            <br />
+            <hr />
             <br />
 
             {/* @ts-ignore */}

@@ -2,6 +2,8 @@
 import React from 'react';
 import { useController, Control } from 'react-hook-form';
 import Validation from './Validation';
+import Input from './Input';
+import Select from './Select';
 
 interface FieldProps {
     name: string;
@@ -24,23 +26,12 @@ export const Field: React.FC<FieldProps> = ({ name, control, type, options, plac
     const renderField = (() => {
         switch (type) {
             case 'select':
-                return (
-                    <select {...field} id={name}>
-                        <option value="" disabled>
-                            Select an option
-                        </option>
-                        {options?.map((option) => (
-                            <option key={option.value} value={option.value}>
-                                {option.label}
-                            </option>
-                        ))}
-                    </select>
-                );
+                return <Select {...field} options={options} placeholder={placeholder} />;
             case 'number':
-                return <input {...field} id={name} type="number" placeholder={placeholder} step="any" />;
+                return <Input {...field} id={name} type="number" placeholder={placeholder} step="any" />;
             case 'text':
             default:
-                return <input {...field} id={name} type="text" placeholder={placeholder} />;
+                return <Input {...field} id={name} type="text" placeholder={placeholder} />;
         }
     })();
 

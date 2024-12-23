@@ -1,0 +1,12 @@
+{
+    "cancel": "Cancel",
+    "currencies": "Currencies",
+    "greeting": "Hello, {{name}}!",
+    "name": "Name",
+    "portfolio": "Portfolio",
+    "settings": "Settings",
+    "submit": "Submit",
+    "trade": "Trade",
+    "transactions": "Transactions",
+    "welcome": "Welcome to our application!"
+}

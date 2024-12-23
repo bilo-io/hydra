@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 import logoSvg from '../../assets/portfolio-case.svg'
 import settingsSvg from '../../assets/settings-cog.svg'
+import { useTranslation } from 'react-i18next';
 
 type AppNavBarProps = object
 
@@ -15,18 +16,19 @@ interface INavLink {
 export const AppNavBar: React.FC<AppNavBarProps> = () => {
     const navigate = useNavigate()
     const { theme } = useTheme();
+    const { t } = useTranslation();
 
     const links: INavLink[] = [
         {
-            name: 'Currencies',
+            name: t('currencies'),
             path: '/currencies',
         },
         {
-            name: 'Trade',
+            name: t('trade'),
             path: '/trade',
         },
         {
-            name: 'Transactions',
+            name: t('transactions'),
             path: '/transactions'
         }
     ]
@@ -54,7 +56,8 @@ export const AppNavBar: React.FC<AppNavBarProps> = () => {
                 <div key={item.path} onClick={() => navigate(item.path)} style={{
                     marginLeft: '1rem',
                     marginRight: '1rem',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    color: '#FFF'
                 }}>
                     {item.name}
                 </div>

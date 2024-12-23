@@ -1,5 +1,6 @@
 // import { useState } from 'react'
 import './App.css'
+import './config/i18n/i18n'; // Initialize i18n
 
 import React from 'react';
 

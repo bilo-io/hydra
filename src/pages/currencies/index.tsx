@@ -2,10 +2,13 @@
 import React, { useEffect, useState } from 'react';
 import TableCurrencies from './Table';
 import { fetchMarkets } from '../../apis/coingecko';
+import { useTranslation } from 'react-i18next';
 
 type CryptoCurrenciesProps = object
 
 export const Currencies: React.FC<CryptoCurrenciesProps> = () => {
+    const { t } = useTranslation();
+    
     const [list, setList] = useState<unknown[]>([])
 
     useEffect(() => {
@@ -20,10 +23,10 @@ export const Currencies: React.FC<CryptoCurrenciesProps> = () => {
         setList(markets.data)
 
     }
-    
+
     return (
         <>
-            <div>currencies</div>
+            <div>{t('currencies')}</div>
             <TableCurrencies data={list} />
         </>
     );

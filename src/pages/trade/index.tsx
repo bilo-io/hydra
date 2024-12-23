@@ -1,11 +1,14 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-type TradeBuyProps = object
+type TradeProps = object
 
-export const TradeBuy: React.FC<TradeBuyProps> = () => {
+export const Trade: React.FC<TradeProps> = () => {
+    const { t } = useTranslation();
+
     return (
-        <div>Trade</div>
+        <div>{t('trade')}</div>
     );
 };
 
-export default TradeBuy;
+export default Trade;

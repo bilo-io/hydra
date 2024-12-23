@@ -29,10 +29,10 @@ export const themes = {
         panel: '#004f7b',
     },
     custom: {
-        primary: '#ffeb3b',
+        primary: '#f00',
         text: '#303f9f',
         textLight: '#a4a8ff',
-        background: '#ffeb3b',
+        background: '#fdd',
         panel: '#303f9f',
     },
 };
