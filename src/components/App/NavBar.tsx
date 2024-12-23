@@ -15,12 +15,8 @@ export const AppNavBar: React.FC<AppNavBarProps> = () => {
 
     const links: INavLink[] = [
         {
-            name: 'Crypto',
-            path: '/currencies/crypto',
-        },
-        {
-            name: 'Fiat',
-            path: '/currencies/fiat'
+            name: 'Currencies',
+            path: '/currencies',
         },
         {
             name: 'Trade',

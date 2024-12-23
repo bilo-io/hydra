@@ -14,12 +14,8 @@ export const routes = [
         element: <Portfolio />
     },
     {
-        path: '/currencies/crypto',
-        element: <Currencies type={'crypto'} />
-    },
-    {
-        path: '/currencies/fiat',
-        element: <Currencies type={'fiat'} />
+        path: '/currencies',
+        element: <Currencies />
     },
     {
         path: '/trade',
