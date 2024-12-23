@@ -35,27 +35,22 @@ export const AppNavBar: React.FC<AppNavBarProps> = () => {
 
     return (
         <div
-            className="h-16 flex flex-row justify-between items-center"
+            className="w-48 flex flex-col justify-between items-center"
             style={{
-                width: '100vw',
+                height: '100vh',
                 // @ts-ignore
                 backgroundColor: theme.primary
             }}>
             <img
                 src={logoSvg}
                 width="24"
-                className="mx-4 cursor-pointer"
+                className="m-4 cursor-pointer"
                 onClick={() => navigate('/')}
             />
-            <div style={{
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'center',
-            }}>
+            <div className="flex flex-col justify-between items-start">
             {links.map((item: INavLink) => (
                 <div key={item.path} onClick={() => navigate(item.path)} style={{
-                    marginLeft: '1rem',
-                    marginRight: '1rem',
+                    margin: '1rem',
                     cursor: 'pointer',
                     color: '#FFF'
                 }}>
@@ -66,7 +61,7 @@ export const AppNavBar: React.FC<AppNavBarProps> = () => {
             <img
                 src={settingsSvg}
                 width="24"
-                className="mx-4 cursor-pointer"
+                className="m-4 cursor-pointer"
                 onClick={() => navigate('/settings')}
             />
         </div>

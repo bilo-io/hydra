@@ -11,6 +11,7 @@ import routes from './pages/routes';
 import AppNavBar from './components/App/NavBar';
 import { ThemeProvider } from './context/ThemeContext';
 import { ThemeStyles } from './context/ThemeStyles';
+import { View } from './components/Core';
 
 
 function App() {
@@ -19,14 +20,16 @@ function App() {
       <ThemeProvider>
         <ThemeStyles />
         <Router>
-          <AppNavBar />
-          <Routes>
-            {
-              routes.map((item: { path: string, element: React.ReactElement }) => (
-                <Route key={item.path} path={item.path} element={item.element} />
-              ))
-            }
-          </Routes>
+          <View className="w-full flex flex-row">
+            <AppNavBar />
+            <Routes>
+              {
+                routes.map((item: { path: string, element: React.ReactElement }) => (
+                  <Route key={item.path} path={item.path} element={item.element} />
+                ))
+              }
+            </Routes>
+          </View>
         </Router>
       </ThemeProvider>
     </div>

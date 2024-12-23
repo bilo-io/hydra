@@ -4,6 +4,8 @@ import TableCurrencies from './Table';
 import { fetchMarkets } from '../../apis/coingecko';
 import { useTranslation } from 'react-i18next';
 
+import { Text, View } from '../../components/Core'
+
 type CryptoCurrenciesProps = object
 
 export const Currencies: React.FC<CryptoCurrenciesProps> = () => {
@@ -25,10 +27,12 @@ export const Currencies: React.FC<CryptoCurrenciesProps> = () => {
     }
 
     return (
-        <>
-            <div>{t('currencies')}</div>
+        <View>
+            <Text className='text-xl font-semibold'>
+                {t('currencies')}
+            </Text>
             <TableCurrencies data={list} />
-        </>
+        </View>
     );
 };
 
