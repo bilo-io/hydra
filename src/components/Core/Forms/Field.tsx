@@ -3,13 +3,13 @@ import React from 'react';
 import { useController, Control } from 'react-hook-form';
 import Validation from './Validation';
 import Input from './Input';
-import Select from './Select';
+import Select, { ISelectOption } from './Select';
 
 interface FieldProps {
     name: string;
     control: Control<any>;
     type: 'select' | 'number' | 'text';
-    options?: { value: string; label: string }[]; // For select dropdown
+    options?: ISelectOption[]; // For select dropdown
     placeholder?: string;
     label?: string;
 }

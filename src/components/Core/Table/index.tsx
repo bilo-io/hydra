@@ -13,76 +13,10 @@ import {
 import Select from '../Forms/Select'
 import Button from '../Forms/Button'
 import Input from '../Forms/Input'
-// import { makeData } from './makeData'
-
-// type Person = {
-//     firstName: string
-//     lastName: string
-//     age: number
-//     visits: number
-//     status: string
-//     progress: number
-// }
-
-// const defaultColumns: ColumnDef<Person>[] = [
-//     {
-//         header: 'Name',
-//         footer: props => props.column.id,
-//         columns: [
-//             {
-//                 accessorKey: 'firstName',
-//                 cell: info => info.getValue(),
-//                 footer: props => props.column.id,
-//             },
-//             {
-//                 accessorFn: row => row.lastName,
-//                 id: 'lastName',
-//                 cell: info => info.getValue(),
-//                 header: () => <span>Last Name</span>,
-//                 footer: props => props.column.id,
-//             },
-//         ],
-//     },
-//     {
-//         header: 'Info',
-//         footer: props => props.column.id,
-//         columns: [
-//             {
-//                 accessorKey: 'age',
-//                 header: () => 'Age',
-//                 footer: props => props.column.id,
-//             },
-//             {
-//                 header: 'More Info',
-//                 columns: [
-//                     {
-//                         accessorKey: 'visits',
-//                         header: () => <span>Visits</span>,
-//                         footer: props => props.column.id,
-//                     },
-//                     {
-//                         accessorKey: 'status',
-//                         header: 'Status',
-//                         footer: props => props.column.id,
-//                     },
-//                     {
-//                         accessorKey: 'progress',
-//                         header: 'Profile Progress',
-//                         footer: props => props.column.id,
-//                     },
-//                 ],
-//             },
-//         ],
-//     },
-// ]
+import { paginationOptions } from '../../../utils/constants'
 
 const Table = ({ data, columns }: { data: any[], columns: ColumnDef<any>[], }) => {
-    // const [data] = React.useState(() => makeData(1000))
-    // const [columns] = React.useState<typeof defaultColumns>(() => [
-    //     ...defaultColumns,
-    // ])
-
-    const rerender = React.useReducer(() => ({}), {})[1]
+    // const rerender = React.useReducer(() => ({}), {})[1]
 
     // Create the table and pass your options
     const table = useReactTable({
@@ -209,12 +143,8 @@ const Table = ({ data, columns }: { data: any[], columns: ColumnDef<any>[], }) =
                 </span>
                 <Select
                     value={table.getState().pagination.pageSize}
-                    options={
-                        [10, 20, 30, 40, 50].map(pageSize => ({
-                            label: pageSize.toString(),
-                            value: pageSize
-                        }))}
-                    onChange={e => {
+                    options={paginationOptions}
+                    onChange={(e: { target: { value: any } }) => {
                         table.setPageSize(Number(e.target.value))
                     }}
                 />

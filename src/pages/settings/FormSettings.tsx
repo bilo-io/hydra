@@ -7,6 +7,8 @@ import Field from '../../components/Core/Forms/Field'; // Assuming the Field com
 import ThemePicker from '../../components/Config/ThemePicker';
 import Button from '../../components/Core/Forms/Button';
 import LanguagePicker from '../../components/Config/LanguagePicker';
+import { fiatCurrencyOptions } from '../../utils/constants';
+import { Divider } from '../../components/Core';
 
 // Validation schema with Yup
 const schema = Yup.object({
@@ -35,29 +37,20 @@ const MyForm = () => {
                     control={control}
                     type="select"
                     label="Base Currency"
-                    options={[
-                        { value: 'usd', label: 'USD' },
-                        { value: 'zar', label: 'ZAR' },
-                        { value: 'euro', label: 'Euro' }
-                    ]}
+                    options={fiatCurrencyOptions}
                 />
             </div>
 
-            <br />
-            <hr />
-            <br />
+            <Divider />
 
             <LanguagePicker />
             
-            <br />
-            <hr />
-            <br />
-
+            <Divider />
+            
             <ThemePicker />
-            <br />
-            <hr />
-            <br />
-
+            
+            <Divider />
+            
             {/* @ts-ignore */}
             {errors.theme?.value === 'custom' && (
                 <div>

@@ -2,19 +2,24 @@
 import React from 'react';
 import { useTheme } from '../../../context/ThemeContext';
 
-interface SelectProps {
-    options: { value: string; label: string }[] | undefined,
-    placeholder?: string,
-    value: string | number,
-    // props: any
+export interface ISelectOption {
+    label: string;
+    value: string | number;
 }
 
-export const Select: React.FC<SelectProps> = ({ options, placeholder, value, ...props }) => {
+interface SelectProps {
+    options: ISelectOption[] | undefined,
+    onChange: React.ChangeEventHandler<HTMLSelectElement> | undefined,
+    placeholder?: string,
+    value: string | number,
+}
+
+export const Select: React.FC<SelectProps> = ({ options, placeholder, value, onChange, ...props }) => {
     const { theme } = useTheme();
 
     return (
         // @ts-ignore
-        <select id={props.name}>
+        <select id={props.name} onChange={onChange}>
             <option value={value} disabled>
                 {placeholder || 'select an option'}
             </option>
