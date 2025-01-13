@@ -1,4 +1,3 @@
-import React from 'react';
 import {
     PieChart,
     Pie,
@@ -40,7 +39,7 @@ const PieChartComponent: React.FC<PieChartComponentProps> = ({
                     fill="#8884d8"
                     label
                 >
-                    {data.map((entry, index) => (
+                    {data.map((_, index) => (
                         <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
                     ))}
                 </Pie>
