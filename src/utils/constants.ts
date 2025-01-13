@@ -1,4 +1,4 @@
-import { ISelectOption } from "../components/Core"
+import { ISelectOption } from "../components/Core/Forms/Select"
 
 export const fiatCurrencyOptions: ISelectOption[] = [
     { value: 'usd', label: 'USD' },

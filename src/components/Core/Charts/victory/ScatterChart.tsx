@@ -1,4 +1,3 @@
-import React from 'react';
 import { VictoryScatter, VictoryChart, VictoryTheme, VictoryAxis } from 'victory';
 
 interface ScatterChartProps<T> {

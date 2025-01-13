@@ -1,4 +1,3 @@
-import React from 'react';
 import { VictoryLine, VictoryChart, VictoryLegend, VictoryTheme, VictoryAxis } from 'victory';
 
 interface LineChartProps<T> {

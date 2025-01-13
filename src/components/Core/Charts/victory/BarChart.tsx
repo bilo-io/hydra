@@ -1,4 +1,3 @@
-import React from 'react';
 import { VictoryBar, VictoryChart, VictoryTheme, VictoryAxis } from 'victory';
 
 interface BarChartProps<T> {

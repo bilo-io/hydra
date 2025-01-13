@@ -1,4 +1,3 @@
-import React from 'react';
 import { VictoryArea, VictoryChart, VictoryTheme, VictoryAxis } from 'victory';
 
 // Define the generic type for the data

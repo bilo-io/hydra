@@ -1,4 +1,3 @@
-import React from 'react';
 import { VictoryArea, VictoryChart, VictoryPolarAxis, VictoryTheme } from 'victory';
 
 interface RadarChartProps<T> {
