@@ -47,7 +47,7 @@ export const AppNavBar: React.FC<AppNavBarProps> = () => {
 
     return (
         <div
-            className="w-16 hover:w-48 transition-all duration-200 ease-in-out flex flex-col justify-between items-center"
+            className="w-16 hover:w-48 transition-all duration-200 ease-in-out flex flex-col justify-between items-start"
             onMouseEnter={onHoverStart}
             onMouseLeave={onHoverEnd}
             style={{
@@ -55,33 +55,46 @@ export const AppNavBar: React.FC<AppNavBarProps> = () => {
                 // @ts-ignore
                 backgroundColor: theme.primary
             }}>
-            <img
-                src={logoSvg}
-                width="24"
-                className="m-4 cursor-pointer"
-                onClick={() => navigate('/')}
-            />
-            <div className="flex flex-col justify-between items-start">
-            {links.map((item: INavLink) => (
-                <div key={item.path} onClick={() => navigate(item.path)}
-                    className='flex flex-row'
-                    style={{
-                    margin: '1rem',
-                    cursor: 'pointer',
+            <div className='flex flex-row items-center'
+                style={{
                     color: '#FFF'
                 }}>
-                    <Icon name={item.icon as string} className='size-6'/>
-                    &nbsp;
-                    {isHovered ? item.name : ''}
-                </div>
-            ))}
+                <img
+                    src={logoSvg}
+                    width="24"
+                    className="m-4 cursor-pointer"
+                    onClick={() => navigate('/')}
+                />
+                {isHovered ? 'Portfolio' : ''}
             </div>
-            <img
-                src={settingsSvg}
-                width="24"
-                className="m-4 cursor-pointer"
-                onClick={() => navigate('/settings')}
-            />
+
+            <div className="flex flex-col justify-between items-start">
+                {links.map((item: INavLink) => (
+                    <div key={item.path} onClick={() => navigate(item.path)}
+                        className='flex flex-row'
+                        style={{
+                            margin: '1rem',
+                            cursor: 'pointer',
+                            color: '#FFF'
+                        }}>
+                        <Icon name={item.icon as string} className='size-6' />
+                        &nbsp;
+                        {isHovered ? item.name : ''}
+                    </div>
+                ))}
+            </div>
+            <div className='flex flex-row items-center'
+                style={{
+                    color: '#FFF'
+                }}>
+                <img
+                    src={settingsSvg}
+                    width="24"
+                    className="m-4 cursor-pointer"
+                    onClick={() => navigate('/settings')}
+                />
+                {isHovered ? 'Settings' : ''}
+            </div>
         </div>
     );
 };
