@@ -31,7 +31,7 @@ const ScatterChartComponent: React.FC<ScatterChartComponentProps> = ({
     grid = true,
     xAxisKey,
     yAxisKey,
-    sizeKey,
+    // sizeKey,
 }) => {
     return (
         <ResponsiveContainer width="100%" height={300}>
@@ -43,7 +43,7 @@ const ScatterChartComponent: React.FC<ScatterChartComponentProps> = ({
                         dataKey={point.key}
                         fill={point.color}
                         shape="circle"
-                        size={sizeKey ? (pointData) => pointData[sizeKey] : 10}
+                        // size={sizeKey ? (pointData) => pointData[sizeKey] : 10}
                     />
                 ))}
                 {grid && <CartesianGrid stroke="#ccc" />}
