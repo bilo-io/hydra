@@ -2,6 +2,7 @@
 import { lazy } from 'react'
 
 const Currencies = lazy(() => import("./currencies"));
+const Charts = lazy(() => import('./charts'))
 const Portfolio = lazy(() => import("./Portfolio"));
 const Settings = lazy(() => import( "./settings"))
 const Trade = lazy(() => import( './trade'))
@@ -28,6 +29,10 @@ export const routes = [
     {
         path: '/settings',
         element: <Settings />
+    },
+    {
+        path: '/charts',
+        element: <Charts />
     },
     {
         path: '*',

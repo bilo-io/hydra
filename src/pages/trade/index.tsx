@@ -11,6 +11,8 @@ export const Trade: React.FC<TradeProps> = () => {
     return (
         <View isPage className='w-full'>
             <Text className='text-xl font-semibold'>{t('trade')}</Text>
+            <View flexRow className=''>
+            </View>
         </View>
     );
 };

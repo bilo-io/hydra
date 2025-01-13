@@ -37,6 +37,11 @@ export const AppNavBar: React.FC<AppNavBarProps> = () => {
             name: t('transactions'),
             path: '/transactions',
             icon: 'ListBullet',
+        },
+        {
+            name: t('charts'),
+            path: '/charts',
+            icon: 'ChartPie'
         }
     ]
 

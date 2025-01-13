@@ -35,7 +35,7 @@ export const View = React.forwardRef<HTMLDivElement, ViewProps>(({
             ref={ref} // Attach the ref to the div
             style={style}
             className={
-                `${isPage ? `p-4` : ''}
+                `${isPage ? `p-4 h-full overflow-y-auto` : ''}
                 ${isPageContent ? `page-content` : ''}
                 ${flex ? 'flex' : ''}
                 ${flexRow ? 'flex flex-row' : ''}
