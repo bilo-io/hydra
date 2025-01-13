@@ -1,4 +1,3 @@
-import React from 'react';
 import LineChart from './LineChart';
 import AreaChart from './AreaChart';
 import BarChart from './BarChart';
