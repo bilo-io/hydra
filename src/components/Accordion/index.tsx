@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import FAIcon from 'react-fontawesome'
-import PropTypes from 'prop-types'
 
 const Accordion = ({
   children,
@@ -73,9 +72,4 @@ const Accordion = ({
   )
 }
 
-Accordion.propTypes = {
-  isOpen: PropTypes.bool,
-  isOpenDefault: PropTypes.bool,
-  children: PropTypes.any
-}
 export default Accordion

@@ -64,9 +64,7 @@ export const News = () => {
     <div>
       {keywords.map((keyword) =>
         articles?.[keyword]?.map((article: any, i: number) => (
-          <>
-            <ArticleCard key={i} article={article} />
-          </>
+          <ArticleCard key={`${keyword}-${i}`} article={article} />
         ))
       )}
     </div>

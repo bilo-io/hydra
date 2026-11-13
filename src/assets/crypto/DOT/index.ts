@@ -1,5 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import icon from './DOT-icon.svg'
+import whitePaper from './DOT-whitepaper.pdf'
 
 export default {
   id: 'polkadot',
@@ -7,7 +8,7 @@ export default {
   code: 'DOT',
   symbol: 'DOT',
   website: 'https://dogecoin.com/',
-  whitePaper: require('./DOT-whitepaper.pdf'),
+  whitePaper,
   whitepaperUrl: '',
   youtube: 'https://www.youtube.com/watch?v=qVMdq9pDiuQ',
   color: '#E6007A',

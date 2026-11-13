@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router'
 
 import Login from './pages/Login'
 import Products from './pages/Products'
@@ -28,21 +28,17 @@ const App = () => {
         <AppMenu isOpen={isAppMenuOpen} isDark onToggle={toggleAppMenu} />
 
         <div className="page">
-          <Switch>
-            <Route
-              exact
-              path={'/'}
-              render={() => <Redirect to={'/stats'} />}
-            />
+          <Routes>
+            <Route path="/" element={<Navigate to="/stats" replace />} />
 
-            <Route path="/login" component={Login} />
-            <Route path="/products" component={Products} />
-            <Route exact path="/explore" component={Explore} />
-            <Route path="/explore/:id" component={ExploreDetails} />
-            <Route path="/stats" component={Stats} />
-            <Route path="/news" component={News} />
-            <Route path="*" component={Error} />
-          </Switch>
+            <Route path="/login/*" element={<Login />} />
+            <Route path="/products/*" element={<Products />} />
+            <Route path="/explore" element={<Explore />} />
+            <Route path="/explore/:id/*" element={<ExploreDetails />} />
+            <Route path="/stats/*" element={<Stats />} />
+            <Route path="/news/*" element={<News />} />
+            <Route path="*" element={<Error />} />
+          </Routes>
         </div>
       </div>
     </Router>

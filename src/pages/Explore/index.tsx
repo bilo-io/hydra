@@ -1,13 +1,13 @@
 import Async from 'components/Async'
 import React, { useState, useEffect } from 'react'
 
-import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router'
 import { fetchCoins } from 'services/coingecko'
 import { CoinCard } from 'components/Cards/CoinCard'
 import { currency } from 'utils/locale'
 
 function Explore () {
-  const history = useHistory()
+  const navigate = useNavigate()
   const [coins, setCoins] = useState<any[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [, setError] = useState<any>(null)
@@ -63,7 +63,7 @@ function Explore () {
               key={coin.id}
               item={coin}
               currency={currency}
-              onClick={(coin: any) => history.push(`/explore/${coin?.id}`)}
+              onClick={(coin: any) => navigate(`/explore/${coin?.id}`)}
             />
           ))
         }

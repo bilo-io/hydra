@@ -1,8 +1,8 @@
 import React from 'react'
-import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router'
 
 export const Error = () => {
-  const history = useHistory()
+  const navigate = useNavigate()
 
   return (
     <div className="w-fit-content mx-auto text-center">
@@ -19,7 +19,7 @@ export const Error = () => {
       <br />
       <br />
       <div>
-        <button className="error solid" onClick={() => history?.push?.('/')}>
+        <button className="error solid" onClick={() => navigate('/')}>
                   Return to safety
         </button>
       </div>

@@ -44,7 +44,7 @@ export const UI3Spin = (prop: any) => (
   <div />
 )
 
-export const Loader = ({ type, color, style }: { type: string, color?: string, style?: any }) => {
+export const Loader = ({ type, color = '#00adee', style }: { type: string, color?: string, style?: any }) => {
   const loaderType = type || LoaderType.SPINNER
 
   switch (loaderType) {
@@ -66,8 +66,4 @@ export const Loader = ({ type, color, style }: { type: string, color?: string, s
 
     return <div>Loading...</div>
   }
-}
-
-Loader.defaultProps = {
-  color: '#00adee'
 }

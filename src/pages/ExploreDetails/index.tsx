@@ -8,11 +8,9 @@ import Async from 'components/Async'
 import Accordion from 'components/Accordion'
 import HTML from 'components/HTML'
 
-function ExploreDetails ({ storybook }: { storybook: any }) {
+function ExploreDetails ({ storybook }: { storybook?: any }) {
   // const history = useHistory();
-  // @ts-ignore
-  let { id } = useParams?.()
-  if (!id) { id = storybook.id }
+  const id: string = useParams().id || storybook?.id
 
   const [loading, setLoading] = useState<boolean>(true)
   const [, setError] = useState<any>()

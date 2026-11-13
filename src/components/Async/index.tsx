@@ -11,7 +11,7 @@ import ErrorBoundary from '../ErrorBoundary'
 // #region Assets & Data
 // #endregion
 
-const Async = ({ onMount, margin, isLoading, children, loader }: any) => {
+const Async = ({ onMount = noop, margin = '0rem', isLoading, children, loader }: any) => {
   useEffect(() => {
     onMount()
   }, [])
@@ -35,11 +35,6 @@ const Async = ({ onMount, margin, isLoading, children, loader }: any) => {
       </ErrorBoundary>
     </>
   )
-}
-
-Async.defaultProps = {
-  onMount: noop,
-  margin: '0rem'
 }
 
 export default Async

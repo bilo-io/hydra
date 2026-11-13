@@ -1,6 +1,6 @@
 import React from 'react'
 import FAIcon from 'react-fontawesome'
-import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router'
 import pkg from '../../../package.json'
 import hydraLogo from 'assets/img/hydra-icon.png'
 
@@ -14,8 +14,8 @@ function AppMenu (
     isDark: boolean;
     onToggle: Function;
     }) {
-  const history = useHistory()
-  const goTo = (path: string) => () => history.push(path)
+  const navigate = useNavigate()
+  const goTo = (path: string) => () => navigate(path)
   const noop = () => {}
 
   const dividerStyle = {

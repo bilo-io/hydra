@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import FAIcon from 'react-fontawesome'
 import appLogo from 'assets/img/hydra-icon.png'
-import { useHistory } from 'react-router'
+import { useLocation, useNavigate } from 'react-router'
 import useWindowSize from 'hooks/use-window-size'
 
 export const Navbar = ({ onToggle, type }: { onToggle: Function, type?: string }) => {
-  const history = useHistory()
-  const goTo = (path: string) => history?.push(path)
-  const [activePath, setActivePath] = useState<any>(null)
+  const navigate = useNavigate()
+  const goTo = (path: string) => navigate(path)
+  const activePath = useLocation().pathname
   const windowSize = useWindowSize()
-
-  useEffect(() => {
-    history?.listen?.(() => setActivePath(history?.location?.pathname))
-  })
 
   const items = [
     {
@@ -88,10 +84,6 @@ export const Navbar = ({ onToggle, type }: { onToggle: Function, type?: string }
       }
     </div>
   )
-}
-
-Navbar.defaultProps = {
-  className: 'mobile'
 }
 
 export default Navbar
