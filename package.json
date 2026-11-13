@@ -16,6 +16,7 @@
     "dompurify": "^2.3.0",
     "highcharts": "^9.1.2",
     "highcharts-react-official": "^3.2.3",
+    "prop-types": "^15.8.1",
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "react-fontawesome": "^1.7.1",
@@ -33,7 +34,7 @@
     "test": "vitest",
     "lint": "eslint",
     "lint:fix": "eslint --fix src/",
-    "cypress": "$(npm bin)/cypress open",
+    "cypress": "cypress open",
     "chromatic": "npx chromatic --project-token=$CHROMATIC_PROJECT_TOKEN",
     "storybook": "storybook dev -p 9001",
     "build-storybook": "storybook build",
@@ -41,18 +42,6 @@
     "stylelint:scss": "npx stylelint \"**/*.scss\""
   },
   "sasslintConfig": "./.sass-lint.yml",
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "devDependencies": {
     "@storybook/addon-docs": "^10.6.7",
     "@storybook/addon-links": "^10.6.7",

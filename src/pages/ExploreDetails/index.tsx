@@ -10,7 +10,7 @@ import HTML from 'components/HTML'
 
 function ExploreDetails ({ storybook }: { storybook?: any }) {
   // const history = useHistory();
-  const id: string = useParams().id || storybook.id
+  const id: string = useParams().id || storybook?.id
 
   const [loading, setLoading] = useState<boolean>(true)
   const [, setError] = useState<any>()

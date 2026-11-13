@@ -6,7 +6,7 @@ export default defineConfig({
   resolve: { tsconfigPaths: true },
   envPrefix: ['VITE_', 'REACT_APP_'],
   server: { port: 3000 },
-  build: { outDir: 'build' },
+  build: { outDir: 'build', target: 'es2020' },
   test: {
     environment: 'jsdom',
     globals: true,
