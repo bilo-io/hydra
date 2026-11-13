@@ -2,7 +2,7 @@ import React from 'react'
 import { withCommas } from 'utils/format-number'
 
 const PriceChange = (
-  { percentage, value, symbol, isStacked }
+  { percentage = 0, value = 0, symbol = '$', isStacked = false }
     :
   { percentage: number, value?: number, symbol?: string; isStacked?: boolean; }
 ) => {
@@ -51,13 +51,6 @@ const PriceChange = (
         )}
     </div>
   )
-}
-
-PriceChange.defaultProps = {
-  value: 0,
-  percentage: 0,
-  symbol: '$',
-  isStacked: false
 }
 
 export default PriceChange

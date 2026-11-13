@@ -90,8 +90,4 @@ export const Navbar = ({ onToggle, type }: { onToggle: Function, type?: string }
   )
 }
 
-Navbar.defaultProps = {
-  className: 'mobile'
-}
-
 export default Navbar
