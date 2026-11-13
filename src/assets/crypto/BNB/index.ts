@@ -1,5 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import icon from './BNB-icon.svg'
+import whitePaper from './BNB-whitepaper.pdf'
 
 export default {
   id: 'binancecoin',
@@ -7,7 +8,7 @@ export default {
   code: 'BNB',
   symbol: '₮',
   website: 'https://basicattentiontoken.org/',
-  whitePaper: require('./BNB-whitepaper.pdf'),
+  whitePaper,
   whitepaperUrl: '',
   youtube: 'https://www.youtube.com/watch?v=yKAJDZ92PeU',
   color: '#F3BA2F',
