@@ -1,5 +1,6 @@
 import js from '@eslint/js'
 import globals from 'globals'
+import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
@@ -8,7 +9,8 @@ export default tseslint.config(
   { ignores: ['dist'] },
   {
     extends: [
-      'plugin:react/recommended',
+      react.configs.flat.recommended,
+      react.configs.flat['jsx-runtime'],
       js.configs.recommended, 
       ...tseslint.configs.recommended
     ],
@@ -17,12 +19,17 @@ export default tseslint.config(
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    settings: {
+      react: { version: 'detect' },
+    },
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
+      // TypeScript checks props; React 19 ignores propTypes
+      'react/prop-types': 'off',
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
