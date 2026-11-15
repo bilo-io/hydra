@@ -1,30 +1,28 @@
-import React from 'react'
-import { useNavigate } from 'react-router'
+import React from 'react';
+import { useNavigate } from 'react-router';
+import { AlertTriangle } from 'lucide-react';
 
 export const Error = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
-    <div className="w-fit-content mx-auto text-center">
-      <img
-        style={{
-          width: '6rem',
-          height: '6rem',
-          marginTop: '4rem',
-          marginBottom: '4rem'
-        }}
-        src={'https://www.freeiconspng.com/thumbs/error/a-red-error-exclamation-sign-meaningful-official-round-26.png'} alt="error-page"
-      />
-      <h4 style={{ fontStyle: 'italic' }}>An unexpected error ocurred ...</h4>
-      <br />
-      <br />
-      <div>
-        <button className="error solid" onClick={() => navigate('/')}>
-                  Return to safety
+    <div className="flex min-h-[75vh] items-center justify-center p-6">
+      <div className="surface max-w-md space-y-4 p-8 text-center">
+        <AlertTriangle className="mx-auto h-12 w-12 text-amber-500" />
+        <h2 className="text-lg font-bold text-foreground">An unexpected error occurred...</h2>
+        <p className="text-xs text-muted-foreground">
+          The requested route could not be found or is temporarily unavailable.
+        </p>
+        <button
+          type="button"
+          onClick={() => navigate('/portfolio')}
+          className="inline-flex items-center justify-center rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+        >
+          Return to safety
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Error
+export default Error;

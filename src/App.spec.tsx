@@ -20,6 +20,18 @@ describe('App', () => {
       </Provider>
     )
     expect(screen.getAllByText('Explore').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Portfolio').length).toBeGreaterThan(0)
     expect(screen.getAllByText('Bitcoin').length).toBeGreaterThan(0)
+  })
+
+  it('renders the merged portfolio view on root route', () => {
+    window.history.pushState({}, '', '/')
+    render(
+      <Provider store={store}>
+        <App />
+      </Provider>
+    )
+    expect(screen.getAllByText('Total Portfolio Value').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Holdings Breakdown').length).toBeGreaterThan(0)
   })
 })

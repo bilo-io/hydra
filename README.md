@@ -1,8 +1,40 @@
 # Hydra
 
-A Data Science tool for numerical analysis of Open APIs that provide data.
+![Hydra — Unified Crypto Portfolio, Trade & Analytics](public/og.jpg)
+
+A unified crypto portfolio, market explorer, multi-asset trading desk, live statistics, news, and multi-engine chart analytics application powered by **React 19**, **Vite 8**, **TypeScript**, and **Midnite UI**.
 
 [![DepShield Badge](https://depshield.sonatype.org/badges/bilo-io/hydra/depshield.svg)](https://depshield.github.io)
+
+## Routes & Features
+
+### Portfolio & Trading
+- `/` & `/portfolio` — Multi-asset wealth desk with allocation breakdown, 24h P&L, and holdings table
+- `/currencies` — Currency directory and asset converter
+- `/trade` — Spot & bundle trading execution desk
+- `/transactions` — Execution ledger with filtering and export
+- `/charts` — Multi-engine interactive chart analytics (Recharts, Chart.js, Victory)
+
+### Markets & Insights
+- `/explore` & `/explore/:id` — Crypto asset directory with live search, detail telemetry, and candlestick/line charts
+- `/stats` — Comparative multi-coin Highcharts telemetry (price, volume, market cap)
+- `/products` — Financial products and curated market offerings
+- `/news` — Market news feed
+
+### Account & Preferences
+- `/profile` — Account identity & profile overview
+- `/settings` — Theme (`light`, `dark`, `system`, `time`), language (`i18next`), and preferences
+- `/login` — Authentication view
+
+## Development
+
+```sh
+corepack yarn install
+corepack yarn dev        # Vite dev server
+corepack yarn typecheck  # TypeScript check
+corepack yarn test --run # Vitest unit & render tests
+corepack yarn build      # Production build
+```
 
 ## CI
 
@@ -26,12 +58,3 @@ Other Services:
 
 - [Top 100 Cryptocurrency List](https://coinnws.com/cryptocurrency-list/)
 - [Whitepaper Database](https://coinnws.com/whitepaper-database/)
-
-## Git workflow
-
-> TODO: document git workflows: "Feature branch" & "Gitflow"
-
-## Utils
-
-- [https://app.snyk.io/org/bilo-io/projects](https://app.snyk.io/org/bilo-io/projects)
-- [https://topology.conformal.link/setup?installation_id=18047574&setup_action=install](https://topology.conformal.link/setup?installation_id=18047574&setup_action=install)

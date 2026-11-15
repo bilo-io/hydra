@@ -1,27 +1,74 @@
-body {
-  margin: 0;
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    'Roboto',
-    'Oxygen',
-    'Ubuntu',
-    'Cantarell',
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Midnite UI design tokens, brand ramp and static background patterns (vendored). */
+@import './vendor/midnite-ui/styles/tokens.css';
+@import './vendor/midnite-ui/styles/brand.css';
+@import './vendor/midnite-ui/styles/bg-patterns.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --glow-1: 217 84% 50%;
+  --glow-2: 262 70% 55%;
+  --glow-3: 320 70% 52%;
+  --glow-4: 173 75% 38%;
+  --glow-strength: 0.24;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-code {
-  font-family:
-    source-code-pro,
-    Menlo,
-    Monaco,
-    Consolas,
-    'Courier New',
-    monospace;
+.dark {
+  --glow-1: 217 95% 60%;
+  --glow-2: 262 90% 66%;
+  --glow-3: 320 85% 62%;
+  --glow-4: 173 80% 50%;
+  --glow-strength: 0.42;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+    margin: 0;
+  }
+}
+
+@layer components {
+  .ambient-wash {
+    background:
+      radial-gradient(56rem 36rem at 12% -8%, hsl(var(--glow-1) / 0.12), transparent 60%),
+      radial-gradient(48rem 32rem at 92% 8%, hsl(var(--glow-3) / 0.09), transparent 60%),
+      radial-gradient(64rem 44rem at 50% 115%, hsl(var(--glow-2) / 0.10), transparent 60%);
+  }
+
+  .surface {
+    @apply rounded-2xl border border-border/80 bg-card/85 text-card-foreground shadow-sm;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-background/70 px-2.5 py-0.5 text-xs font-medium text-muted-foreground transition-colors;
+  }
+
+  .text-gradient {
+    background-image: linear-gradient(100deg, var(--brand-rainbow-ramp));
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: mui-rainbow-drift 14s linear infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

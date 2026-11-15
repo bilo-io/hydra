@@ -4,10 +4,12 @@ import React, {
   useEffect
 } from 'react'
 import Highcharts from 'highcharts'
-import HighchartsReact from 'highcharts-react-official'
+import HighchartsReactPkg from 'highcharts-react-official'
 import theme from './utils/theme'
 import { periods, getTickInterval } from './utils/misc'
 // #endregion
+
+const HighchartsReact = (HighchartsReactPkg as any)?.default || HighchartsReactPkg
 
 // @ts-ignore
 Highcharts.theme = theme

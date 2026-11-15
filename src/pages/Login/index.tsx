@@ -1,62 +1,39 @@
-import React from 'react'
-import appIcon from 'assets/img/hydra-icon.png'
+import React from 'react';
+import { useNavigate } from 'react-router';
 
-export function Login () {
-  const authProviders = [
-    {
-      name: 'Google',
-      background: '#D74638',
-      color: '#fff',
-      img: 'https://www.designbust.com/download/1016/png/google_logo_png_transparent512.png'
-
-    },
-    {
-      name: 'Facebook',
-      background: '#3A4F93',
-      color: '#fff',
-      img: 'https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512'
-    }
-  ]
+export function Login() {
+  const navigate = useNavigate();
 
   return (
-    <div className="flex-col" style={{ maxWidth: '20em', margin: 'auto' }}>
-      <img src={appIcon} style={{ width: '6rem', height: 'auto', margin: 'auto', marginTop: '2rem' }} />
+    <div className="flex min-h-[80vh] items-center justify-center p-6">
+      <div className="surface w-full max-w-md space-y-6 p-8 text-center">
+        <img src="/logo.svg" alt="Hydra" className="mx-auto h-12 w-auto" />
+        <div>
+          <h1 className="text-xl font-bold text-foreground">Sign in to Hydra</h1>
+          <p className="mt-1 text-xs text-muted-foreground">
+            Access your unified portfolio, trading desk, and analytics workspace.
+          </p>
+        </div>
 
-      <br />
-      <br />
-
-      <div className="divider horizontal" />
-
-      <div style={{ textAlign: 'center', width: '100%', marginTop: '2rem', marginBottom: '2rem' }}>Log in</div>
-
-      <div className="divider horizontal" />
-
-      <br />
-      <br />
-
-      <div className="flex-col">
-        {
-          authProviders.map((provider, i) => (
-            <div key={i}
-              onClick={() => console.log('Login with ', provider.name)}
-              style={{
-                backgroundColor: provider.background,
-                color: provider.color,
-                borderRadius: '6rem',
-                minWidth: '16em',
-                maxWidth: '20rem',
-                margin: 'auto',
-                marginBottom: '1rem',
-                cursor: 'pointer'
-              }} className="flex-row">
-              <img src={provider.img} style={{ width: '2rem', height: '2rem', margin: '1rem' }} alt={provider.name} />
-              <div style={{ lineHeight: '4rem', color: provider.color }}>Sign in with {provider.name}</div>
-            </div>
-          ))
-        }
+        <div className="space-y-3">
+          <button
+            type="button"
+            onClick={() => navigate('/portfolio')}
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+          >
+            Continue with SSO / Passkey
+          </button>
+          <button
+            type="button"
+            onClick={() => navigate('/explore')}
+            className="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-card px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+          >
+            Browse Markets as Guest
+          </button>
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;

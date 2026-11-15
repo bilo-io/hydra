@@ -1,0 +1,128 @@
+/*
+  @bilo-io/ui/brand.css — the midnite wordmark and crescent, as the midnite
+  website wears them (midnite-studio `packages/website`). Import it once, after
+  `@bilo-io/ui/styles`; `<Wordmark>` and `<MidniteLogo>` need nothing else.
+
+  Plain CSS rather than Tailwind utilities, so a consumer whose Tailwind does not
+  scan this package still gets the treatment.
+
+  The face is Damion (SIL OFL 1.1 — `brand/OFL.txt` ships beside it), the
+  website's open-licence stand-in for the desktop app's personal-use-only Quick
+  Kiss. Never ship Quick Kiss from this package: it is public.
+*/
+@font-face {
+  font-family: 'Damion';
+  src: url('./brand/Damion-latin.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* The website's six-stop ramp; the light theme's is a darker re-cut so every
+   stop holds 4.5:1 on a light background. The ramp repeats stop 0 so the drift
+   below tiles without a seam. */
+:root {
+  --font-brand: 'Damion', cursive;
+  --brand-rainbow-0: hsl(217 84% 43%);
+  --brand-rainbow-1: hsl(235 58% 50%);
+  --brand-rainbow-2: hsl(258 62% 48%);
+  --brand-rainbow-3: hsl(271 65% 46%);
+  --brand-rainbow-4: hsl(285 56% 40%);
+  --brand-rainbow-5: hsl(308 58% 42%);
+  --brand-glow: hsl(258 62% 52%);
+}
+
+.dark {
+  --brand-rainbow-0: hsl(217 95% 58%);
+  --brand-rainbow-1: hsl(235 88% 68%);
+  --brand-rainbow-2: hsl(258 90% 66%);
+  --brand-rainbow-3: hsl(271 91% 65%);
+  --brand-rainbow-4: hsl(285 80% 60%);
+  --brand-rainbow-5: hsl(308 78% 58%);
+  --brand-glow: hsl(258 82% 62%);
+}
+
+:root {
+  --brand-rainbow-ramp: var(--brand-rainbow-0), var(--brand-rainbow-1), var(--brand-rainbow-2),
+    var(--brand-rainbow-3), var(--brand-rainbow-4), var(--brand-rainbow-5), var(--brand-rainbow-0);
+}
+
+.mui-wordmark {
+  white-space: nowrap;
+  line-height: 1;
+  user-select: none;
+}
+
+/* "Midnite": the brand face, 1.35em of the parent. `inline-block` gives the
+   clipped gradient one box (an inline box gets one per line fragment), and the
+   right padding is headroom for Damion's final `e`, whose ink runs 0.104em past
+   its advance — without it the clip cuts the tail off. */
+.mui-wordmark-brand {
+  display: inline-block;
+  padding-right: 0.15em;
+  font-family: var(--font-brand);
+  font-size: 1.35em;
+  font-weight: 400;
+  letter-spacing: 0.025em;
+}
+
+/* The qualifier ("UI", "Studio") stays in the UI face; beside the rainbow it
+   sits one muted step back, under `tone="inherit"` it takes the parent paint. */
+.mui-wordmark-product {
+  margin-left: 0.08em;
+  font-weight: 500;
+}
+
+.mui-wordmark-muted {
+  color: hsl(var(--muted-foreground));
+}
+
+/* <MidniteLogo>: the crescent beside the wordmark. */
+.mui-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+/* The ramp clipped to the glyphs, drifting slowly. `drop-shadow`, not
+   `text-shadow`: the text is transparent, and text-shadow paints from colour. */
+.mui-rainbow-text {
+  background-image: linear-gradient(100deg, var(--brand-rainbow-ramp));
+  background-size: 200% 100%;
+  background-position: 0 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: mui-rainbow-drift 18s linear infinite;
+}
+
+.mui-brand-glow {
+  filter: drop-shadow(0 0 2px color-mix(in srgb, var(--brand-glow) 55%, transparent))
+    drop-shadow(0 0 10px color-mix(in srgb, var(--brand-glow) 40%, transparent));
+}
+
+/* The crescent: the website's mark, a black crescent on a white disc. Inverted
+   under the dark theme, as the website does, rather than kept as two files. Not
+   a mask: the disc is opaque, so a mask would flatten it to a plain circle. */
+.mui-logo-mark {
+  display: inline-block;
+  flex-shrink: 0;
+  background: url('./brand/midnite-logo.png') center / contain no-repeat;
+}
+
+.dark .mui-logo-mark {
+  filter: invert(1);
+}
+
+@keyframes mui-rainbow-drift {
+  to {
+    background-position: 200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mui-rainbow-text {
+    animation: none;
+    background-size: auto;
+  }
+}
