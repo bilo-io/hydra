@@ -1,0 +1,12 @@
+{
+    "cancel": "Annuler",
+    "currencies": "Devises",
+    "greeting": "Bonjour, {{name}}!",
+    "name": "Nom",
+    "portfolio": "Portefeuille",
+    "settings": "Paramètres",
+    "submit": "Soumettre",
+    "trade": "Commerce",
+    "transactions": "Transactions",
+    "welcome": "Bienvenue dans notre application!"
+}
