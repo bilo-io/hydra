@@ -2,11 +2,15 @@
   "name": "hydra",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "engines": {
     "node": ">=24"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
+    "@hookform/resolvers": "^3.9.1",
     "@reduxjs/toolkit": "^2.14.0",
+    "@tanstack/react-table": "^8.20.6",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
@@ -14,19 +18,31 @@
     "@types/node": "^22.19.1",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
-    "axios": "^0.21.1",
-    "clsx": "^1.1.1",
+    "axios": "^1.7.9",
+    "chart.js": "^4.4.7",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "dompurify": "^2.3.0",
     "highcharts": "^9.1.2",
     "highcharts-react-official": "^3.2.3",
+    "i18next": "^24.2.0",
+    "lucide-react": "^1.17.0",
     "prop-types": "^15.8.1",
     "react": "19.3.1",
+    "react-chartjs-2": "^5.3.1",
     "react-dom": "19.3.1",
     "react-fontawesome": "^1.7.1",
+    "react-hook-form": "^7.54.2",
+    "react-i18next": "^15.2.0",
     "react-redux": "^9.3.1",
     "react-router": "^7.18.5",
+    "react-router-dom": "^7.18.5",
     "react-table": "^7.8.0",
-    "typescript": "~5.9.3"
+    "recharts": "^2.15.4",
+    "tailwind-merge": "^3.6.0",
+    "typescript": "~5.9.3",
+    "victory": "^37.3.5",
+    "yup": "^1.6.1"
   },
   "scripts": {
     "dev": "vite",
@@ -57,6 +73,7 @@
     "@typescript-eslint/parser": "^4.28.2",
     "@vitejs/plugin-react": "^6.3.0",
     "@vitest/coverage-v8": "^5.1.0",
+    "autoprefixer": "^10.4.20",
     "chromatic": "^5.9.2",
     "cypress": "^7.6.0",
     "eslint": "^7.30.0",
@@ -67,13 +84,23 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-react": "^7.24.0",
     "jsdom": "^31.0.1",
+    "postcss": "^8.4.49",
     "sass": "^1.108.2",
     "storybook": "^10.6.7",
     "storybook-dark-mode": "^5.0.0",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",
     "stylelint-scss": "^3.19.0",
+    "tailwindcss": "^3.4.17",
     "vite": "^8.3.8",
     "vitest": "^5.1.0"
+  },
+  "resolutions": {
+    "recharts/react-is": "^19.3.1"
+  },
+  "overrides": {
+    "recharts": {
+      "react-is": "^19.3.1"
+    }
   }
 }

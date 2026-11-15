@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 // import Highcharts from 'highcharts'
 import HighStock from 'highcharts/highstock'
-import HighchartsReact from 'highcharts-react-official'
+import HighchartsReactPkg from 'highcharts-react-official'
+
+const HighchartsReact = (HighchartsReactPkg as any)?.default || HighchartsReactPkg
 
 const staticOptions = {
   title: {

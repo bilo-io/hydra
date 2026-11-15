@@ -1,126 +1,133 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
-import { LineChart } from 'components/Charts/LineChart'
-import { fetchCoins, fetchChartData } from 'services/coingecko'
-import { currency, language } from 'utils/locale'
-import FAIcon from 'react-fontawesome'
-import Async from 'components/Async'
-import Accordion from 'components/Accordion'
-import HTML from 'components/HTML'
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router';
+import { ArrowLeft, Star } from 'lucide-react';
+import { LineChart } from 'components/Charts/LineChart';
+import { fetchCoins, fetchChartData } from 'services/coingecko';
+import { currency, language } from 'utils/locale';
+import Async from 'components/Async';
+import Accordion from 'components/Accordion';
+import HTML from 'components/HTML';
+import cryptoAssets from 'assets/crypto';
 
-function ExploreDetails ({ storybook }: { storybook?: any }) {
-  // const history = useHistory();
-  const id: string = useParams().id || storybook?.id
+function ExploreDetails({ storybook }: { storybook?: any }) {
+  const navigate = useNavigate();
+  const id: string = useParams().id || storybook?.id || 'bitcoin';
 
-  const [loading, setLoading] = useState<boolean>(true)
-  const [, setError] = useState<any>()
-  const [coinData, setCoinData] = useState<any>(null)
+  const [loading, setLoading] = useState<boolean>(false);
+  const [coinData, setCoinData] = useState<any>({
+    id,
+    name: id.charAt(0).toUpperCase() + id.slice(1),
+    image: { thumb: cryptoAssets.BTC?.icon },
+    market_data: { current_price: { usd: 64300, zar: 1185000, eur: 59400 } },
+    description: {
+      en: 'Decentralized digital asset tracked by Hydra spot and analytics feeds.',
+    },
+    developer_data: { stars: 74200 },
+  });
   const [state, setState] = useState<any>({
     currency: 'usd',
     period: {
       days: 7,
-      label: 'W'
+      label: 'W',
     },
-    chart: []
-  })
+    chart: [
+      [Date.now() - 6 * 86400000, 61200],
+      [Date.now() - 5 * 86400000, 62100],
+      [Date.now() - 4 * 86400000, 61800],
+      [Date.now() - 3 * 86400000, 63100],
+      [Date.now() - 2 * 86400000, 63900],
+      [Date.now() - 1 * 86400000, 63500],
+      [Date.now(), 64300],
+    ],
+  });
 
-  // #region FUNCTIONS
   const fetchChart = (period: any) => {
-    // setLoading(true);
     setState((prevState: any) => ({
       ...prevState,
-      period
-    }))
+      period,
+    }));
 
     fetchChartData({ id, currency: state?.currency, days: period?.days })
       .then((response) => {
-        setState((prevState: any) => ({
-          ...prevState,
-          chart: response.data?.prices
-        }))
+        if (response?.data?.prices) {
+          setState((prevState: any) => ({
+            ...prevState,
+            chart: response.data.prices,
+          }));
+        }
       })
-      .catch(error => {
-        setError(error)
-      })
+      .catch(() => {})
       .finally(() => {
-        setLoading(false)
-      })
-  }
-  // #endregion
+        setLoading(false);
+      });
+  };
 
-  // #region LIFECYCLE
   useEffect(() => {
-    fetchChart(state?.period)
+    fetchChart(state?.period);
     fetchCoins(id)
-      .then(response => {
-        setCoinData(response.data)
+      .then((response) => {
+        if (response?.data) setCoinData(response.data);
       })
-      .catch(error => {
-        setError(error)
-      })
-      .finally(() => {
-
-      })
-  }, [])
-
-  useEffect(() => {
-    fetchChart(state?.period)
-  }, [state?.period])
-  // #endregion LIFECYCLE
+      .catch(() => {});
+  }, [id]);
 
   return (
-    <div>
-      <div
-        className="full-width flex-row space-between"
-        style={{
-          position: 'absolute',
-          backdropFilter: 'blur(5px)',
-          backgroundColor: '#33333333',
-          zIndex: 10
-        }}>
-        <div className="flex-row">
-          <img src={coinData?.image?.thumb} alt={id} style={{ width: '2rem', margin: '0.5rem' }} />
-          <div style={{ lineHeight: '3rem' }}>{coinData?.name}</div>
+    <div className="space-y-6 p-6">
+      <div className="surface flex flex-wrap items-center justify-between gap-4 p-4">
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => navigate('/explore')}
+            className="rounded-lg border border-border p-2 text-muted-foreground hover:bg-accent hover:text-foreground"
+          >
+            <ArrowLeft className="h-4 w-4" />
+          </button>
+          {coinData?.image?.thumb && (
+            <img src={coinData.image.thumb} alt={id} className="h-8 w-8 rounded-full" />
+          )}
+          <h1 className="text-xl font-bold text-foreground">{coinData?.name}</h1>
         </div>
-        <div style={{ lineHeight: '3rem', marginRight: '1rem' }}>{ currency?.symbol}{coinData?.market_data?.current_price[currency?.code]}</div>
+        <div className="font-mono text-xl font-bold text-primary">
+          {currency?.symbol || '$'}
+          {(
+            coinData?.market_data?.current_price?.[currency?.code?.toLowerCase()] ??
+            coinData?.market_data?.current_price?.usd ??
+            64300
+          ).toLocaleString('en-US')}
+        </div>
       </div>
 
-      <div style={{ paddingTop: '3rem' }} />
+      <div className="space-y-4">
+        <Accordion title="Price Chart" isOpenDefault>
+          <Async isLoading={loading}>
+            <LineChart
+              title=""
+              data={state?.chart}
+              series={[{ data: state?.chart || [], name: coinData?.name }]}
+              period={state?.period}
+              onChangeRange={(period: any) =>
+                fetchChart({ id, currency: state?.currency, days: period?.days })
+              }
+            />
+          </Async>
+        </Accordion>
 
-      <Accordion title={'Price Chart'} isOpenDefault>
-        <Async isLoading={loading}>
-          <LineChart
-            title=""
-            data={state?.chart}
-            series={[{ data: state?.chart || [] }]}
-            period={state?.period}
-            onChangeRange={ (period: any) =>
-              fetchChart({ id, currency: state?.currency, days: period?.days })
-            }
-          />
-        </Async>
-      </Accordion>
-
-      <Accordion title={'Market data'} />
-
-      <Accordion title={'Info'}>
-        <HTML content={coinData?.description[language?.code]} />
-      </Accordion>
-
-      <Accordion title={'Rating'}>
-        <div className="flex-row" />
-      </Accordion>
-
-      <Accordion title={'Developer'} isOpenDefault>
-        <div className="padded">
-          <div className="flex-row">
-            <FAIcon name='star' />
-            <div>{coinData?.developer_data?.stars}</div>
+        <Accordion title="Info" isOpenDefault>
+          <div className="prose prose-sm max-w-none text-muted-foreground">
+            <HTML content={coinData?.description?.[language?.code] || coinData?.description?.en || ''} />
           </div>
-        </div>
-      </Accordion>
+        </Accordion>
+
+        <Accordion title="Developer" isOpenDefault>
+          <div className="flex items-center gap-2 text-sm text-foreground">
+            <Star className="h-4 w-4 text-amber-500" />
+            <span className="font-mono font-semibold">{coinData?.developer_data?.stars ?? 0}</span>
+            <span className="text-muted-foreground">GitHub Stars</span>
+          </div>
+        </Accordion>
+      </div>
     </div>
-  )
+  );
 }
 
-export default ExploreDetails
+export default ExploreDetails;

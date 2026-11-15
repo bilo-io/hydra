@@ -1,61 +1,17 @@
 @import './styles/_card.scss';
 @import './styles/_layout.scss';
 @import './styles/_colors.scss';
-@import './styles/_misc.scss';
 @import './styles/_overrides.scss';
-@import './styles/responsive.scss';
-@import './styles/Accordion.scss';
-@import './styles/AppMenu.scss';
-@import './styles/Async.scss';
-@import './styles/Cards.scss';
-@import './styles/Charts.scss';
-@import './styles/Loader.scss';
-@import './styles/Navbar.scss';
-@import './styles/Page.scss';
-// @import './styles/Spinner.scss';
-@import './styles/Tabs.scss';
+@import './styles/_responsive.scss';
 
 .App {
   text-align: center;
 }
 
-body {
-  background-color: $col-hydra-black;
-  color: #eee;
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    'Roboto',
-    'Oxygen',
-    'Ubuntu',
-    'Cantarell',
-    'Fira Sans',
-    'Droid Sans';
-  // 'Helvetica Neue';
-}
-
 .page {
-  @extend .no-scrollbar;
-
-  width: 100vw;
-  height: calc(100vh - 4rem);
+  width: 100%;
+  min-height: 100vh;
   overflow-y: auto;
-  background-color: $col-hydra-black;
-  color: #eee;
-  padding-bottom: 4rem;
-}
-
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(10px);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
 }
